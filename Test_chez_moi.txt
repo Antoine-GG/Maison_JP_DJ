@@ -1,1 +1,1 @@
-print nul
+print je test ça de chez moi
