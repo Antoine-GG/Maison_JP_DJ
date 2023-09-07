@@ -40,6 +40,14 @@ int main(void) {
 			// Turn off the LED (clear PD2)
 			PORTC &= ~(1 << PC5);			
 		}
+
+		if (door2 == 1) {
+            // Turn on the LED (set PC5 high)
+            PORTC |= (1 << PC5);
+        } else {
+            // Turn off the LED (clear PC5)
+            PORTC &= ~(1 << PC5);
+        }
 	}
 
 	return 0;
