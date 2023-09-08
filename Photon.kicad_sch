@@ -202,9 +202,9 @@
   )
 
   (symbol (lib_id "New_Library:Photon2") (at 140.97 116.84 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 7b215074-7ef3-4e33-ab44-b7ebba194d9e)
-    (property "Reference" "PHOTON2" (at 142.875 85.09 0)
+    (property "Reference" "PHOTON2" (at 142.24 93.98 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "~" (at 140.97 83.82 0)
