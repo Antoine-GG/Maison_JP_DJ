@@ -330,6 +330,10 @@
     [
       "0600536b-f413-4b06-98e9-b5748b5de992",
       "SPI section"
+    ],
+    [
+      "eab97472-f6ab-4acc-b686-864086f640ed",
+      "Photon"
     ]
   ],
   "text_variables": {}
