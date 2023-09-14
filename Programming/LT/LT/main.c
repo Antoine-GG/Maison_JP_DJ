@@ -5,7 +5,7 @@
  *  Author: Jérémy JJBDD
  */ 
 
-#include <xc.h>
+/*#include <xc.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/twi.h>
@@ -51,7 +51,7 @@ ISR(TWI_vect) {
 		TWCR |= (1 << TWINT); // Effacer le drapeau d'interruption
 	}
 }
-
+*/
 
 
 
@@ -59,12 +59,19 @@ ISR(TWI_vect) {
 
 ////////////// CODE A VOIR/TESTER /////////////
 
+#define F_CPU 1000000UL 
+
+#include <xc.h>
 #include <avr/io.h>
 #include <util/twi.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 
 #define SLAVE_ADDRESS_1 0x30 // Adresse de l'ATmega328P esclave 1
 #define SLAVE_ADDRESS_2 0x08 // Adresse de l'ATmega328P esclave 2
+
+#define LED1_PIN PB0 // Par exemple, connectez LED1 à la broche PB0
+#define LED2_PIN PB1 // Par exemple, connectez LED2 à la broche PB1
 
 volatile uint8_t windowState1 = 0; // État de la fenêtre de l'esclave 1
 volatile uint8_t windowState2 = 0; // État de la fenêtre de l'esclave 2
@@ -100,6 +107,8 @@ uint8_t i2c_read() {
 int main() {
 	i2c_init();
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
+	
+	DDRB |= (1 << LED1_PIN) | (1 << LED2_PIN);
 
 	while (1) {
 		// Demander l'état de la fenêtre de l'esclave 1
@@ -116,15 +125,18 @@ int main() {
 		
 		// Traiter les données reçues et allumer ou éteindre les LED en fonction de l'état de la fenêtre
 		if (windowState1 == 1) {
-			// Allumer la LED 1 (par exemple, en activant une sortie)
+			PORTB |= (1 << LED1_PIN);	// Allumer la LED 1 
+			
 			} else {
-			// Éteindre la LED 1 (par exemple, en désactivant une sortie)
+			PORTB &= ~(1 << LED1_PIN);	// Éteindre la LED 1
 		}
 		
 		if (windowState2 == 1) {
-			// Allumer la LED 2 (par exemple, en activant une autre sortie)
+			PORTB |= (1 << LED2_PIN);	// Allumer la LED 2 
+			
 			} else {
-			// Éteindre la LED 2 (par exemple, en désactivant une autre sortie)
+			PORTB &= ~(1 << LED2_PIN);	// Éteindre la LED 2 
+			
 		}
 		
 		_delay_ms(1000); // Attendre avant de refaire la demande
