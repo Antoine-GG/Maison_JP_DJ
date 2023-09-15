@@ -3,15 +3,15 @@
   <executable name="U1.elf">                 
     <memory name="program">              
       <units>bytes</units>                 
-      <length>16384</length>                 
+      <length>32768</length>                 
       <used>494</used>                     
-      <free>15890</free>                     
+      <free>32274</free>                     
     </memory>                              
     <memory name="data">                 
       <units>bytes</units>                 
-      <length>1024</length>                 
+      <length>2048</length>                 
       <used>2</used>                     
-      <free>1022</free>                     
+      <free>2046</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

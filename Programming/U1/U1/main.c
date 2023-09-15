@@ -41,12 +41,13 @@ void i2c_nack() {		//Attend que les données soient disponibles, puis les lit et 
 void initIOports(){
 
 	// Set PC4 and PC5 as output pin for debug
-	DDRC |= (1 << 5);
-	DDRC |= (1 << 4);
+	DDRC |= (1 << PC3);
+	DDRC |= (1 << PC2);
 
-	// Set PD3 and PD4 as input pins
-	DDRD &= ~(1 << 3);
-	DDRD &= ~(1 << 4);
+	// Set PD6 and PD7 as input pins
+	DDRD &= ~(1 << PD6);
+	DDRD &= ~(1 << PD7);
+
 
 	// Enable pull-up resistors on PD3 and PD4
 	//PORTD |= (1 << 3);
@@ -98,18 +99,18 @@ int main(void) {
 		//La communication I2C est gérée par les interruptions
 		
 		//read the state of the doors at pin 3 and 4
-		window1 = PIND & (1 << 3);
-		window2 = PIND & (1 << 4);
+		window1 = PIND & (1 << PD6);
+		window2 = PIND & (1 << PD7);
 		//if the door1 is open set PC5 pin to high otherwise set it to low
 		if(window1 == 0){
-			PORTC |= (1 << 5);
+			PORTC |= (1 << PC3);
 			}else{
-			PORTC &= ~(1 << 5);
+			PORTC &= ~(1 << PC3);
 		}
 		if(window2 == 0){
-			PORTC |= (1 << 4);
+			PORTC |= (1 << PC2);
 			}else{
-			PORTC &= ~(1 << 4);
+			PORTC &= ~(1 << PC2);
 		}
 		_delay_ms(100);
 	}
