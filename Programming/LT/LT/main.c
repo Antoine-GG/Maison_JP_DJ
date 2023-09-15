@@ -13,9 +13,13 @@ volatile uint8_t windowState1 = 0; // État de la fenêtre de l'esclave 1
 volatile uint8_t windowState2 = 0; // État de la fenêtre de l'esclave 2
 
 void i2c_init() {
-	TWSR = 0; // Pas de division de fréquence
-	TWBR = ((F_CPU / 100000) - 16) / 2; // Calcul de la valeur de TWBR pour une fréquence I2C de 100 kHz
-	TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT); // Activer l'interface I2C en mode maître
+	// SDA (PC4) and SCL (PC5) are configured as inputs with pull-up resistors.
+	PORTC |= (1 << PC4) | (1 << PC5); // Enable pull-up resistors on SDA and SCL
+	
+	TWSR = 0; // No clock prescaling
+	TWBR = 12; // Set TWI bit rate to achieve 100 kHz I2C frequency
+	TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT); // Enable I2C, generate START condition, and clear interrupt flag
+	sei(); // Enable global interrupts
 }
 
 void i2c_start() {
@@ -43,8 +47,7 @@ uint8_t i2c_read() {
 int main() {
 	i2c_init();
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
-	
-	DDRB |= (1 << LED1_PIN) | (1 << LED2_PIN);
+	DDRB |= (1 << PB0) | (1 << PB1);
 
 	while (1) {
 		// Demander l'état de la fenêtre de l'esclave 1
@@ -54,10 +57,10 @@ int main() {
 		i2c_stop();
 		
 		// Demander l'état de la fenêtre de l'esclave 2
-		i2c_start();
-		i2c_write((SLAVE_ADDRESS_2 << 1) | 1); // Écrire l'adresse de l'ATmega328P esclave 2 en mode lecture
-		windowState2 = i2c_read();
-		i2c_stop();
+		//i2c_start();
+		//i2c_write((SLAVE_ADDRESS_2 << 1) | 1); // Écrire l'adresse de l'ATmega328P esclave 2 en mode lecture
+		//windowState2 = i2c_read();
+		//i2c_stop();
 		
 		// Traiter les données reçues et allumer ou éteindre les LED en fonction de l'état de la fenêtre
 		if (windowState1 == 1) {
