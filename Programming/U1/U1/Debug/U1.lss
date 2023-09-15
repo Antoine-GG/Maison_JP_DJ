@@ -1,0 +1,340 @@
+
+U1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000282  2**0
+                  ALLOC, LOAD, DATA
+  1 .text         000000c2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      0000002f  00000000  00000000  00000282  2**0
+                  CONTENTS, READONLY
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  000002b1  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000068  00000000  00000000  000002bf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000ad3  00000000  00000000  00000327  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000729  00000000  00000000  00000dfa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000038a  00000000  00000000  00001523  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000fc  00000000  00000000  000018b0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000208  00000000  00000000  000019ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000155  00000000  00000000  00001bb4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000058  00000000  00000000  00001d09  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .text         00000004  000001e0  000001e0  00000274  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001d64  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .text.i2c_init_slave 0000000e  000001be  000001be  00000252  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .text.i2c_ack 0000000c  000001cc  000001cc  00000260  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 16 .text.i2c_nack 00000008  000001d8  000001d8  0000026c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 17 .text.initIOports 0000001a  0000018e  0000018e  00000222  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .text.__vector_24 00000076  000000c2  000000c2  00000156  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 19 .text.main    00000056  00000138  00000138  000001cc  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .bss.window2  00000001  00800100  00800100  00000282  2**0
+                  ALLOC
+ 21 .bss.window1  00000001  00800101  00800101  00000282  2**0
+                  ALLOC
+ 22 .text.__dummy_fini 00000002  000001e8  000001e8  0000027c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 23 .text.__dummy_funcs_on_exit 00000002  000001ea  000001ea  0000027e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 24 .text.__dummy_simulator_exit 00000002  000001ec  000001ec  00000280  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 25 .text.exit    00000016  000001a8  000001a8  0000023c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 26 .text._Exit   00000004  000001e4  000001e4  00000278  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 37 00 	jmp	0x6e	; 0x6e <__ctors_end>
+   4:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+   8:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+   c:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  10:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  14:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  18:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  1c:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  20:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  24:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  28:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  2c:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  30:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  34:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  38:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  3c:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  40:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  44:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  48:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  4c:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  50:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  54:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  58:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  5c:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+  60:	0c 94 61 00 	jmp	0xc2	; 0xc2 <_etext>
+  64:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <__bad_interrupt>
+
+00000068 <.dinit>:
+  68:	01 00       	.word	0x0001	; ????
+  6a:	01 02       	muls	r16, r17
+  6c:	80 00       	.word	0x0080	; ????
+
+0000006e <__ctors_end>:
+  6e:	11 24       	eor	r1, r1
+  70:	1f be       	out	0x3f, r1	; 63
+  72:	cf ef       	ldi	r28, 0xFF	; 255
+  74:	d4 e0       	ldi	r29, 0x04	; 4
+  76:	de bf       	out	0x3e, r29	; 62
+  78:	cd bf       	out	0x3d, r28	; 61
+
+0000007a <__do_copy_data>:
+  7a:	e8 e6       	ldi	r30, 0x68	; 104
+  7c:	f0 e0       	ldi	r31, 0x00	; 0
+  7e:	40 e0       	ldi	r20, 0x00	; 0
+  80:	17 c0       	rjmp	.+46     	; 0xb0 <__do_clear_bss+0x8>
+  82:	b5 91       	lpm	r27, Z+
+  84:	a5 91       	lpm	r26, Z+
+  86:	35 91       	lpm	r19, Z+
+  88:	25 91       	lpm	r18, Z+
+  8a:	05 91       	lpm	r16, Z+
+  8c:	07 fd       	sbrc	r16, 7
+  8e:	0c c0       	rjmp	.+24     	; 0xa8 <__do_clear_bss>
+  90:	95 91       	lpm	r25, Z+
+  92:	85 91       	lpm	r24, Z+
+  94:	ef 01       	movw	r28, r30
+  96:	f9 2f       	mov	r31, r25
+  98:	e8 2f       	mov	r30, r24
+  9a:	05 90       	lpm	r0, Z+
+  9c:	0d 92       	st	X+, r0
+  9e:	a2 17       	cp	r26, r18
+  a0:	b3 07       	cpc	r27, r19
+  a2:	d9 f7       	brne	.-10     	; 0x9a <__do_copy_data+0x20>
+  a4:	fe 01       	movw	r30, r28
+  a6:	04 c0       	rjmp	.+8      	; 0xb0 <__do_clear_bss+0x8>
+
+000000a8 <__do_clear_bss>:
+  a8:	1d 92       	st	X+, r1
+  aa:	a2 17       	cp	r26, r18
+  ac:	b3 07       	cpc	r27, r19
+  ae:	e1 f7       	brne	.-8      	; 0xa8 <__do_clear_bss>
+  b0:	ed 36       	cpi	r30, 0x6D	; 109
+  b2:	f4 07       	cpc	r31, r20
+  b4:	31 f7       	brne	.-52     	; 0x82 <__do_copy_data+0x8>
+  b6:	0e 94 9c 00 	call	0x138	; 0x138 <main>
+  ba:	0c 94 d4 00 	jmp	0x1a8	; 0x1a8 <exit>
+
+000000be <_exit>:
+  be:	f8 94       	cli
+
+000000c0 <__stop_program>:
+  c0:	ff cf       	rjmp	.-2      	; 0xc0 <__stop_program>
+
+Disassembly of section .text:
+
+000001e0 <__bad_interrupt>:
+ 1e0:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.i2c_init_slave:
+
+000001be <i2c_init_slave>:
+	TWCR = (1 << TWSTO) | (1 << TWINT) | (1 << TWEN);
+}
+
+void i2c_write(uint8_t data) {		//Permet d'écrire des données dans le registre de données I2C (TWDR)
+	TWDR = data;
+	TWCR = (1 << TWEN) | (1 << TWINT);
+ 1be:	88 0f       	add	r24, r24
+ 1c0:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <__TEXT_REGION_LENGTH__+0x7fc0ba>
+ 1c4:	85 e4       	ldi	r24, 0x45	; 69
+ 1c6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 1ca:	08 95       	ret
+
+Disassembly of section .text.i2c_ack:
+
+000001cc <i2c_ack>:
+}
+
+void i2c_ack() {		//Envoie un acknowledge pour dire : Slave prêt a recevoir données 
+	TWCR |= (1 << TWEA) | (1 << TWINT);
+ 1cc:	ec eb       	ldi	r30, 0xBC	; 188
+ 1ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d0:	80 81       	ld	r24, Z
+ 1d2:	80 6c       	ori	r24, 0xC0	; 192
+ 1d4:	80 83       	st	Z, r24
+ 1d6:	08 95       	ret
+
+Disassembly of section .text.i2c_nack:
+
+000001d8 <i2c_nack>:
+}
+
+void i2c_nack() {		//Attend que les données soient disponibles, puis les lit et les renvoie
+	TWCR = (1 << TWINT) | (1 << TWEN);
+ 1d8:	84 e8       	ldi	r24, 0x84	; 132
+ 1da:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 1de:	08 95       	ret
+
+Disassembly of section .text.initIOports:
+
+0000018e <initIOports>:
+	TWCR = (1 << TWSTO) | (1 << TWINT) | (1 << TWEN);
+}
+
+void i2c_write(uint8_t data) {		//Permet d'écrire des données dans le registre de données I2C (TWDR)
+	TWDR = data;
+	TWCR = (1 << TWEN) | (1 << TWINT);
+ 18e:	87 b1       	in	r24, 0x07	; 7
+ 190:	80 62       	ori	r24, 0x20	; 32
+ 192:	87 b9       	out	0x07, r24	; 7
+ 194:	87 b1       	in	r24, 0x07	; 7
+ 196:	80 61       	ori	r24, 0x10	; 16
+ 198:	87 b9       	out	0x07, r24	; 7
+ 19a:	8a b1       	in	r24, 0x0a	; 10
+ 19c:	87 7f       	andi	r24, 0xF7	; 247
+ 19e:	8a b9       	out	0x0a, r24	; 10
+ 1a0:	8a b1       	in	r24, 0x0a	; 10
+ 1a2:	8f 7e       	andi	r24, 0xEF	; 239
+ 1a4:	8a b9       	out	0x0a, r24	; 10
+ 1a6:	08 95       	ret
+
+Disassembly of section .text.__vector_24:
+
+000000c2 <__vector_24>:
+  c2:	1f 92       	push	r1
+  c4:	0f 92       	push	r0
+  c6:	0f b6       	in	r0, 0x3f	; 63
+  c8:	0f 92       	push	r0
+  ca:	11 24       	eor	r1, r1
+  cc:	2f 93       	push	r18
+  ce:	3f 93       	push	r19
+  d0:	4f 93       	push	r20
+  d2:	5f 93       	push	r21
+  d4:	6f 93       	push	r22
+  d6:	7f 93       	push	r23
+  d8:	8f 93       	push	r24
+  da:	9f 93       	push	r25
+  dc:	af 93       	push	r26
+  de:	bf 93       	push	r27
+  e0:	ef 93       	push	r30
+  e2:	ff 93       	push	r31
+  e4:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+  e8:	88 7f       	andi	r24, 0xF8	; 248
+  ea:	80 36       	cpi	r24, 0x60	; 96
+  ec:	19 f0       	breq	.+6      	; 0xf4 <__vector_24+0x32>
+  ee:	80 38       	cpi	r24, 0x80	; 128
+  f0:	21 f0       	breq	.+8      	; 0xfa <__vector_24+0x38>
+  f2:	0f c0       	rjmp	.+30     	; 0x112 <__vector_24+0x50>
+  f4:	0e 94 e6 00 	call	0x1cc	; 0x1cc <i2c_ack>
+  f8:	0e c0       	rjmp	.+28     	; 0x116 <__vector_24+0x54>
+  fa:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
+  fe:	98 2f       	mov	r25, r24
+ 100:	91 70       	andi	r25, 0x01	; 1
+ 102:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <window1>
+ 106:	82 70       	andi	r24, 0x02	; 2
+ 108:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 10c:	0e 94 e6 00 	call	0x1cc	; 0x1cc <i2c_ack>
+ 110:	02 c0       	rjmp	.+4      	; 0x116 <__vector_24+0x54>
+ 112:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <i2c_nack>
+ 116:	ff 91       	pop	r31
+ 118:	ef 91       	pop	r30
+ 11a:	bf 91       	pop	r27
+ 11c:	af 91       	pop	r26
+ 11e:	9f 91       	pop	r25
+ 120:	8f 91       	pop	r24
+ 122:	7f 91       	pop	r23
+ 124:	6f 91       	pop	r22
+ 126:	5f 91       	pop	r21
+ 128:	4f 91       	pop	r20
+ 12a:	3f 91       	pop	r19
+ 12c:	2f 91       	pop	r18
+ 12e:	0f 90       	pop	r0
+ 130:	0f be       	out	0x3f, r0	; 63
+ 132:	0f 90       	pop	r0
+ 134:	1f 90       	pop	r1
+ 136:	18 95       	reti
+
+Disassembly of section .text.main:
+
+00000138 <main>:
+ 138:	80 e3       	ldi	r24, 0x30	; 48
+ 13a:	0e 94 df 00 	call	0x1be	; 0x1be <i2c_init_slave>
+ 13e:	0e 94 c7 00 	call	0x18e	; 0x18e <initIOports>
+ 142:	78 94       	sei
+ 144:	89 b1       	in	r24, 0x09	; 9
+ 146:	88 70       	andi	r24, 0x08	; 8
+ 148:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <window1>
+ 14c:	89 b1       	in	r24, 0x09	; 9
+ 14e:	80 71       	andi	r24, 0x10	; 16
+ 150:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 154:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <window1>
+ 158:	81 11       	cpse	r24, r1
+ 15a:	04 c0       	rjmp	.+8      	; 0x164 <main+0x2c>
+ 15c:	88 b1       	in	r24, 0x08	; 8
+ 15e:	80 62       	ori	r24, 0x20	; 32
+ 160:	88 b9       	out	0x08, r24	; 8
+ 162:	03 c0       	rjmp	.+6      	; 0x16a <main+0x32>
+ 164:	88 b1       	in	r24, 0x08	; 8
+ 166:	8f 7d       	andi	r24, 0xDF	; 223
+ 168:	88 b9       	out	0x08, r24	; 8
+ 16a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 16e:	81 11       	cpse	r24, r1
+ 170:	04 c0       	rjmp	.+8      	; 0x17a <main+0x42>
+ 172:	88 b1       	in	r24, 0x08	; 8
+ 174:	80 61       	ori	r24, 0x10	; 16
+ 176:	88 b9       	out	0x08, r24	; 8
+ 178:	03 c0       	rjmp	.+6      	; 0x180 <main+0x48>
+ 17a:	88 b1       	in	r24, 0x08	; 8
+ 17c:	8f 7e       	andi	r24, 0xEF	; 239
+ 17e:	88 b9       	out	0x08, r24	; 8
+ 180:	87 ea       	ldi	r24, 0xA7	; 167
+ 182:	91 e6       	ldi	r25, 0x61	; 97
+ 184:	01 97       	sbiw	r24, 0x01	; 1
+ 186:	f1 f7       	brne	.-4      	; 0x184 <main+0x4c>
+ 188:	00 c0       	rjmp	.+0      	; 0x18a <main+0x52>
+ 18a:	00 00       	nop
+ 18c:	db cf       	rjmp	.-74     	; 0x144 <main+0xc>
+
+Disassembly of section .text.__dummy_fini:
+
+000001e8 <_fini>:
+ 1e8:	08 95       	ret
+
+Disassembly of section .text.__dummy_funcs_on_exit:
+
+000001ea <__funcs_on_exit>:
+ 1ea:	08 95       	ret
+
+Disassembly of section .text.__dummy_simulator_exit:
+
+000001ec <__simulator_exit>:
+ 1ec:	08 95       	ret
+
+Disassembly of section .text.exit:
+
+000001a8 <exit>:
+ 1a8:	ec 01       	movw	r28, r24
+ 1aa:	0e 94 f5 00 	call	0x1ea	; 0x1ea <__funcs_on_exit>
+ 1ae:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <_fini>
+ 1b2:	ce 01       	movw	r24, r28
+ 1b4:	0e 94 f6 00 	call	0x1ec	; 0x1ec <__simulator_exit>
+ 1b8:	ce 01       	movw	r24, r28
+ 1ba:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <_Exit>
+
+Disassembly of section .text._Exit:
+
+000001e4 <_Exit>:
+ 1e4:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
