@@ -1,0 +1,258 @@
+
+U5.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000192  2**0
+                  ALLOC, LOAD, DATA
+  1 .text         00000080  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      0000002f  00000000  00000000  00000192  2**0
+                  CONTENTS, READONLY
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  000001c1  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000030  00000000  00000000  000001cf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000a19  00000000  00000000  000001ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000713  00000000  00000000  00000c18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002b4  00000000  00000000  0000132b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000044  00000000  00000000  000015e0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000022e  00000000  00000000  00001624  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000008d  00000000  00000000  00001852  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000038  00000000  00000000  000018df  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .text         00000004  00000110  00000110  00000184  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001918  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .text.readShiftRegisters 00000062  00000080  00000080  000000f4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .text.main    00000018  000000e2  000000e2  00000156  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 16 .text.__dummy_fini 00000002  00000118  00000118  0000018c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 17 .text.__dummy_funcs_on_exit 00000002  0000011a  0000011a  0000018e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .text.__dummy_simulator_exit 00000002  0000011c  0000011c  00000190  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 19 .text.exit    00000016  000000fa  000000fa  0000016e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .text._Exit   00000004  00000114  00000114  00000188  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+   8:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+   c:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  10:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  14:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  18:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  1c:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  20:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  24:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  28:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  2c:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  30:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  34:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  38:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  3c:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  40:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  44:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  48:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  4c:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  50:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  54:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  58:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  5c:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  60:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+  64:	0c 94 88 00 	jmp	0x110	; 0x110 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 71 00 	call	0xe2	; 0xe2 <main>
+  78:	0c 94 7d 00 	jmp	0xfa	; 0xfa <exit>
+
+0000007c <_exit>:
+  7c:	f8 94       	cli
+
+0000007e <__stop_program>:
+  7e:	ff cf       	rjmp	.-2      	; 0x7e <__stop_program>
+
+Disassembly of section .text:
+
+00000110 <__bad_interrupt>:
+ 110:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.readShiftRegisters:
+
+00000080 <readShiftRegisters>:
+// Function to read data from the shift registers
+uint16_t readShiftRegisters() {
+	uint16_t data = 0;
+	
+	// Set latch pin low to start data transfer
+	PORTB &= ~(1 << LATCH_PIN);
+  80:	85 b1       	in	r24, 0x05	; 5
+  82:	8e 7f       	andi	r24, 0xFE	; 254
+  84:	85 b9       	out	0x05, r24	; 5
+	
+	// Shift in data from CD4021 shift registers
+	for (int i = 0; i < 16; i++) {
+  86:	40 e0       	ldi	r20, 0x00	; 0
+  88:	50 e0       	ldi	r21, 0x00	; 0
+		PORTD |= (1 << DATA_PIN);
+}
+
+// Function to read data from the shift registers
+uint16_t readShiftRegisters() {
+	uint16_t data = 0;
+  8a:	60 e0       	ldi	r22, 0x00	; 0
+  8c:	70 e0       	ldi	r23, 0x00	; 0
+	
+	// Set latch pin low to start data transfer
+	PORTB &= ~(1 << LATCH_PIN);
+	
+	// Shift in data from CD4021 shift registers
+	for (int i = 0; i < 16; i++) {
+  8e:	21 c0       	rjmp	.+66     	; 0xd2 <readShiftRegisters+0x52>
+		// Pulse the clock pin to shift in the next bit
+		PORTD |= (1 << CLOCK_PIN);
+  90:	9b b1       	in	r25, 0x0b	; 11
+  92:	94 60       	ori	r25, 0x04	; 4
+  94:	9b b9       	out	0x0b, r25	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  96:	81 e2       	ldi	r24, 0x21	; 33
+  98:	8a 95       	dec	r24
+  9a:	f1 f7       	brne	.-4      	; 0x98 <readShiftRegisters+0x18>
+  9c:	00 00       	nop
+		_delay_us(100); // Adjust delay as needed based on your clock frequency
+		PORTD &= ~(1 << CLOCK_PIN);
+  9e:	9b b1       	in	r25, 0x0b	; 11
+  a0:	9b 7f       	andi	r25, 0xFB	; 251
+  a2:	9b b9       	out	0x0b, r25	; 11
+		
+		// Read the data pin and store the bit
+		data |= ((PIND & (1 << DATA_PIN)) >> DATA_PIN) << i;
+  a4:	29 b1       	in	r18, 0x09	; 9
+  a6:	20 72       	andi	r18, 0x20	; 32
+  a8:	30 e0       	ldi	r19, 0x00	; 0
+  aa:	35 95       	asr	r19
+  ac:	27 95       	ror	r18
+  ae:	35 95       	asr	r19
+  b0:	27 95       	ror	r18
+  b2:	35 95       	asr	r19
+  b4:	27 95       	ror	r18
+  b6:	35 95       	asr	r19
+  b8:	27 95       	ror	r18
+  ba:	35 95       	asr	r19
+  bc:	27 95       	ror	r18
+  be:	04 2e       	mov	r0, r20
+  c0:	02 c0       	rjmp	.+4      	; 0xc6 <readShiftRegisters+0x46>
+  c2:	22 0f       	add	r18, r18
+  c4:	33 1f       	adc	r19, r19
+  c6:	0a 94       	dec	r0
+  c8:	e2 f7       	brpl	.-8      	; 0xc2 <readShiftRegisters+0x42>
+  ca:	62 2b       	or	r22, r18
+  cc:	73 2b       	or	r23, r19
+	
+	// Set latch pin low to start data transfer
+	PORTB &= ~(1 << LATCH_PIN);
+	
+	// Shift in data from CD4021 shift registers
+	for (int i = 0; i < 16; i++) {
+  ce:	4f 5f       	subi	r20, 0xFF	; 255
+  d0:	5f 4f       	sbci	r21, 0xFF	; 255
+  d2:	40 31       	cpi	r20, 0x10	; 16
+  d4:	51 05       	cpc	r21, r1
+  d6:	e4 f2       	brlt	.-72     	; 0x90 <readShiftRegisters+0x10>
+		// Read the data pin and store the bit
+		data |= ((PIND & (1 << DATA_PIN)) >> DATA_PIN) << i;
+	}
+	
+	// Set latch pin high to stop data transfer
+	PORTB |= (1 << LATCH_PIN);
+  d8:	85 b1       	in	r24, 0x05	; 5
+  da:	81 60       	ori	r24, 0x01	; 1
+  dc:	85 b9       	out	0x05, r24	; 5
+	
+	return data;
+}
+  de:	cb 01       	movw	r24, r22
+  e0:	08 95       	ret
+
+Disassembly of section .text.main:
+
+000000e2 <main>:
+
+int main() {
+
+	while (1) {
+		// Read data from shift registers
+		uint16_t shiftRegisterData = readShiftRegisters();
+  e2:	0e 94 40 00 	call	0x80	; 0x80 <__data_load_end>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  e6:	2f e3       	ldi	r18, 0x3F	; 63
+  e8:	8d e0       	ldi	r24, 0x0D	; 13
+  ea:	93 e0       	ldi	r25, 0x03	; 3
+  ec:	21 50       	subi	r18, 0x01	; 1
+  ee:	80 40       	sbci	r24, 0x00	; 0
+  f0:	90 40       	sbci	r25, 0x00	; 0
+  f2:	e1 f7       	brne	.-8      	; 0xec <main+0xa>
+  f4:	00 c0       	rjmp	.+0      	; 0xf6 <main+0x14>
+  f6:	00 00       	nop
+  f8:	f4 cf       	rjmp	.-24     	; 0xe2 <main>
+
+Disassembly of section .text.__dummy_fini:
+
+00000118 <_fini>:
+ 118:	08 95       	ret
+
+Disassembly of section .text.__dummy_funcs_on_exit:
+
+0000011a <__funcs_on_exit>:
+ 11a:	08 95       	ret
+
+Disassembly of section .text.__dummy_simulator_exit:
+
+0000011c <__simulator_exit>:
+ 11c:	08 95       	ret
+
+Disassembly of section .text.exit:
+
+000000fa <exit>:
+  fa:	ec 01       	movw	r28, r24
+  fc:	0e 94 8d 00 	call	0x11a	; 0x11a <__funcs_on_exit>
+ 100:	0e 94 8c 00 	call	0x118	; 0x118 <_fini>
+ 104:	ce 01       	movw	r24, r28
+ 106:	0e 94 8e 00 	call	0x11c	; 0x11c <__simulator_exit>
+ 10a:	ce 01       	movw	r24, r28
+ 10c:	0e 94 8a 00 	call	0x114	; 0x114 <_Exit>
+
+Disassembly of section .text._Exit:
+
+00000114 <_Exit>:
+ 114:	0e 94 3e 00 	call	0x7c	; 0x7c <_exit>
