@@ -5,16 +5,16 @@
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.microchip.xc8</ToolchainName>
     <ProjectGuid>2285C48D-296E-43FD-A7B6-69885F64CFFD</ProjectGuid>
-    <avrdevice>ATmega328P</avrdevice>
+    <avrdevice>ATmega328</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>C</Language>
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>LT</AssemblyName>
-    <Name>LT</Name>
-    <RootNamespace>LT</RootNamespace>
+    <AssemblyName>UART_2_Slave</AssemblyName>
+    <Name>UART_2_Slave</Name>
+    <RootNamespace>UART_2_Slave</RootNamespace>
     <ToolchainFlavour>XC8_2.36</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -30,18 +30,17 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-        <options />
-        <configurations />
-        <files />
-        <documentation help="" />
-        <offline-documentation help="" />
-        <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
-        </dependencies>
-      </framework-data>
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
+  </dependencies>
+</framework-data>
     </AsfFrameworkConfig>
-    <avrtool>
-    </avrtool>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
     <avrtoolserialnumber>J42700000835</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E9514</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_atmelice>
