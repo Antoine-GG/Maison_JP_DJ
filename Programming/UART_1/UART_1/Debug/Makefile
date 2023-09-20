@@ -58,9 +58,9 @@ main.d
 C_DEPS_AS_ARGS +=  \
 main.d
 
-OUTPUT_FILE_PATH +=LT.elf
+OUTPUT_FILE_PATH +=UART_1.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=LT.elf
+OUTPUT_FILE_PATH_AS_ARGS +=UART_1.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -75,7 +75,7 @@ LINKER_SCRIPT_DEP+=
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
-	$(QUOTE)D:\LOGICIEL\Microchip_Studio\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega328  -mdfp="D:\LOGICIEL\Microchip_Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega328__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\LOGICIEL\Microchip_Studio\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega328P  -mdfp="D:\LOGICIEL\Microchip_Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega328P__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
@@ -105,11 +105,11 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking:  XC8 C Linker : 2.36
-	$(QUOTE)D:\LOGICIEL\Microchip_Studio\bin\xc8-cc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -mcpu=ATmega328  -mdfp="D:\LOGICIEL\Microchip_Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -Wl,-Map="LT.map" -funsigned-char -funsigned-bitfields -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums --memorysummary,memoryfile.xml  
+	$(QUOTE)D:\LOGICIEL\Microchip_Studio\bin\xc8-cc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -mcpu=ATmega328P  -mdfp="D:\LOGICIEL\Microchip_Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -Wl,-Map="UART_1.map" -funsigned-char -funsigned-bitfields -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums --memorysummary,memoryfile.xml  
 	@echo Finished building target: $@
-	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "LT.elf" "LT.hex"
-	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O ihex "LT.elf" "LT.eep" || exit 0
-	"D:\LOGICIEL\Microchip_Studio\bin\avr-objdump.exe" -h -S "LT.elf" > "LT.lss"
+	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "UART_1.elf" "UART_1.hex"
+	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O ihex "UART_1.elf" "UART_1.eep" || exit 0
+	"D:\LOGICIEL\Microchip_Studio\bin\avr-objdump.exe" -h -S "UART_1.elf" > "UART_1.lss"
 	
 	
 
@@ -121,5 +121,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "LT.elf" "LT.hex" "LT.eep" "LT.map" "LT.usersignatures" "LT.a"  "LT.lss"
+	rm -rf "UART_1.elf" "UART_1.hex" "UART_1.eep" "UART_1.map" "UART_1.usersignatures" "UART_1.a"  "UART_1.lss"
 	

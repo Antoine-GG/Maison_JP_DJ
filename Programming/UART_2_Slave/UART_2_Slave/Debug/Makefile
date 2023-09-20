@@ -58,9 +58,9 @@ main.d
 C_DEPS_AS_ARGS +=  \
 main.d
 
-OUTPUT_FILE_PATH +=LT.elf
+OUTPUT_FILE_PATH +=UART_2_Slave.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=LT.elf
+OUTPUT_FILE_PATH_AS_ARGS +=UART_2_Slave.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -105,11 +105,11 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking:  XC8 C Linker : 2.36
-	$(QUOTE)D:\LOGICIEL\Microchip_Studio\bin\xc8-cc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -mcpu=ATmega328  -mdfp="D:\LOGICIEL\Microchip_Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -Wl,-Map="LT.map" -funsigned-char -funsigned-bitfields -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums --memorysummary,memoryfile.xml  
+	$(QUOTE)D:\LOGICIEL\Microchip_Studio\bin\xc8-cc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -mcpu=ATmega328  -mdfp="D:\LOGICIEL\Microchip_Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -Wl,-Map="UART_2_Slave.map" -funsigned-char -funsigned-bitfields -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums --memorysummary,memoryfile.xml  
 	@echo Finished building target: $@
-	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "LT.elf" "LT.hex"
-	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O ihex "LT.elf" "LT.eep" || exit 0
-	"D:\LOGICIEL\Microchip_Studio\bin\avr-objdump.exe" -h -S "LT.elf" > "LT.lss"
+	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "UART_2_Slave.elf" "UART_2_Slave.hex"
+	"D:\LOGICIEL\Microchip_Studio\bin\avr-objcopy.exe" -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O ihex "UART_2_Slave.elf" "UART_2_Slave.eep" || exit 0
+	"D:\LOGICIEL\Microchip_Studio\bin\avr-objdump.exe" -h -S "UART_2_Slave.elf" > "UART_2_Slave.lss"
 	
 	
 
@@ -121,5 +121,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "LT.elf" "LT.hex" "LT.eep" "LT.map" "LT.usersignatures" "LT.a"  "LT.lss"
+	rm -rf "UART_2_Slave.elf" "UART_2_Slave.hex" "UART_2_Slave.eep" "UART_2_Slave.map" "UART_2_Slave.usersignatures" "UART_2_Slave.a"  "UART_2_Slave.lss"
 	
