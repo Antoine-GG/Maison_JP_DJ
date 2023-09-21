@@ -3,15 +3,15 @@
   <executable name="LT.elf">                 
     <memory name="program">              
       <units>bytes</units>                 
-      <length>32768</length>                 
-      <used>446</used>                     
-      <free>32322</free>                     
+      <length>16384</length>                 
+      <used>354</used>                     
+      <free>16030</free>                     
     </memory>                              
     <memory name="data">                 
       <units>bytes</units>                 
-      <length>2048</length>                 
-      <used>2</used>                     
-      <free>2046</free>                     
+      <length>1024</length>                 
+      <used>1</used>                     
+      <free>1023</free>                     
     </memory>                              
   </executable>                            
 </project>                                 
