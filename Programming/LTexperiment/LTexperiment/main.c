@@ -1,20 +1,22 @@
 /*
  * main.c
  *
- * Created: 9/20/2023 7:20:41 AM
- *  Author: JP Toutant
+ * Created: 9/21/2023 12:22:12 AM
+ *  Author: Utilisateur
  */ 
 #define F_CPU 1000000UL
 #include <xc.h>
 #include <avr/io.h>
 #include <util/twi.h>
-#include <avr/sfr_defs.h>
-#include <stdlib.h>
 #include <util/delay.h>
 
 #define SLAVE_ADDRESS 0x20
 
-
+//io pins setup
+void initIO(void){
+	DDRB |= (1 << PB0);
+	
+}
 //initialiser UART
 void initUSART(void) {
 	UBRR0H = 0;              /* baud rate  */
@@ -42,48 +44,38 @@ void printString(const char myString[]) {
 	}
 }
 
-void i2c_initSlave(void){
-	TWAR = (SLAVE_ADDRESS<<1);
-	TWCR = (1<<TWEA) | (1<<TWEN);
+void i2c_init(void){
+	TWSR = 0;
+	TWBR = ((F_CPU / 100000UL) - 16) / 2;
 }
-
-void i2c_listen(void){
+void i2c_start(void) {
+	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
 	while (!(TWCR & (1<<TWINT)));
 }
-
-void i2c_init(void){
-	TWSR = 0;  //We dont want to prescale
-	TWBR = ((F_CPU / 100000UL)-16)/2; //formula for bitrate
-}
-
-void i2c_start(void){
-	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
-	while (!(TWCR &(1<<TWINT)));
-}
-
-void i2c_stop(void){
+void i2c_stop(void) {
 	TWCR = (1<<TWINT) | (1<<TWSTO) | (1<<TWEN);
 }
-
-void i2c_write(uint8_t data){
+void i2c_write(uint8_t data) {
 	TWDR = data;
 	TWCR = (1<<TWINT) | (1<<TWEN);
 	while (!(TWCR & (1<<TWINT)));
 }
-
-
-
-int main(void)
-{
-	uint8_t data = 'A';
-	i2c_initSlave();
-    while(1)
-    {
-       i2c_listen();
-	   if((TWSR & 0xF8) == TW_SR_SLA_ACK)
-	   {
-		   i2c_write(data);
-	   }
-	   
-    }
+int main(void) {
+	uint8_t data = 0;
+	i2c_init();
+	while (1) {
+		i2c_start();
+		i2c_write((SLAVE_ADDRESS<<1) | TW_READ);
+		data = TWDR;
+		i2c_stop();
+		if(data == 'A'){
+			PORTB |= (1 << PB0);
+		}
+		else{
+			PORTB &= ~(1 << PB0);
+		}
+		_delay_ms(20);
+		
+	}
+	return 0;
 }
