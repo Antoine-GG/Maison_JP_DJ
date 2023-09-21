@@ -29,7 +29,7 @@ function sendMessage(message) {
 }
 
 
-var red = document.getElementById("red");
+var window1 = document.getElementById("status_window1");
 
 red.addEventListener("change",() => 
 {

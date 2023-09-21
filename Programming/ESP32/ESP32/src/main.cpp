@@ -4,56 +4,68 @@
 #include <SPIFFS.h>
 #include <ESPAsyncWebServer.h>
 #include <AsyncTCP.h>
+#include <HardwareSerial.h> //uart starts here
 
+struct DeviceStatus {
+  bool window1;
+  bool window2;
+  bool door;
+  bool lock;
+  bool light;
+};
+
+HardwareSerial Serial1(1);
 
 //const char ssid = "ESP32-Access-Point";
 //const char password = "123456789";
-
+DeviceStatus status;
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
+parseReceivedMessage(String message) {
+  //check message integrity
+  if(message.length() != 8) return;
+  if(message.charAt(0) != '&') return;
+  if(message.charAt(4) != ':') return;
+  if(message.charAt(7) != '$'){
 
-// the number of the LED pin
-const int ledPin = 16;  // 16 corresponds to GPIO16
+  }
 
-// setting PWM properties
-const int freq = 5000;
-const int ledChannel = 0;
-const int resolution = 8;
-
-void turnLightONOFF(){
-  if (Serial.available() > 0){
-    //send data only when you receive data:
-    Serial.write(0x01);
-    Serial1.write(0x01);
+  // Extract the status of window1, door, lock, and light
+  if (message.startsWith("<W") && message.length() >= 9) {
+    if(message.charAt(1) == '1'){
+      status.window1 = true;
+    }
+    if(message.charAt(2) == '1'){
+      status.window2 = true;
+    }
+    if(message.charAt(3) == '1'){
+      status.door = true;
+    }
+    if(message.charAt(5) == '1'){
+      status.lock = true;
+    }
+    if(message.charAt(6) == '1'){
+      status.light = true;
+    }
+    // Process the status of the devices
+    // You can use window1Status, doorStatus, lockStatus, and lightStatus
   }
 }
-
 void setup(){
-  // configure LED PWM functionalitites
-  ledcSetup(ledChannel, freq, resolution);
-  
-  // attach the channel to the GPIO to be controlled
-  ledcAttachPin(ledPin, ledChannel);
-  Serial1.begin(115200, SERIAL_8N1, 9, 10);
-  Serial.begin(115200);
+  Serial1.begin(9600, SERIAL_8N1, 1, 3);
 }
- 
-void loop(){
-  // increase the LED brightness
-  for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){   
-    // changing the LED brightness with PWM
-    ledcWrite(ledChannel, dutyCycle);
-    delay(15);
-  }
-  Serial.write(0x02);
 
-  // decrease the LED brightness
-  for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle--){
-    // changing the LED brightness with PWM
-    ledcWrite(ledChannel, dutyCycle);   
-    delay(15);
+void loop()
+{
+  // Check if data is available to read
+  if (Serial1.available())
+  {
+    String data = Serial1.readString();
+    // Do something with 'data'
   }
-  turnLightONOFF();
-  Serial.write(0x03);
+  
+  // Write data
+  String data_to_send = "Hello from ESP32!";
+  Serial1.println(data_to_send);
 }
