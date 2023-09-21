@@ -9,7 +9,8 @@ main.d main.o: .././main.c \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdint.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\bits\alltypes.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\bits\stdint.h \
- C:/Program\ Files\ (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/include/avr/iom168.h \
+ C:/Program\ Files\ (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/include/avr/iom328.h \
+ C:/Program\ Files\ (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/include/avr/iom328p.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\fuse.h \
@@ -21,10 +22,7 @@ main.d main.o: .././main.c \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\math.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\interrupt.h \
- c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\power.h \
- C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT/uart.h \
- c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\pgmspace.h \
- c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stddef.h
+ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\power.h
 
 c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -46,7 +44,9 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\bits\alltypes.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\bits\stdint.h:
 
-C:/Program\ Files\ (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/include/avr/iom168.h:
+C:/Program\ Files\ (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/include/avr/iom328.h:
+
+C:/Program\ Files\ (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/include/avr/iom328p.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\portpins.h:
 
@@ -71,9 +71,3 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\math.h:
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\interrupt.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\power.h:
-
-C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT/uart.h:
-
-c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\pgmspace.h:
-
-c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stddef.h:

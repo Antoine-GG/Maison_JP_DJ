@@ -9,9 +9,8 @@
 #include <avr/sfr_defs.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
-#include <uart.h>
 
-#define SLAVE1    0x33
+#define SLAVE1    0x03
 #define SLAVE2    0x22
 
 volatile uint8_t windowState1 = 0; //window1 state from U1
@@ -91,9 +90,11 @@ int main() {
 	while (1) {
 		// Demander l'état de la fenêtre de l'esclave 1
 		i2cStart();
-		i2cSend(SLAVE1);
+		i2cSend((SLAVE1 << 1) | 1);
+		windowState1 = i2cReadAck();
+		i2cStop();
 		i2cStart();
-		windowState1 = i2cReadNoAck();
+		//windowState1 = i2cReadNoAck();
 		i2cStop();
 		
 		

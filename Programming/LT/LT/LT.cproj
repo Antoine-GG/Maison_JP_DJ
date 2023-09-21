@@ -5,7 +5,7 @@
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.microchip.xc8</ToolchainName>
     <ProjectGuid>2285C48D-296E-43FD-A7B6-69885F64CFFD</ProjectGuid>
-    <avrdevice>ATmega168</avrdevice>
+    <avrdevice>ATmega328</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>C</Language>
@@ -42,7 +42,7 @@
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
     <avrtoolserialnumber>J42700000810</avrtoolserialnumber>
-    <avrdeviceexpectedsignature>0x1E9406</avrdeviceexpectedsignature>
+    <avrdeviceexpectedsignature>0x1E9514</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
         <InterfaceProperties>
@@ -73,12 +73,6 @@
   <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
   <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
   <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
-  <com.microchip.xc8.linker.libraries.Libraries>
-    <ListValues>
-      <Value>uart.c</Value>
-      <Value>uart.h</Value>
-    </ListValues>
-  </com.microchip.xc8.linker.libraries.Libraries>
   <com.microchip.xc8.linker.libraries.LibrarySearchPaths>
     <ListValues>
       <Value>C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT</Value>
@@ -90,10 +84,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <com.microchip.xc8>
-  <com.microchip.xc8.common.outputfiles.hex>True</com.microchip.xc8.common.outputfiles.hex>
-  <com.microchip.xc8.common.outputfiles.eep>True</com.microchip.xc8.common.outputfiles.eep>
-  <com.microchip.xc8.common.outputfiles.usersignatures>False</com.microchip.xc8.common.outputfiles.usersignatures>
-  <com.microchip.xc8.common.outputfiles.lss>True</com.microchip.xc8.common.outputfiles.lss>
   <com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>
   <com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>
   <com.microchip.xc8.compiler.symbols.DefSymbols>
@@ -112,12 +102,6 @@
   <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
   <com.microchip.xc8.compiler.optimization.DebugLevel>Default (-g2)</com.microchip.xc8.compiler.optimization.DebugLevel>
   <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
-  <com.microchip.xc8.linker.libraries.Libraries>
-    <ListValues>
-      <Value>uart.c</Value>
-      <Value>uart.h</Value>
-    </ListValues>
-  </com.microchip.xc8.linker.libraries.Libraries>
   <com.microchip.xc8.linker.libraries.LibrarySearchPaths>
     <ListValues>
       <Value>C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT</Value>
@@ -129,12 +113,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="uart.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="uart.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
