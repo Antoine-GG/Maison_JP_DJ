@@ -226,7 +226,7 @@
           (reference "PHOTON2") (unit 1)
         )
         (path "/ed06f8de-d1bb-4b1a-bfe3-5df11d3a9162/eab97472-f6ab-4acc-b686-864086f640ed"
-          (reference "PHOTON1") (unit 1)
+          (reference "ESP32") (unit 1)
         )
       )
     )

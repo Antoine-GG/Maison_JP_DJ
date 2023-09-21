@@ -41,7 +41,7 @@
       </framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
-    <avrtoolserialnumber>J42700000835</avrtoolserialnumber>
+    <avrtoolserialnumber>J42700000810</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E9514</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
@@ -51,7 +51,7 @@
         <InterfaceName>ISP</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
-      <ToolNumber>J42700000835</ToolNumber>
+      <ToolNumber>J42700000810</ToolNumber>
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
     <avrtoolinterface>ISP</avrtoolinterface>
@@ -73,11 +73,11 @@
   <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
   <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
   <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
-  <com.microchip.xc8.linker.libraries.Libraries>
+  <com.microchip.xc8.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>libm</Value>
+      <Value>C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT</Value>
     </ListValues>
-  </com.microchip.xc8.linker.libraries.Libraries>
+  </com.microchip.xc8.linker.libraries.LibrarySearchPaths>
 </com.microchip.xc8>
     </ToolchainSettings>
   </PropertyGroup>
@@ -92,16 +92,21 @@
       <Value>DEBUG</Value>
     </ListValues>
   </com.microchip.xc8.compiler.symbols.DefSymbols>
+  <com.microchip.xc8.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT</Value>
+    </ListValues>
+  </com.microchip.xc8.compiler.directories.IncludePaths>
   <com.microchip.xc8.compiler.optimization.level>Optimize debugging experience (-Og)</com.microchip.xc8.compiler.optimization.level>
   <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
   <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
   <com.microchip.xc8.compiler.optimization.DebugLevel>Default (-g2)</com.microchip.xc8.compiler.optimization.DebugLevel>
   <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
-  <com.microchip.xc8.linker.libraries.Libraries>
+  <com.microchip.xc8.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>libm</Value>
+      <Value>C:\Users\0279137\Desktop\Maison\Maison_JP_DJ\Programming\LT\LT</Value>
     </ListValues>
-  </com.microchip.xc8.linker.libraries.Libraries>
+  </com.microchip.xc8.linker.libraries.LibrarySearchPaths>
   <com.microchip.xc8.assembler.debugging.DebugLevel>Default (-Wa,-g)</com.microchip.xc8.assembler.debugging.DebugLevel>
 </com.microchip.xc8>
     </ToolchainSettings>

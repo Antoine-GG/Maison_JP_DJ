@@ -3,10 +3,15 @@ LT.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
+<<<<<<< HEAD
   0 .data         00000000  00800100  00800100  000001ea  2**0
+=======
+  0 .data         00000000  00800100  00800100  000001fa  2**0
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
                   ALLOC, LOAD, DATA
   1 .text         000000bc  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
+<<<<<<< HEAD
   2 .comment      0000002f  00000000  00000000  000001ea  2**0
                   CONTENTS, READONLY
   3 .stack.descriptors.hdr 0000000e  00000000  00000000  00000219  2**0
@@ -48,11 +53,63 @@ Idx Name          Size      VMA       LMA       File off  Algn
  21 .text.exit    00000016  0000012c  0000012c  000001a0  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
  22 .text._Exit   00000004  0000016c  0000016c  000001e0  2**1
+=======
+  2 .comment      0000002f  00000000  00000000  000001fa  2**0
+                  CONTENTS, READONLY
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  00000229  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000078  00000000  00000000  00000237  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000bcf  00000000  00000000  000002af  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000768  00000000  00000000  00000e7e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000003d8  00000000  00000000  000015e6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000e8  00000000  00000000  000019c0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000208  00000000  00000000  00001aa8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000d1  00000000  00000000  00001cb0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000068  00000000  00000000  00001d81  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .text         00000004  00000158  00000158  000001ec  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001dec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .text.initI2C 00000012  00000108  00000108  0000019c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .text.i2cWaitForComplete 0000000a  00000146  00000146  000001da  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 16 .text.i2cStart 0000000c  0000013a  0000013a  000001ce  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 17 .text.i2cStop 00000008  00000150  00000150  000001e4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .text.i2cReadAck 00000010  0000011a  0000011a  000001ae  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 19 .text.i2cSend 00000010  0000012a  0000012a  000001be  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .text.main    00000030  000000c2  000000c2  00000156  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 21 .bss.windowState1 00000001  00800100  00800100  000001fa  2**0
+                  ALLOC
+ 22 .text.__dummy_fini 00000002  00000160  00000160  000001f4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 23 .text.__dummy_funcs_on_exit 00000002  00000162  00000162  000001f6  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 24 .text.__dummy_simulator_exit 00000002  00000164  00000164  000001f8  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 25 .text.exit    00000016  000000f2  000000f2  00000186  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 26 .text._Exit   00000004  0000015c  0000015c  000001f0  2**1
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
+<<<<<<< HEAD
    0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
    4:	0c 94 b4 00 	jmp	0x168	; 0x168 <__bad_interrupt>
    8:	0c 94 b4 00 	jmp	0x168	; 0x168 <__bad_interrupt>
@@ -87,6 +144,39 @@ Disassembly of section .text:
   6e:	d8 e0       	ldi	r29, 0x08	; 8
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
+=======
+   0:	0c 94 37 00 	jmp	0x6e	; 0x6e <__ctors_end>
+   4:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+   8:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+   c:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  10:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  14:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  18:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  1c:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  20:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  24:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  28:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  2c:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  30:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  34:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  38:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  3c:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  40:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  44:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  48:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  4c:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  50:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  54:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  58:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  5c:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  60:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+  64:	0c 94 ac 00 	jmp	0x158	; 0x158 <__bad_interrupt>
+
+00000068 <.dinit>:
+  68:	01 00       	.word	0x0001	; ????
+  6a:	01 01       	movw	r0, r2
+  6c:	80 00       	.word	0x0080	; ????
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
 
 00000074 <__do_copy_data>:
   74:	e8 e6       	ldi	r30, 0x68	; 104
@@ -124,19 +214,38 @@ Disassembly of section .text:
   b0:	0e 94 5e 00 	call	0xbc	; 0xbc <_etext>
   b4:	0c 94 96 00 	jmp	0x12c	; 0x12c <exit>
 
+<<<<<<< HEAD
 000000b8 <_exit>:
   b8:	f8 94       	cli
+=======
+000000a8 <__do_clear_bss>:
+  a8:	1d 92       	st	X+, r1
+  aa:	a2 17       	cp	r26, r18
+  ac:	b3 07       	cpc	r27, r19
+  ae:	e1 f7       	brne	.-8      	; 0xa8 <__do_clear_bss>
+  b0:	ed 36       	cpi	r30, 0x6D	; 109
+  b2:	f4 07       	cpc	r31, r20
+  b4:	31 f7       	brne	.-52     	; 0x82 <__do_copy_data+0x8>
+  b6:	0e 94 61 00 	call	0xc2	; 0xc2 <_etext>
+  ba:	0c 94 79 00 	jmp	0xf2	; 0xf2 <exit>
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
 
 000000ba <__stop_program>:
   ba:	ff cf       	rjmp	.-2      	; 0xba <__stop_program>
 
 Disassembly of section .text:
 
+<<<<<<< HEAD
 00000168 <__bad_interrupt>:
  168:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+=======
+00000158 <__bad_interrupt>:
+ 158:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
 
-Disassembly of section .text.i2c_init:
+Disassembly of section .text.initI2C:
 
+<<<<<<< HEAD
 00000112 <i2c_init>:
 volatile uint8_t windowState2 = 0; // État de la fenêtre de l'esclave 2
 int iteration =0;
@@ -159,9 +268,27 @@ void i2c_init() {
 	sei(); // Enable global interrupts
  128:	78 94       	sei
  12a:	08 95       	ret
+=======
+00000108 <initI2C>:
 
-Disassembly of section .text.i2c_start:
+uint8_t i2cReadNoAck(void) {
+	TWCR = (1 <<TWINT) | (1 <<TWEN);
+	i2cWaitForComplete();
+	return (TWDR);
+}
+ 108:	8c e0       	ldi	r24, 0x0C	; 12
+ 10a:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
+ 10e:	ec eb       	ldi	r30, 0xBC	; 188
+ 110:	f0 e0       	ldi	r31, 0x00	; 0
+ 112:	80 81       	ld	r24, Z
+ 114:	84 60       	ori	r24, 0x04	; 4
+ 116:	80 83       	st	Z, r24
+ 118:	08 95       	ret
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
 
+Disassembly of section .text.i2cWaitForComplete:
+
+<<<<<<< HEAD
 00000156 <i2c_start>:
 void i2c_start() {
 	uint8_t retries = 0;
@@ -188,9 +315,24 @@ void i2c_start() {
 	}
 }
  166:	08 95       	ret
+=======
+00000146 <i2cWaitForComplete>:
+	/* 8MHz / (16+2*TWBR*1) ~= 100kHz */
+	TWCR |= (1 << TWEN);                                       /* enable */
+}
 
-Disassembly of section .text.i2c_stop:
+void i2cWaitForComplete(void) {
+	loop_until_bit_is_set(TWCR, TWINT);
+ 146:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 14a:	88 23       	and	r24, r24
+ 14c:	e4 f7       	brge	.-8      	; 0x146 <i2cWaitForComplete>
+}
+ 14e:	08 95       	ret
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
 
+Disassembly of section .text.i2cStart:
+
+<<<<<<< HEAD
 00000142 <i2c_stop>:
 
 void i2c_stop() {
@@ -210,6 +352,57 @@ void i2c_stop() {
  150:	00 c0       	rjmp	.+0      	; 0x152 <i2c_stop+0x10>
  152:	00 00       	nop
  154:	08 95       	ret
+=======
+0000013a <i2cStart>:
+
+void i2cStart(void) {
+	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTA);
+ 13a:	84 ea       	ldi	r24, 0xA4	; 164
+ 13c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	i2cWaitForComplete();
+ 140:	0e 94 a3 00 	call	0x146	; 0x146 <i2cWaitForComplete>
+ 144:	08 95       	ret
+
+Disassembly of section .text.i2cStop:
+
+00000150 <i2cStop>:
+}
+
+void i2cStop(void) {
+	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTO);
+ 150:	84 e9       	ldi	r24, 0x94	; 148
+ 152:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 156:	08 95       	ret
+
+Disassembly of section .text.i2cReadAck:
+
+0000011a <i2cReadAck>:
+
+uint8_t i2cReadNoAck(void) {
+	TWCR = (1 <<TWINT) | (1 <<TWEN);
+	i2cWaitForComplete();
+	return (TWDR);
+}
+ 11a:	84 ec       	ldi	r24, 0xC4	; 196
+ 11c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 120:	0e 94 a3 00 	call	0x146	; 0x146 <i2cWaitForComplete>
+ 124:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 128:	08 95       	ret
+
+Disassembly of section .text.i2cSend:
+
+0000012a <i2cSend>:
+
+void i2cSend(uint8_t data) {
+	TWDR = data;
+ 12a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+	TWCR = (1 <<TWINT) | (1 <<TWEN);                  /* init and enable */
+ 12e:	84 e8       	ldi	r24, 0x84	; 132
+ 130:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	i2cWaitForComplete();
+ 134:	0e 94 a3 00 	call	0x146	; 0x146 <i2cWaitForComplete>
+ 138:	08 95       	ret
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
 
 Disassembly of section .text.main:
 
@@ -217,6 +410,7 @@ Disassembly of section .text.main:
 	return TWDR;
 }
 
+<<<<<<< HEAD
 int main() {
 	
 	i2c_init();
@@ -309,3 +503,57 @@ Disassembly of section .text._Exit:
 
 0000016c <_Exit>:
  16c:	0e 94 5c 00 	call	0xb8	; 0xb8 <_exit>
+=======
+uint8_t i2cReadNoAck(void) {
+	TWCR = (1 <<TWINT) | (1 <<TWEN);
+	i2cWaitForComplete();
+	return (TWDR);
+}
+  c2:	0e 94 84 00 	call	0x108	; 0x108 <initI2C>
+  c6:	0e 94 9d 00 	call	0x13a	; 0x13a <i2cStart>
+  ca:	87 e0       	ldi	r24, 0x07	; 7
+  cc:	0e 94 95 00 	call	0x12a	; 0x12a <i2cSend>
+  d0:	0e 94 8d 00 	call	0x11a	; 0x11a <i2cReadAck>
+  d4:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+  d8:	0e 94 a8 00 	call	0x150	; 0x150 <i2cStop>
+  dc:	0e 94 9d 00 	call	0x13a	; 0x13a <i2cStart>
+  e0:	0e 94 a8 00 	call	0x150	; 0x150 <i2cStop>
+  e4:	83 ed       	ldi	r24, 0xD3	; 211
+  e6:	90 e3       	ldi	r25, 0x30	; 48
+  e8:	01 97       	sbiw	r24, 0x01	; 1
+  ea:	f1 f7       	brne	.-4      	; 0xe8 <main+0x26>
+  ec:	00 c0       	rjmp	.+0      	; 0xee <main+0x2c>
+  ee:	00 00       	nop
+  f0:	ea cf       	rjmp	.-44     	; 0xc6 <main+0x4>
+
+Disassembly of section .text.__dummy_fini:
+
+00000160 <_fini>:
+ 160:	08 95       	ret
+
+Disassembly of section .text.__dummy_funcs_on_exit:
+
+00000162 <__funcs_on_exit>:
+ 162:	08 95       	ret
+
+Disassembly of section .text.__dummy_simulator_exit:
+
+00000164 <__simulator_exit>:
+ 164:	08 95       	ret
+
+Disassembly of section .text.exit:
+
+000000f2 <exit>:
+  f2:	ec 01       	movw	r28, r24
+  f4:	0e 94 b1 00 	call	0x162	; 0x162 <__funcs_on_exit>
+  f8:	0e 94 b0 00 	call	0x160	; 0x160 <_fini>
+  fc:	ce 01       	movw	r24, r28
+  fe:	0e 94 b2 00 	call	0x164	; 0x164 <__simulator_exit>
+ 102:	ce 01       	movw	r24, r28
+ 104:	0e 94 ae 00 	call	0x15c	; 0x15c <_Exit>
+
+Disassembly of section .text._Exit:
+
+0000015c <_Exit>:
+ 15c:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
+>>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
