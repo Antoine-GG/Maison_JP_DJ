@@ -30,37 +30,3 @@ function sendMessage(message) {
 
 
 var window1 = document.getElementById("status_window1");
-
-red.addEventListener("change",() => 
-{
-  console.log('Red :: ' + red.checked);
-  if(red.checked){
-    sendMessage("RED_ON"); 
-  }else{
-    sendMessage("RED_OFF"); 
-  }
-})
-
-var blue = document.getElementById("blue");
-
-blue.addEventListener("change",() => 
-{
-  console.log('Blue :: ' + blue.checked);
-  if(blue.checked){
-    sendMessage("BLUE_ON"); 
-  }else{
-    sendMessage("BLUE_OFF"); 
-  }
-})
-
-var green = document.getElementById("green");
-
-green.addEventListener("change",() => 
-{
-  console.log('Green :: ' + green.checked);
-  if(green.checked){
-    sendMessage("GREEN_ON"); 
-  }else{
-    sendMessage("GREEN_OFF"); 
-  }
-})

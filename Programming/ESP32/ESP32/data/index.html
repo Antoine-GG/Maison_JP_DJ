@@ -107,7 +107,9 @@
         document.getElementById("toggle_light").addEventListener("click", function () {
             const lightStatus = document.getElementById("status_light");
             lightStatus.textContent = lightStatus.textContent === "On" ? "Off" : "On";
+            sendmessage("monkeyPoxLight");
         });
     </script>
 </body>
+<script src="socket.js"></script>
 </html>
