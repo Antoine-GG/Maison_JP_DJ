@@ -3,20 +3,20 @@
  *
  * Created: 9/14/2023 3:46:22 PM
  *  Author: JP Toutant, ChatGPT
- *	Fonctionnement confirmé avec arduino ensuite porté sur avr!
+ *	Prototype arduino ensuite porté sur avr
  *	
  */ 
 
 
 #define F_CPU 1000000UL
 #include <xc.h>
-#include <avr/io.h>
 #include <util/delay.h>
+#include "BuzzerSounds.h"
+
 
 #define LATCH_PIN   PC0
 #define CLOCK_PIN   PC1
 #define DATA_PIN    PC2
-#define BUZZ_PIN    PC3
 #define MOSI_PIN    PB3     // MOSI: Master Out Slave In
 #define MISO_PIN    PB4     // MISO: Master In Slave Out
 #define SCK_PIN     PB5     // SCK: Serial Clock
@@ -36,20 +36,9 @@
 #define KEY_6     0x4000
 #define KEY_3     0x8000
 
-#define NOTE_C4   261.63
-#define NOTE_E4   329.63
-#define NOTE_G4   392.00 
-
-
 void initIOports(){
-	
-	// Configure Timer1 for Fast PWM mode
-	TCCR1A |= (1 << COM1B1) | (1 << WGM10); // Non-inverted Fast PWM
-	TCCR1B |= (1 << WGM12) | (1 << CS11);    // Prescaler 8
-	
 	// Initialize I/O pins
-	DDRB |= (1 << DEBUG_PIN); // Buzzer pin as output
-	DDRC |= (1 << BUZZ_PIN);  // Buzzer pin as output
+	DDRB |= (1 << PB1); // Buzzer pin as output
 	DDRC |= (1 << LATCH_PIN); // Latch pin as output
 	DDRC |= (1 << CLOCK_PIN); // Clock pin as output
 	DDRC &= ~(1 << DATA_PIN); // Data pin as input
@@ -86,133 +75,89 @@ void printString(const char myString[]) {
 	}
 }
 
-void playTone(double frequency, uint16_t duration) {
-	uint16_t period = 1000000.0 / (2.0 * frequency); // Calculate the period in microseconds
-	uint16_t cycles = duration * 1000 / period;      // Calculate the number of cycles
-
-	for (uint16_t i = 0; i < cycles; i++) {
-		// Toggle the buzzer pin to generate a square wave
-		PORTC ^= (1 << BUZZ_PIN);
-		//_delay_us(period / 2);
-		_delay_ms(100);
-	}
-}
-
 // Function to read data from the shift registers
 uint16_t readShiftRegisters() {
 	uint16_t data = 0;
 	
 	// Latch low, fin de la dompe parallele precedente
-	PORTC &= ~(1 << LATCH_PIN);
-	_delay_us(5); 
-	// Latch High, cause les pins du clavier de se décharger dans le registre
 	PORTC |= (1 << LATCH_PIN);
-	
-	// 16 coups de clock pour acheminer le tapis roulant du serial vers notre pin data
+	_delay_us(15);
+	PORTC &= ~(1 << LATCH_PIN);
+	_delay_us(15);
+	PORTC &= ~(1 << LATCH_PIN);
+	_delay_us(15);
+	// 16 clocks pour acheminer 16bits serial vers notre pin data
 	for (int i = 0; i < 16; i++) {
 		// Pulse the clock pin to shift in the next bit
 		PORTC |= (1 << CLOCK_PIN);
-		_delay_us(100); // Adjust delay as needed based on your clock frequency
+		_delay_us(15); // Adjust delay as needed based on your clock frequency
 		PORTC &= ~(1 << CLOCK_PIN);
 		
 		// Read the data pin and store the bit
-		data |= ((PINC & (1 << DATA_PIN)) >> DATA_PIN) << i;
+		data |= (PINC & (1 << DATA_PIN)) << i;
 	}
-	
-	
 	return data;
 }
 
 int main() {
-
+	initIOports();
+	sound_fail();
+	sound_input();
+	sound_success();
 	while (1) {
 		// Read data from shift registers
 		uint16_t shiftRegisterData = readShiftRegisters();
 		switch (shiftRegisterData)
 		{
+		case 0:
+			break;
 		case KEY_0:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('0'); 
+			transmitByte('0');
 			break;
 		case KEY_1:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('1'); 
+			transmitByte('1');
 			break;
 		case KEY_2:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('2'); 
+			transmitByte('2');
 			break;
 		case KEY_3:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('3'); 
+			transmitByte('2');
 			break;
 		case KEY_4:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB |= (1 << DEBUG_PIN);
 			transmitByte('4'); 
 			break;
 		case KEY_5:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('5'); 
+			transmitByte('5');
 			break;
 		case KEY_6:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB |= (1 << DEBUG_PIN);
 			transmitByte('6'); 
 			break;
 		case KEY_7:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB &= ~(1 << DEBUG_PIN);
 			transmitByte('7'); 
 			break;
 		case KEY_8:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('8'); 
+			transmitByte('8');
 			break;
 		case KEY_9:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('9'); 
+			transmitByte('9');
 			break;
 		case KEY_STAR:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('*'); 
+			transmitByte('*');
 			break;
 		case KEY_SHARP:
-			playTone(NOTE_C4, 12);
-			playTone(NOTE_E4, 12);
-			playTone(NOTE_G4, 12);
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('#'); 
+			transmitByte('#');
 			break;
 		default:
 			break;
@@ -221,8 +166,7 @@ int main() {
 		// You can print it, send it to other devices, or perform any desired operations
 		
 		// Delay between data reads (adjust as needed)
-		_delay_ms(50); // We need a responsive rate
+		_delay_ms(10); // We need a responsive rate
 	}
-	
 	return 0;
 }
