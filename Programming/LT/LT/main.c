@@ -2,33 +2,19 @@
 
 #include <xc.h>
 #include <avr/io.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
 #include <util/delay.h>
-#include <avr/sfr_defs.h>
-#include <avr/interrupt.h>
-<<<<<<< HEAD
-#include <avr/>
+#include "I2C_Master_H_file.h"				/* Include I2C header file */
+#include "houseStatus.h"
 
-#define SLAVE_ADDRESS_1 0x30 // Adresse de l'ATmega328P esclave 1
-#define SLAVE_ADDRESS_2 0x08 // Adresse de l'ATmega328P esclave 2
-#define MAX_I2C_RETRIES 3
+#define SLAVE1    0x3C ///0011 1100
+#define SLAVE2    0x5A ///0101 1010
 
-volatile uint8_t windowState1 = 0; // État de la fenêtre de l'esclave 1
-volatile uint8_t windowState2 = 0; // État de la fenêtre de l'esclave 2
-int iteration =0;
-=======
-#include <avr/power.h>
-
-#define SLAVE1    0x03
-#define SLAVE2    0x22
-
+HouseStatus status;
 volatile uint8_t windowState1 = 0; //window1 state from U1
 volatile uint8_t windowState2 = 0; //window2 state from U1
 volatile uint8_t doorState= 0; //door state from U2
 volatile uint8_t doorLockState = 0; //
->>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
+volatile char keyboardState ='0';
 
 //init UART
 void initUSART(void) {
@@ -56,94 +42,29 @@ void printString(const char myString[]) {
 		i++;
 	}
 }
-
-<<<<<<< HEAD
-void i2c_start() {
-	uint8_t retries = 0;
-	
-	while (1) {
-		// Initiate START condition
-		TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT);
-		
-		// Wait for TWINT flag to be set (START condition transmitted)
-		//if ((TWCR & (1 << TWINT))){
-		//	break;
-		//}
-		
-		// Check for START condition success
-		if ((TWSR & 0xF8) == TW_START) {
-			break; // START condition successful, exit loop
-		}
-		
-		// If START condition failed, increment retries and try again
-		retries++;
-	}
-=======
-void initI2C(void) {
-	TWBR = 12;                               /* set bit rate, */
-	/* 8MHz / (16+2*TWBR*1) ~= 100kHz */
-	TWCR |= (1 << TWEN);                                       /* enable */
->>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
-}
-
-void i2cWaitForComplete(void) {
-	loop_until_bit_is_set(TWCR, TWINT);
-}
-
-void i2cStart(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTA);
-	i2cWaitForComplete();
-}
-
-void i2cStop(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTO);
-}
-
-uint8_t i2cReadAck(void) {
-	TWCR =(1 <<TWINT) | (1 <<TWEN) | (1 <<TWEA);
-	i2cWaitForComplete();
-	return (TWDR);
-}
-
-uint8_t i2cReadNoAck(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN);
-	i2cWaitForComplete();
-	return (TWDR);
-}
-
-void i2cSend(uint8_t data) {
-	TWDR = data;
-	TWCR = (1 <<TWINT) | (1 <<TWEN);                  /* init and enable */
-	i2cWaitForComplete();
+uint8_t call_I2cDevice(uint8_t address){
+		uint8_t data;
+		I2C_Repeated_Start(address | 0b1); // force LMS bit to 1 for read mode
+		data = I2C_Read_Ack();
+		I2C_Stop();
 }
 
 int main() {
-	
-<<<<<<< HEAD
-	i2c_init();
+	initUSART();
+	I2C_Start();
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
-	DDRB |= (1 << PB0) | (1 << PB1);
-
-	while (1) {
-		// Demander l'état de la fenêtre de l'esclave 1
-		i2c_start();
-		//i2c_write(0x30); // Écrire l'adresse de l'ATmega328P esclave 1 en mode lecture
-		//windowState1 = i2c_read();
-		i2c_stop();
-=======
-	//clock_prescale_set(clock_div_1);
-	initI2C();
+	DDRB |= (1 << PB0) | (1 << PB1);	
 	
 	while (1) {
-		// Demander l'état de la fenêtre de l'esclave 1
-		i2cStart();
-		i2cSend((SLAVE1 << 1) | 1);
-		windowState1 = i2cReadAck();
-		i2cStop();
-		i2cStart();
-		//windowState1 = i2cReadNoAck();
-		i2cStop();
-		
+	
+		uint8_t received;
+		//CALL U1, window1 and window2 are the 2 last bits as 0000 0012
+		received = call_I2cDevice(SLAVE1);
+		HouseStatus.window2 = received & 0x01; //Mask the lsb
+		HouseStatus.window1 = (received >> 1) & 0x01; // Shift right by 1 and mask with 0x01
+		//CALL U2, get the door status;
+		received = call_I2cDevice(SLAVE2);
+		HouseStatus.door = received & 0x01; //Mask the lsb
 		
 		//transmitByte(windowState1);
 		// Demander l'état de la fenêtre de l'esclave 2
@@ -173,58 +94,3 @@ int main() {
 
 	return 0;
 }
-
-	//DDRB |= (1 << PB0) | (1 << PB1);
-
-
-		// Demander l'état de la fenêtre de l'esclave 1
-		//i2c_start();
-		//i2c_write((SLAVE_ADDRESS_1 << 1) | 1); // Écrire l'adresse de l'ATmega328P esclave 1 en mode lecture
-		//windowState1 = i2c_read();
-		//i2c_stop();
->>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
-		
-		// Demander l'état de la fenêtre de l'esclave 2
-		//i2c_start();
-		//i2c_write((SLAVE_ADDRESS_2 << 1) | 1); // Écrire l'adresse de l'ATmega328P esclave 2 en mode lecture
-		//windowState2 = i2c_read();
-		//i2c_stop();
-		
-		// Traiter les données reçues et allumer ou éteindre les LED en fonction de l'état de la fenêtre
-		//if (windowState1 == 1) {
-		//	PORTB |= (1 << PB1);	// Allumer la LED 1 
-<<<<<<< HEAD
-		//	
-		//	} else {
-		//	PORTB &= ~(1 << PB1);	// Éteindre la LED 1
-		//}
-		
-		
-			PORTB |= (1 << PB0);	// Allumer la LED 2 
-			_delay_ms(500);
-			
-			PORTB &= ~(1 << PB0);	// Éteindre la LED 2 
-			
-		
-		
-		_delay_ms(500); // Attendre avant de refaire la demande
-		
-	}
-=======
-			
-		//	} else {
-		//	PORTB &= ~(1 << PB1);	// Éteindre la LED 1
-		//}
-		
-		//if (windowState2 == 1) {
-		//	PORTB |= (1 << PB0);	// Allumer la LED 2 
-			
-		//	} else {
-		//	PORTB &= ~(1 << PB0);	// Éteindre la LED 2 
-		
-		//_delay_ms(1000); // Attendre avant de refaire la demande
-	//}
->>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
-
-	//return 0;
-
