@@ -11,7 +11,7 @@
 #include <string.h>
 #include "I2C_Slave_H_File.h"
 
-#define slave 0x20
+#define slave 0x50
 
 int main() {
 	// Configure PB0 as an input

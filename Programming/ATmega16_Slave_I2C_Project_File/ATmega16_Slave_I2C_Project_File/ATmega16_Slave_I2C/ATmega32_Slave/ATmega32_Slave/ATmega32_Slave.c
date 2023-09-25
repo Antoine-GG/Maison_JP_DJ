@@ -13,7 +13,7 @@
 #include "LCD_16x2_H_file.h"					/* Include LCD header file */
 #include "I2C_Slave_H_File.h"					/* Include I2C slave header file */
 
-#define Slave_Address			0x20
+#define Slave_Address			0x54
 
 int main(void)
 {

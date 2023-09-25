@@ -11,24 +11,9 @@ Discarded input sections
 
  .data          0x0000000000000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  .bss           0x0000000000000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .text          0x0000000000000000        0x0 I2C_Master_C_file.o
- .data          0x0000000000000000        0x0 I2C_Master_C_file.o
- .bss           0x0000000000000000        0x0 I2C_Master_C_file.o
- .text.I2C_Start
-                0x0000000000000000       0x48 I2C_Master_C_file.o
- .text.I2C_Read_Ack
-                0x0000000000000000       0x14 I2C_Master_C_file.o
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
- .text.initUSART
-                0x0000000000000000       0x2a main.o
- .text.transmitByte
-                0x0000000000000000        0xe main.o
- .text.receiveByte
-                0x0000000000000000        0xe main.o
- .text.printString
-                0x0000000000000000       0x36 main.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
@@ -70,7 +55,6 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
-LOAD I2C_Master_C_file.o
 LOAD main.o
 START GROUP
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libm.a
@@ -321,9 +305,8 @@ END GROUP
 
 .comment        0x0000000000000000       0x2f
  *(.comment)
- .comment       0x0000000000000000       0x2f I2C_Master_C_file.o
+ .comment       0x0000000000000000       0x2f main.o
                                          0x30 (size before relaxing)
- .comment       0x000000000000002f       0x30 main.o
  .comment       0x000000000000002f       0x30 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
  .comment       0x000000000000002f       0x30 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(_Exit.o)
 
@@ -354,49 +337,41 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0xa0
+.debug_aranges  0x0000000000000000       0x38
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x58 I2C_Master_C_file.o
- .debug_aranges
-                0x0000000000000058       0x48 main.o
+                0x0000000000000000       0x38 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x1017
+.debug_info     0x0000000000000000      0xbc0
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .debug_info    0x00000000000005f4      0x423 I2C_Master_C_file.o
- .debug_info    0x0000000000000a17      0x600 main.o
+ .debug_info    0x00000000000005f4      0x5cc main.o
 
-.debug_abbrev   0x0000000000000000      0x824
+.debug_abbrev   0x0000000000000000      0x73e
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .debug_abbrev  0x00000000000005a2       0xca I2C_Master_C_file.o
- .debug_abbrev  0x000000000000066c      0x1b8 main.o
+ .debug_abbrev  0x00000000000005a2      0x19c main.o
 
-.debug_line     0x0000000000000000      0x5fc
+.debug_line     0x0000000000000000      0x323
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x137 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .debug_line    0x0000000000000137      0x2a9 I2C_Master_C_file.o
- .debug_line    0x00000000000003e0      0x21c main.o
+ .debug_line    0x0000000000000137      0x1ec main.o
 
-.debug_frame    0x0000000000000000      0x124
+.debug_frame    0x0000000000000000       0x54
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x9c I2C_Master_C_file.o
- .debug_frame   0x000000000000009c       0x88 main.o
+ .debug_frame   0x0000000000000000       0x54 main.o
 
-.debug_str      0x0000000000000000      0x269
+.debug_str      0x0000000000000000      0x22e
  *(.debug_str)
  .debug_str     0x0000000000000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .debug_str     0x0000000000000208       0x15 I2C_Master_C_file.o
- .debug_str     0x000000000000021d       0x4c main.o
+ .debug_str     0x0000000000000208       0x26 main.o
 
-.debug_loc      0x0000000000000000      0x3f9
+.debug_loc      0x0000000000000000      0x1f3
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x1d7 I2C_Master_C_file.o
- .debug_loc     0x00000000000001d7      0x222 main.o
+ .debug_loc     0x0000000000000000      0x1f3 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -416,14 +391,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x80
+.debug_ranges   0x0000000000000000       0x28
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x48 I2C_Master_C_file.o
- .debug_ranges  0x0000000000000048       0x38 main.o
+ .debug_ranges  0x0000000000000000       0x28 main.o
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(LTexperiment.elf elf32-avr)
+OUTPUT(bitbangMaster.elf elf32-avr)
 LOAD linker stubs
 LOAD data_init
 
@@ -432,99 +406,76 @@ LOAD data_init
  .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
 
-.text.main      0x0000000000000080       0x86
- .text.main     0x0000000000000080       0x86 main.o
-                0x0000000000000080                main
+.text.sendByte  0x0000000000000080       0x9a
+ .text.sendByte
+                0x0000000000000080       0x9a main.o
+                0x0000000000000080                sendByte
 
-.text.I2C_Repeated_Start
-                0x0000000000000106       0x48
- .text.I2C_Repeated_Start
-                0x0000000000000106       0x48 I2C_Master_C_file.o
-                0x0000000000000106                I2C_Repeated_Start
+.text.startCondition
+                0x000000000000011a       0x22
+ .text.startCondition
+                0x000000000000011a       0x22 main.o
+                0x000000000000011a                startCondition
 
-.text.I2C_Start_Wait
-                0x000000000000014e       0x42
- .text.I2C_Start_Wait
-                0x000000000000014e       0x42 I2C_Master_C_file.o
-                0x000000000000014e                I2C_Start_Wait
+.text.initIO    0x000000000000013c       0x1a
+ .text.initIO   0x000000000000013c       0x1a main.o
+                0x000000000000013c                initIO
 
-.text.I2C_Write
-                0x0000000000000190       0x2c
- .text.I2C_Write
-                0x0000000000000190       0x2c I2C_Master_C_file.o
-                0x0000000000000190                I2C_Write
+.text.main      0x0000000000000156       0x16
+ .text.main     0x0000000000000156       0x16 main.o
+                0x0000000000000156                main
 
-.text.exit      0x00000000000001bc       0x16
- .text.exit     0x00000000000001bc       0x16 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
-                0x00000000000001bc                exit
+.text.exit      0x000000000000016c       0x16
+ .text.exit     0x000000000000016c       0x16 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
+                0x000000000000016c                exit
 
-.text.I2C_Read_Nack
-                0x00000000000001d2       0x14
- .text.I2C_Read_Nack
-                0x00000000000001d2       0x14 I2C_Master_C_file.o
-                0x00000000000001d2                I2C_Read_Nack
+.text           0x0000000000000182        0x4
+ .text          0x0000000000000182        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+                0x0000000000000182                __vector_22
+                0x0000000000000182                __vector_1
+                0x0000000000000182                __vector_24
+                0x0000000000000182                __vector_12
+                0x0000000000000182                __bad_interrupt
+                0x0000000000000182                __vector_6
+                0x0000000000000182                __vector_3
+                0x0000000000000182                __vector_23
+                0x0000000000000182                __vector_25
+                0x0000000000000182                __vector_11
+                0x0000000000000182                __vector_13
+                0x0000000000000182                __vector_17
+                0x0000000000000182                __vector_19
+                0x0000000000000182                __vector_7
+                0x0000000000000182                __vector_5
+                0x0000000000000182                __vector_4
+                0x0000000000000182                __vector_9
+                0x0000000000000182                __vector_2
+                0x0000000000000182                __vector_21
+                0x0000000000000182                __vector_15
+                0x0000000000000182                __vector_8
+                0x0000000000000182                __vector_14
+                0x0000000000000182                __vector_10
+                0x0000000000000182                __vector_16
+                0x0000000000000182                __vector_18
+                0x0000000000000182                __vector_20
 
-.text.I2C_Stop  0x00000000000001e6       0x10
- .text.I2C_Stop
-                0x00000000000001e6       0x10 I2C_Master_C_file.o
-                0x00000000000001e6                I2C_Stop
-
-.text.I2C_Init  0x00000000000001f6        0x8
- .text.I2C_Init
-                0x00000000000001f6        0x8 I2C_Master_C_file.o
-                0x00000000000001f6                I2C_Init
-
-.text.initIO    0x00000000000001fe        0x8
- .text.initIO   0x00000000000001fe        0x8 main.o
-                0x00000000000001fe                initIO
-
-.text           0x0000000000000206        0x4
- .text          0x0000000000000206        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
-                0x0000000000000206                __vector_22
-                0x0000000000000206                __vector_1
-                0x0000000000000206                __vector_24
-                0x0000000000000206                __vector_12
-                0x0000000000000206                __bad_interrupt
-                0x0000000000000206                __vector_6
-                0x0000000000000206                __vector_3
-                0x0000000000000206                __vector_23
-                0x0000000000000206                __vector_25
-                0x0000000000000206                __vector_11
-                0x0000000000000206                __vector_13
-                0x0000000000000206                __vector_17
-                0x0000000000000206                __vector_19
-                0x0000000000000206                __vector_7
-                0x0000000000000206                __vector_5
-                0x0000000000000206                __vector_4
-                0x0000000000000206                __vector_9
-                0x0000000000000206                __vector_2
-                0x0000000000000206                __vector_21
-                0x0000000000000206                __vector_15
-                0x0000000000000206                __vector_8
-                0x0000000000000206                __vector_14
-                0x0000000000000206                __vector_10
-                0x0000000000000206                __vector_16
-                0x0000000000000206                __vector_18
-                0x0000000000000206                __vector_20
-
-.text._Exit     0x000000000000020a        0x4
- .text._Exit    0x000000000000020a        0x4 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(_Exit.o)
-                0x000000000000020a                _Exit
+.text._Exit     0x0000000000000186        0x4
+ .text._Exit    0x0000000000000186        0x4 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(_Exit.o)
+                0x0000000000000186                _Exit
 
 .text.__dummy_fini
-                0x000000000000020e        0x2
+                0x000000000000018a        0x2
  .text.__dummy_fini
-                0x000000000000020e        0x2 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
-                0x000000000000020e                _fini
+                0x000000000000018a        0x2 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
+                0x000000000000018a                _fini
 
 .text.__dummy_funcs_on_exit
-                0x0000000000000210        0x2
+                0x000000000000018c        0x2
  .text.__dummy_funcs_on_exit
-                0x0000000000000210        0x2 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
-                0x0000000000000210                __funcs_on_exit
+                0x000000000000018c        0x2 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
+                0x000000000000018c                __funcs_on_exit
 
 .text.__dummy_simulator_exit
-                0x0000000000000212        0x2
+                0x000000000000018e        0x2
  .text.__dummy_simulator_exit
-                0x0000000000000212        0x2 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
-                0x0000000000000212                __simulator_exit
+                0x000000000000018e        0x2 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
+                0x000000000000018e                __simulator_exit

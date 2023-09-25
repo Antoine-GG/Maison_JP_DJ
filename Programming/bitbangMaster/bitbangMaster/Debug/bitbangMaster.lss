@@ -1,0 +1,353 @@
+
+bitbangMaster.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000204  2**0
+                  ALLOC, LOAD, DATA
+  1 .text         00000080  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      0000002f  00000000  00000000  00000204  2**0
+                  CONTENTS, READONLY
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  00000233  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000038  00000000  00000000  00000241  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000bc0  00000000  00000000  00000279  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000073e  00000000  00000000  00000e39  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000323  00000000  00000000  00001577  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  0000189c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000022e  00000000  00000000  000018f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001f3  00000000  00000000  00001b1e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000028  00000000  00000000  00001d11  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .text         00000004  00000182  00000182  000001f6  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001d3c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .text.initIO  0000001a  0000013c  0000013c  000001b0  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .text.startCondition 00000022  0000011a  0000011a  0000018e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 16 .text.sendByte 0000009a  00000080  00000080  000000f4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 17 .text.main    00000016  00000156  00000156  000001ca  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .text.__dummy_fini 00000002  0000018a  0000018a  000001fe  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 19 .text.__dummy_funcs_on_exit 00000002  0000018c  0000018c  00000200  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .text.__dummy_simulator_exit 00000002  0000018e  0000018e  00000202  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 21 .text.exit    00000016  0000016c  0000016c  000001e0  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 22 .text._Exit   00000004  00000186  00000186  000001fa  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+   8:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+   c:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  10:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  14:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  18:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  1c:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  20:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  24:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  28:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  2c:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  30:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  34:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  38:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  3c:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  40:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  44:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  48:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  4c:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  50:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  54:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  58:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  5c:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  60:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+  64:	0c 94 c1 00 	jmp	0x182	; 0x182 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 ab 00 	call	0x156	; 0x156 <main>
+  78:	0c 94 b6 00 	jmp	0x16c	; 0x16c <exit>
+
+0000007c <_exit>:
+  7c:	f8 94       	cli
+
+0000007e <__stop_program>:
+  7e:	ff cf       	rjmp	.-2      	; 0x7e <__stop_program>
+
+Disassembly of section .text:
+
+00000182 <__bad_interrupt>:
+ 182:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.initIO:
+
+0000013c <initIO>:
+#include <xc.h>
+#include <util/delay.h>
+
+void initIO(void){
+	// Set PC4 and PC5 as output pins
+	DDRC |= (1 << PC4) | (1 << PC5);
+ 13c:	87 b1       	in	r24, 0x07	; 7
+ 13e:	80 63       	ori	r24, 0x30	; 48
+ 140:	87 b9       	out	0x07, r24	; 7
+	PORTC |= (1 << PC4) | (1 << PC5);
+ 142:	88 b1       	in	r24, 0x08	; 8
+ 144:	80 63       	ori	r24, 0x30	; 48
+ 146:	88 b9       	out	0x08, r24	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 148:	89 ef       	ldi	r24, 0xF9	; 249
+ 14a:	90 e0       	ldi	r25, 0x00	; 0
+ 14c:	01 97       	sbiw	r24, 0x01	; 1
+ 14e:	f1 f7       	brne	.-4      	; 0x14c <initIO+0x10>
+ 150:	00 c0       	rjmp	.+0      	; 0x152 <initIO+0x16>
+ 152:	00 00       	nop
+ 154:	08 95       	ret
+
+Disassembly of section .text.startCondition:
+
+0000011a <startCondition>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <startCondition+0x2>
+ 11c:	00 c0       	rjmp	.+0      	; 0x11e <startCondition+0x4>
+ 11e:	00 00       	nop
+}
+
+void startCondition(){
+	//SDA goes low before SCL
+	_delay_us(5);
+	PORTC &= ~(1 << PC4);
+ 120:	88 b1       	in	r24, 0x08	; 8
+ 122:	8f 7e       	andi	r24, 0xEF	; 239
+ 124:	88 b9       	out	0x08, r24	; 8
+ 126:	00 c0       	rjmp	.+0      	; 0x128 <startCondition+0xe>
+ 128:	00 c0       	rjmp	.+0      	; 0x12a <startCondition+0x10>
+ 12a:	00 00       	nop
+	_delay_us(5);
+	PORTC &= ~(1 << PC5);
+ 12c:	88 b1       	in	r24, 0x08	; 8
+ 12e:	8f 7d       	andi	r24, 0xDF	; 223
+ 130:	88 b9       	out	0x08, r24	; 8
+ 132:	83 e0       	ldi	r24, 0x03	; 3
+ 134:	8a 95       	dec	r24
+ 136:	f1 f7       	brne	.-4      	; 0x134 <startCondition+0x1a>
+ 138:	00 00       	nop
+ 13a:	08 95       	ret
+
+Disassembly of section .text.sendByte:
+
+00000080 <sendByte>:
+  80:	93 e0       	ldi	r25, 0x03	; 3
+  82:	9a 95       	dec	r25
+  84:	f1 f7       	brne	.-4      	; 0x82 <sendByte+0x2>
+  86:	00 00       	nop
+//uint8_t mode, 
+void sendByte(char byte){
+	uint8_t reversedByte;
+	_delay_us(10);
+	//first I need to reverse this byte
+	for (int i = 0; i < 8; i++) {
+  88:	20 e0       	ldi	r18, 0x00	; 0
+  8a:	30 e0       	ldi	r19, 0x00	; 0
+  8c:	18 c0       	rjmp	.+48     	; 0xbe <sendByte+0x3e>
+		if (byte & (1 << i)) {
+  8e:	48 2f       	mov	r20, r24
+  90:	50 e0       	ldi	r21, 0x00	; 0
+  92:	02 2e       	mov	r0, r18
+  94:	02 c0       	rjmp	.+4      	; 0x9a <sendByte+0x1a>
+  96:	55 95       	asr	r21
+  98:	47 95       	ror	r20
+  9a:	0a 94       	dec	r0
+  9c:	e2 f7       	brpl	.-8      	; 0x96 <sendByte+0x16>
+  9e:	40 ff       	sbrs	r20, 0
+  a0:	0c c0       	rjmp	.+24     	; 0xba <sendByte+0x3a>
+			reversedByte |= (1 << (7 - i));
+  a2:	e7 e0       	ldi	r30, 0x07	; 7
+  a4:	f0 e0       	ldi	r31, 0x00	; 0
+  a6:	e2 1b       	sub	r30, r18
+  a8:	f3 0b       	sbc	r31, r19
+  aa:	41 e0       	ldi	r20, 0x01	; 1
+  ac:	50 e0       	ldi	r21, 0x00	; 0
+  ae:	02 c0       	rjmp	.+4      	; 0xb4 <sendByte+0x34>
+  b0:	44 0f       	add	r20, r20
+  b2:	55 1f       	adc	r21, r21
+  b4:	ea 95       	dec	r30
+  b6:	e2 f7       	brpl	.-8      	; 0xb0 <sendByte+0x30>
+  b8:	64 2b       	or	r22, r20
+//uint8_t mode, 
+void sendByte(char byte){
+	uint8_t reversedByte;
+	_delay_us(10);
+	//first I need to reverse this byte
+	for (int i = 0; i < 8; i++) {
+  ba:	2f 5f       	subi	r18, 0xFF	; 255
+  bc:	3f 4f       	sbci	r19, 0xFF	; 255
+  be:	28 30       	cpi	r18, 0x08	; 8
+  c0:	31 05       	cpc	r19, r1
+  c2:	2c f3       	brlt	.-54     	; 0x8e <sendByte+0xe>
+  c4:	80 e0       	ldi	r24, 0x00	; 0
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	24 c0       	rjmp	.+72     	; 0x112 <sendByte+0x92>
+		}
+	}
+		// Output each bit of dataByte on PC4
+	for (int i = 0; i < 10; i++){
+		// Check the current bit and set PC4 accordingly
+		if (reversedByte & (1 << i)){
+  ca:	26 2f       	mov	r18, r22
+  cc:	30 e0       	ldi	r19, 0x00	; 0
+  ce:	08 2e       	mov	r0, r24
+  d0:	02 c0       	rjmp	.+4      	; 0xd6 <sendByte+0x56>
+  d2:	35 95       	asr	r19
+  d4:	27 95       	ror	r18
+  d6:	0a 94       	dec	r0
+  d8:	e2 f7       	brpl	.-8      	; 0xd2 <sendByte+0x52>
+  da:	20 ff       	sbrs	r18, 0
+  dc:	04 c0       	rjmp	.+8      	; 0xe6 <sendByte+0x66>
+			PORTC |= (1 << PC4);  // Set PC4 high
+  de:	28 b1       	in	r18, 0x08	; 8
+  e0:	20 61       	ori	r18, 0x10	; 16
+  e2:	28 b9       	out	0x08, r18	; 8
+  e4:	03 c0       	rjmp	.+6      	; 0xec <sendByte+0x6c>
+			} 
+			else
+			{
+			PORTC &= ~(1 << PC4); // Set PC4 low
+  e6:	28 b1       	in	r18, 0x08	; 8
+  e8:	2f 7e       	andi	r18, 0xEF	; 239
+  ea:	28 b9       	out	0x08, r18	; 8
+			}
+
+		// Create a clock pulse by toggling PC5
+		PORTC |= (1 << PC5);
+  ec:	28 b1       	in	r18, 0x08	; 8
+  ee:	20 62       	ori	r18, 0x20	; 32
+  f0:	28 b9       	out	0x08, r18	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  f2:	e3 ec       	ldi	r30, 0xC3	; 195
+  f4:	f9 e0       	ldi	r31, 0x09	; 9
+  f6:	31 97       	sbiw	r30, 0x01	; 1
+  f8:	f1 f7       	brne	.-4      	; 0xf6 <sendByte+0x76>
+  fa:	00 c0       	rjmp	.+0      	; 0xfc <sendByte+0x7c>
+  fc:	00 00       	nop
+		_delay_ms(10); // Adjust delay as needed for your clock frequency
+		PORTC &= ~(1 << PC5);
+  fe:	28 b1       	in	r18, 0x08	; 8
+ 100:	2f 7d       	andi	r18, 0xDF	; 223
+ 102:	28 b9       	out	0x08, r18	; 8
+ 104:	e3 ec       	ldi	r30, 0xC3	; 195
+ 106:	f9 e0       	ldi	r31, 0x09	; 9
+ 108:	31 97       	sbiw	r30, 0x01	; 1
+ 10a:	f1 f7       	brne	.-4      	; 0x108 <sendByte+0x88>
+ 10c:	00 c0       	rjmp	.+0      	; 0x10e <sendByte+0x8e>
+ 10e:	00 00       	nop
+		if (byte & (1 << i)) {
+			reversedByte |= (1 << (7 - i));
+		}
+	}
+		// Output each bit of dataByte on PC4
+	for (int i = 0; i < 10; i++){
+ 110:	01 96       	adiw	r24, 0x01	; 1
+ 112:	8a 30       	cpi	r24, 0x0A	; 10
+ 114:	91 05       	cpc	r25, r1
+ 116:	cc f2       	brlt	.-78     	; 0xca <sendByte+0x4a>
+		PORTC |= (1 << PC5);
+		_delay_ms(10); // Adjust delay as needed for your clock frequency
+		PORTC &= ~(1 << PC5);
+		_delay_ms(10); // Adjust delay as needed for your clock
+		}
+}
+ 118:	08 95       	ret
+
+Disassembly of section .text.main:
+
+00000156 <main>:
+
+int main(void)
+{
+	initIO();
+ 156:	0e 94 9e 00 	call	0x13c	; 0x13c <initIO>
+	startCondition();
+ 15a:	0e 94 8d 00 	call	0x11a	; 0x11a <startCondition>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 15e:	8a e0       	ldi	r24, 0x0A	; 10
+ 160:	8a 95       	dec	r24
+ 162:	f1 f7       	brne	.-4      	; 0x160 <main+0xa>
+	_delay_us(30);
+	sendByte(0xA0);
+ 164:	80 ea       	ldi	r24, 0xA0	; 160
+ 166:	0e 94 40 00 	call	0x80	; 0x80 <__data_load_end>
+ 16a:	ff cf       	rjmp	.-2      	; 0x16a <main+0x14>
+
+Disassembly of section .text.__dummy_fini:
+
+0000018a <_fini>:
+ 18a:	08 95       	ret
+
+Disassembly of section .text.__dummy_funcs_on_exit:
+
+0000018c <__funcs_on_exit>:
+ 18c:	08 95       	ret
+
+Disassembly of section .text.__dummy_simulator_exit:
+
+0000018e <__simulator_exit>:
+ 18e:	08 95       	ret
+
+Disassembly of section .text.exit:
+
+0000016c <exit>:
+ 16c:	ec 01       	movw	r28, r24
+ 16e:	0e 94 c6 00 	call	0x18c	; 0x18c <__funcs_on_exit>
+ 172:	0e 94 c5 00 	call	0x18a	; 0x18a <_fini>
+ 176:	ce 01       	movw	r24, r28
+ 178:	0e 94 c7 00 	call	0x18e	; 0x18e <__simulator_exit>
+ 17c:	ce 01       	movw	r24, r28
+ 17e:	0e 94 c3 00 	call	0x186	; 0x186 <_Exit>
+
+Disassembly of section .text._Exit:
+
+00000186 <_Exit>:
+ 186:	0e 94 3e 00 	call	0x7c	; 0x7c <_exit>

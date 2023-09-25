@@ -13,23 +13,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .debug_aranges 00000058  00000000  00000000  0000021f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000c3d  00000000  00000000  00000277  2**0
+  5 .debug_info   00000c99  00000000  00000000  00000277  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000714  00000000  00000000  00000eb4  2**0
+  6 .debug_abbrev 00000714  00000000  00000000  00000f10  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000003ff  00000000  00000000  000015c8  2**0
+  7 .debug_line   000003ff  00000000  00000000  00001624  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000078  00000000  00000000  000019c8  2**2
+  8 .debug_frame  00000078  00000000  00000000  00001a24  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000242  00000000  00000000  00001a40  2**0
+  9 .debug_str    00000242  00000000  00000000  00001a9c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000136  00000000  00000000  00001c82  2**0
+ 10 .debug_loc    00000136  00000000  00000000  00001cde  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000038  00000000  00000000  00001db8  2**0
+ 11 .debug_ranges 00000038  00000000  00000000  00001e14  2**0
                   CONTENTS, READONLY, DEBUGGING
  12 .text         00000004  00000160  00000160  000001d4  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001df0  2**2
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001e4c  2**2
                   CONTENTS, READONLY, DEBUGGING
  14 .text.I2C_Slave_Init 0000000c  00000154  00000154  000001c8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
@@ -255,7 +255,7 @@ Disassembly of section .text.main:
 
 0000010e <main>:
 
-#define slave 0x20
+#define slave 0x50
 
 int main() {
 	// Configure PB0 as an input
@@ -273,7 +273,7 @@ int main() {
 	// Create an uint8_t variable to store the button state (1 or 0)
 	uint8_t buttonState = 0;
 	I2C_Slave_Init(slave);
- 11a:	80 e2       	ldi	r24, 0x20	; 32
+ 11a:	80 e5       	ldi	r24, 0x50	; 80
  11c:	0e 94 aa 00 	call	0x154	; 0x154 <I2C_Slave_Init>
 	while (1) {
 		// Read the button state (active-low)

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="LTexperiment.elf">                 
+  <executable name="bitbangMaster.elf">                 
     <memory name="program">              
       <units>bytes</units>                 
       <length>16384</length>                 
-      <used>532</used>                     
-      <free>15852</free>                     
+      <used>400</used>                     
+      <free>15984</free>                     
     </memory>                              
     <memory name="data">                 
       <units>bytes</units>                 
