@@ -11,26 +11,26 @@
 
 #define SLAVE1    0x3C ///0011 1100
 #define SLAVE2    0x5A ///0101 1010
+#define SLAVE3    2 //
+#define SLAVE4    3 //
+#define SLAVE5    4 //
 
 HouseStatus status;
-volatile uint8_t windowState1 = 0; //window1 state from U1
-volatile uint8_t windowState2 = 0; //window2 state from U1
-volatile uint8_t doorState= 0; //door state from U2
-volatile uint8_t doorLockState = 0; //
-volatile char keyboardState ='0';
 
 //SPI
 void SPI_MasterInit(void)
 {
 	/* Set MOSI and SCK output SS,  */
 	DDRB = (1<<PB3)|(1<<PB5)|(1<<PB2);
-	/* Enable SPI, Master, set clock rate fck/64 */
-	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR1);
+	// set Port C pins for 3 ss	
+	DDRD = (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
+	/* Enable SPI, Master, set clock rate fck/16 */
+	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
 }
 void SPI_MasterTransmit(char cData, uint8_t ss)
 {
 	/* Set SS low */
-	PORTB &= ~(1<<ss);
+	PORTD &= ~(1<<ss);
 	/* Start transmission */
 	SPDR = cData;
 	/* Wait for transmission complete */
@@ -86,6 +86,7 @@ void printString(const char myString[]) {
 		i++;
 	}
 }
+//i2c
 uint8_t poll_I2cDevice(uint8_t address){
 		uint8_t data;
 		I2C_Start_Wait(address); // wait for ACK signal
@@ -105,7 +106,7 @@ uint8_t poll_I2cDevice(uint8_t address){
 }
 
 int main() {
-	SPI_MasterInit()
+	SPI_MasterInit();
 	initUSART();
 	I2C_Init();
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
@@ -117,39 +118,18 @@ int main() {
 		//i2c calls
 		//POLL U1, window1 and window2 are the 2 last bits as 0000 0012
 		received = poll_I2cDevice(SLAVE1);
-		HouseStatus.window2 = received & 0x01; //Mask the lsb
-		HouseStatus.window1 = (received >> 1) & 0x01; // Shift right by 1 and mask with 0x01
+		status.window2 = received & 0x01; //Mask the lsb
+		status.window1 = (received >> 1) & 0x01; // Shift right by 1 and mask with 0x01
 		//POLL U2, get the door status;
 		received = poll_I2cDevice(SLAVE2);
-		HouseStatus.door = received & 0x01; //Mask the lsb
+		status.door = received & 0x01; //Mask the lsb
 		//spi calls
 		//Set U3 door lock status
-
-
-		
-		//transmitByte(windowState1);
-		// Demander l'�tat de la fen�tre de l'esclave 2
-		//i2c_start();
-		//i2c_write((SLAVE_ADDRESS_2 << 1) | 1); // �crire l'adresse de l'ATmega328P esclave 2 en mode lecture
-		//windowState2 = i2c_read();
-		//i2c_stop();
-		
-		// Traiter les donn�es re�ues et allumer ou �teindre les LED en fonction de l'�tat de la fen�tre
-		//if (windowState1 == 1) {
-		//	PORTB |= (1 << PB1);	// Allumer la LED 1
-		//
-		//	} else {
-		//	PORTB &= ~(1 << PB1);	// �teindre la LED 1
-		//}
-		//
-		//if (windowState2 == 1) {
-		//	PORTB |= (1 << PB0);	// Allumer la LED 2
-		//
-		//	} else {
-		//	PORTB &= ~(1 << PB0);	// �teindre la LED 2
-		//
-		//}
-		//
+		SetSpiDevice(status.lock, SLAVE3);
+		//Set U4 light status
+		SetSpiDevice(status.light, SLAVE4);
+		//POLL U5, get the keyboard char
+		status.keyboardChar = pollSpiDevice(SLAVE5);
 		_delay_ms(50); // Attendre avant de refaire la demande
 	}
 

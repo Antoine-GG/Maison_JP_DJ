@@ -107,6 +107,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="I2C_Slave_C_File.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="I2C_Slave_H_File.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

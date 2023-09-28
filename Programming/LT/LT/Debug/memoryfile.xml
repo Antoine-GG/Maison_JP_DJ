@@ -3,25 +3,15 @@
   <executable name="LT.elf">                 
     <memory name="program">              
       <units>bytes</units>                 
-      <length>32768</length>                 
-<<<<<<< HEAD
-      <used>374</used>                     
-      <free>32394</free>                     
-=======
-      <used>358</used>                     
-      <free>32410</free>                     
->>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
+      <length>16384</length>                 
+      <used>832</used>                     
+      <free>15552</free>                     
     </memory>                              
     <memory name="data">                 
       <units>bytes</units>                 
-      <length>2048</length>                 
-<<<<<<< HEAD
-      <used>0</used>                     
-      <free>2048</free>                     
-=======
-      <used>1</used>                     
-      <free>2047</free>                     
->>>>>>> 3968cc890e6550ab758c57d06a4d49d06372322b
+      <length>1024</length>                 
+      <used>6</used>                     
+      <free>1018</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

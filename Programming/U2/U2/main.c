@@ -5,85 +5,76 @@
  *  Author: JP Toutant
  */ 
 #define F_CPU 1000000UL
+
 #include <xc.h>
 #include <avr/io.h>
-#include <util/twi.h>
-#include <avr/sfr_defs.h>
-#include <stdlib.h>
 #include <util/delay.h>
+#include <stdio.h>								/* Include standard I/O header file */
+#include <string.h>
+#include "I2C_Slave_H_File.h"
 
-#define SLAVE_ADDRESS 0x20
+#define SLAVE_ADDRESS 0x5A//addresse i2c de U2
 
+volatile uint8_t doorStatus = 0;
 
-//initialiser UART
-void initUSART(void) {
-	UBRR0H = 0;              /* baud rate  */
-	UBRR0L = 0x0C;           /* 9600 */
-	UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
-	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
-	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
+void initIOports(){
+	// Set PD7 as input pin
+	DDRD &= ~(1 << PD7);
+	//Set PB1 as output pin
+	DDRB |= (1 << PB1);
 }
-//transmettre un caractère
-void transmitByte(uint8_t data) {
-	while ( !( UCSR0A & (1<<UDRE0)) ); /* Attendre que le buffer de transmission soit vide */
-	UDR0 = data;                      /* envoyer la donnée */
-}
-//recevoir un caractère
-uint8_t receiveByte(void) {
-	while ( !( UCSR0A & (1<<RXC0)) ); /* Attendre que le buffer de réception soit plein */
-	return UDR0;                                /* retourner la valeur lue */
-}
-//envoyer une chaine de caractères
-void printString(const char myString[]) {
-	uint8_t i = 0;
-	while (myString[i]) {
-		transmitByte(myString[i]);
-		i++;
+
+int main(void) {
+	int drapeau=0;
+	int8_t instructionCode = 0;
+
+	I2C_Slave_Init(SLAVE_ADDRESS);
+	initIOports();
+	
+
+	while (1) {
+		//pick door status on pin PD7
+		doorStatus = PIND & (1 << PD7);
+		//put door status out on PB1
+		if(doorStatus == 0){
+			PORTB &= ~(1 << PB1); //debug led for tension divider tweaks
+		}
+		else{
+			PORTB |= (1 << PB1); 
+		}
+		switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
+		{
+			case 0://receive
+			{
+				do
+				{
+	
+					instructionCode = I2C_Slave_Receive();/* Receive data byte*/
+					if(instructionCode==0xAE) drapeau=1;  // vÃ©rifier si c'est 0xAE (code) alors autoriser la transmission
+				} while (instructionCode != -1);			/* Receive until STOP/REPEATED START received */
+				
+				break;
+			}
+			
+			case 1://transmit
+			{
+				int8_t Ack_status;
+		        if(drapeau==1){ //si bon code envoi l'Ã©tat de PB0
+				do
+					{   
+						Ack_status = I2C_Slave_Transmit(doorStatus);	/* Send data byte */
+				
+					} while (Ack_status == 0);		/* Send until Acknowledgment is received */
+				
+					drapeau=0;//reset pour lire une autre donnÃ©e
+				}
+				break;
+			}
+			default:
+				break;
+		}
+
 	}
-}
 
-void i2c_initSlave(void){
-	TWAR = (SLAVE_ADDRESS<<1);
-	TWCR = (1<<TWEA) | (1<<TWEN);
-}
-
-void i2c_listen(void){
-	while (!(TWCR & (1<<TWINT)));
-}
-
-void i2c_init(void){
-	TWSR = 0;  //We dont want to prescale
-	TWBR = ((F_CPU / 100000UL)-16)/2; //formula for bitrate
-}
-
-void i2c_start(void){
-	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
-	while (!(TWCR &(1<<TWINT)));
-}
-
-void i2c_stop(void){
-	TWCR = (1<<TWINT) | (1<<TWSTO) | (1<<TWEN);
-}
-
-void i2c_write(uint8_t data){
-	TWDR = data;
-	TWCR = (1<<TWINT) | (1<<TWEN);
-	while (!(TWCR & (1<<TWINT)));
-}
-
-
-
-int main(void)
-{
-	uint8_t data = 'A';
-	i2c_initSlave();
-    while(1)
-    {
-       i2c_listen();
-	   if((TWSR & 0xF8) == TW_SR_SLA_ACK)
-	   {
-		   i2c_write(data);
-	   }
-	   
-    }
+	return 0;
 }
