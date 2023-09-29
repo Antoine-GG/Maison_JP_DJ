@@ -14,6 +14,8 @@
 #define SLAVE3    2 //
 #define SLAVE4    3 //
 #define SLAVE5    4 //
+#define useI2C 	  0 //
+#define useSPI    1 //
 
 HouseStatus status;
 
@@ -29,17 +31,18 @@ void SPI_MasterInit(void)
 }
 void SPI_MasterTransmit(char cData, uint8_t ss)
 {
+	//set all SS high
+	PORTD |= (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
 	/* Set SS low */
 	PORTD &= ~(1<<ss);
 	/* Start transmission */
 	SPDR = cData;
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));
-
-	//return SPDR;
 }
 uint8_t SPI_MasterReceive(uint8_t ss)
 {
+	PORTD |= (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
 	/* Set SS low */
 	PORTB &= ~(1<<ss);
 	/* Wait for reception complete */
@@ -89,12 +92,12 @@ void printString(const char myString[]) {
 	}
 }
 //i2c
-uint8_t poll_I2cDevice(uint8_t address){
+uint8_t poll_I2cDevice(uint8_t address, uint8_t instructionCode){
 		uint8_t data;
 		I2C_Start_Wait(address); // wait for ACK signal
 		_delay_ms(5);
 
-		I2C_Write(0x25); //numero de l'instruction attendu par slave
+		I2C_Write(instructionCode); //numero de l'instruction attendu par slave
 		_delay_ms(5);
 
 		I2C_Repeated_Start(address | 0b00000001); // force Least Meaningful bit to 1 for read mode
@@ -115,15 +118,18 @@ int main() {
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
 	
 	while (1) {
+
 		received = 0;
-		
+		if(useI2C){
 		//i2c calls
 		//POLL U1, window1 and window2 are the 2 last bits as 0000 0012
-		received = poll_I2cDevice(SLAVE1);
+		received = poll_I2cDevice(SLAVE1, 0x25);
 		status.window2 = received & 0x01; //Mask the lsb
 		status.window1 = (received >> 1) & 0x01; // Shift right by 1 and mask with 0x01
 		//POLL U2, get the door status;
-		received = poll_I2cDevice(SLAVE2);
+		received = poll_I2cDevice(SLAVE2, 0x25);
+		}
+		if(useSPI){
 		status.door = received & 0x01; //Mask the lsb
 		//spi calls
 		//Set U3 door lock status
@@ -132,6 +138,7 @@ int main() {
 		SetSpiDevice(status.light, SLAVE4);
 		//POLL U5, get the keyboard char
 		status.keyboardChar = pollSpiDevice(SLAVE5);
+		}
 		_delay_ms(50); // Attendre avant de refaire la demande
 	}
 

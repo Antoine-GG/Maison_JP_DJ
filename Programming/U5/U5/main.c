@@ -11,6 +11,7 @@
 #define F_CPU 1000000UL
 #include <xc.h>
 #include <util/delay.h>
+#include <avr/sfr_defs.h>
 #include "BuzzerSounds.h"
 
 
@@ -42,7 +43,9 @@ void initIOports(){
 	DDRC |= (1 << LATCH_PIN); // Latch pin as output
 	DDRC |= (1 << CLOCK_PIN); // Clock pin as output
 	DDRC &= ~(1 << DATA_PIN); // Data pin as input
-		
+	//MISO as output, all others input
+	DDRB |= (1 )
+	
 	// Enable pull-up resistor for data pin
 	PORTC |= (1 << DATA_PIN);
 		
