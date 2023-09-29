@@ -1,179 +1,90 @@
-#include <xc.h>
-#include <avr/sfr_defs.h>
-#include <avr/io.h>
-#include <util/twi.h>
-#include <avr/interrupt.h>
+/*
+ * main.c
+ *
+ * Created: 9/20/2023 7:20:41 AM
+ *  Author: JP Toutant
+ */ 
 #define F_CPU 1000000UL
+
+#include <xc.h>
+#include <avr/io.h>
 #include <util/delay.h>
+#include <stdio.h>								/* Include standard I/O header file */
+#include <string.h>
+#include "I2C_Slave_H_File.h"
 
-
-#define SLAVE_ADDRESS 0x03//addresse i2c de U1
-
-char buffer[8];
-volatile uint8_t window1 = 0;
-volatile uint8_t window2 = 0;
-volatile uint8_t variableValue = 0;
-uint8_t windows =0;
-
-void initI2Cslave(void) {
-	//mode slave
-	TWCR = 0x04;
-	TWAR = (SLAVE_ADDRESS << 1); //set l'adresse slave
-	TWBR = 2;                               /* set bit rate, */
-	/* 8MHz / (16+2*TWBR*1) ~= 100kHz */
-	TWCR |= (1 << TWINT) | (1 << TWEA) | (1 << TWEN); // Enable I2C, enable ACK, enable interrupt;
-	sei();  // Enable global interrupts
-}
-void i2c_send(unsigned char data){
-	TWDR = data ;
-	
-}
-
-void i2cWaitForComplete(void) {
-	loop_until_bit_is_set(TWCR, TWINT);
-}
-
-void i2cStart(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTA);
-	i2cWaitForComplete();
-}
-
-void i2cStop(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTO);
-}
-
-uint8_t i2cReadAck(void) {
-	TWCR =(1 <<TWINT) | (1 <<TWEN) | (1 <<TWEA);
-	i2cWaitForComplete();
-	return (TWDR);
-}
-
-uint8_t i2cReadNoAck(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN);
-	i2cWaitForComplete();
-	return (TWDR);
-}
-
-void i2cSend(uint8_t data) {
-	TWDR = data;
-	TWCR = (1 <<TWINT) | (1 <<TWEN);                  /* init and enable */
-	i2cWaitForComplete();
-}
-
-
-//Were using UART for debug
-void initUSART(void) {
-	UBRR0H = 0;              /* baud rate  */
-	UBRR0L = 0x0C;           /* 9600 */
-	UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
-	UCSR0B |= (1 << TXEN0); //| (1 << RXEN0);    /* Activer emission et reception  USART */
-	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
-}
-//transmettre un caractère
-void transmitByte(uint8_t data) {
-	while ( !( UCSR0A & (1<<UDRE0)) ); /* Attendre que le buffer de transmission soit vide */
-	UDR0 = data;                      /* envoyer la donnée */
-}
-//recevoir un caractère
-uint8_t receiveByte(void) {
-	while ( !( UCSR0A & (1<<RXC0)) ); /* Attendre que le buffer de réception soit plein */
-	return UDR0;                                /* retourner la valeur lue */
-}
-//envoyer une chaine de caractères
-void printString(const char myString[]) {
-	uint8_t i = 0;
-	while (myString[i]) {
-		transmitByte(myString[i]);
-		i++;
-	}
-}
-void uint8ToBinaryString(uint8_t value, char* buffer) {
-	for (int i = 7; i >= 0; i--) {
-		buffer[7 - i] = ((value >> i) & 0x01) ? '1' : '0';
-	}
-	buffer[8] = '\0';
-}
-
-void TWI_Slave_Stop(void) {
-	TWCR &= ~((1 << TWEN) | (1 << TWIE));  // Disable TWI and TWI Interrupt
-}
-
-ISR(TWI_vect) {
-	uint8_t status = TWSR & 0xF8;
-	transmitByte('A');
-	PORTB |= (1 << PB0);
-	switch (status) {
-		case TW_SR_SLA_ACK:  // Address received, ACK returned
-		// Handle address received event (optional)
-		break;
-		case TW_SR_DATA_ACK:  // Data received, ACK returned
-		// Handle data received event
-		  // Store received value in a variable
-		break;
-		case TW_ST_SLA_ACK:  // Address transmitted, ACK received
-		case TW_ST_DATA_ACK:  // Data transmitted, ACK received
-		// Respond to read requests (optional)
-		TWDR = variableValue;  // Send the variable value to the master
-		break;
-		case TW_SR_STOP:  // Stop condition received while addressed
-		// Handle stop condition received event (optional)
-		break;
-		default:
-		 TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
-		break;
-	}
-
-	// Clear TWI interrupt flag, enable TWI
-	TWCR |= (1 << TWINT);         // Clear interrupt flag
-	//TWCR = (1 << TWINT) | (1 << TWEA) | (1 << TWEN);
-}
+#define SLAVE_ADDRESS 0x3C//addresse i2c de U2
 
 void initIOports(){
-
-	// Set PC4 and PC5 as output pin for debug
-	DDRC |= (1 << PC3);
-	DDRC |= (1 << PC2);
-	DDRC |= (1 << PC1);
-	DDRB |= (1 << PB0);
-
-	// Set PD6 and PD7 as input pins
-	DDRD &= ~(1 << PD6);
-	DDRD &= ~(1 << PD7);
-	
-
-	// Enable pull-up resistors on PD3 and PD4
-	//PORTD |= (1 << 3);
-	//PORTD |= (1 << 4);
+	// Set PD7 and PD6 as input pin
+	DDRD &= ~((1 << PD7)|(1 << PD6));
+	//Set PB1 and PB2 as output pins
+	DDRB |= ((1 << PB1)|(1 << PB2));
 }
 
 int main(void) {
-	initI2Cslave();
 	initIOports();
-	initUSART();
+	int drapeau=0;
+	int8_t instructionCode = 0;
+	uint8_t window1 = 0;
+	uint8_t window2 = 0;
+	uint8_t windows = 0;
+
+	I2C_Slave_Init(SLAVE_ADDRESS);
+	initIOports();
+	
 
 	while (1) {
-		//windows =0;
-		// Your main code logic here
-		window1 = PIND & (1 << PD6);
+		//pick door status on pin PD7
 		window2 = PIND & (1 << PD7);
-		windows |= (window1 << 0);
-		windows |= (window2 << 1);
-		
-		_delay_ms(100);
-		transmitByte('A');
-		//transmitByte(windows);
-		//uint8ToBinaryString(windows, buffer);
-		//printString(buffer);
-		//if(window2 == 0){
-			//PORTB |= (1 << PB0);
-			//transmitByte(0x61);
-		//}
-		//else
-		//{
-			//transmitByte(2);
-			//PORTB &= ~(1 << PB0);
-		//}
-		
+		//put door status out on PB1
+		window1 = PIND & (1 << PD6);
+
+		if(window1 == 0){
+			PORTB &= ~(1 << PB1); //debug led for tension divider tweaks
+		}
+		else{
+			PORTB |= (1 << PB1); 
+		}
+		if(window2 == 0){
+			PORTB &= ~(1 << PB2); //debug led for tension divider tweaks
+		}
+		else{
+			PORTB |= (1 << PB2); 
+		}
+		windows = (window1 << 1) | window2;
+		switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
+		{
+			case 0://receive
+			{
+				do
+				{
+	
+					instructionCode = I2C_Slave_Receive();/* Receive data byte*/
+					if(instructionCode==0xAE) drapeau=1;  // vÃ©rifier si c'est 0xAE (code) alors autoriser la transmission
+				} while (instructionCode != -1);			/* Receive until STOP/REPEATED START received */
+				
+				break;
+			}
+			
+			case 1://transmit
+			{
+				int8_t Ack_status;
+		        if(drapeau==1){ //si bon code envoi l'Ã©tat de PB0
+				do
+					{   
+						Ack_status = I2C_Slave_Transmit(windows);	/* Send data byte */
+				
+					} while (Ack_status == 0);		/* Send until Acknowledgment is received */
+				
+					drapeau=0;//reset pour lire une autre donnÃ©e
+				}
+				break;
+			}
+			default:
+				break;
+		}
+
 	}
 
 	return 0;

@@ -3,7 +3,7 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_copy_data.o)
                               main.o (__do_clear_bss)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o)
-                              E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o (exit)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o (exit)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(_Exit.o)
                               c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a(exit.o) (_Exit)
 c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
@@ -16,8 +16,8 @@ status              0x6               main.o
 
 Discarded input sections
 
- .data          0x0000000000000000        0x0 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .bss           0x0000000000000000        0x0 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .data          0x0000000000000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .bss           0x0000000000000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  .text          0x0000000000000000        0x0 houseStatus.o
  .data          0x0000000000000000        0x0 houseStatus.o
  .bss           0x0000000000000000        0x0 houseStatus.o
@@ -100,7 +100,7 @@ user_signatures  0x0000000000850000 0x0000000000000400 rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800100
-LOAD E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
 LOAD houseStatus.o
 LOAD I2C_Master_C_file.o
 LOAD main.o
@@ -110,7 +110,7 @@ START GROUP
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libm.a
 LOAD c:/program files/microchip/xc8/v2.36/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/memx-const\libc.a
-LOAD E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega168.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega168.a
 END GROUP
                 0x0000000000000000                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
                 [0x0000000000800100]                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800060
@@ -214,7 +214,7 @@ END GROUP
 
 .text           0x0000000000000000       0xc2
  *(.vectors)
- .vectors       0x0000000000000000       0x68 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .vectors       0x0000000000000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
                 0x0000000000000000                __vector_default
                 0x0000000000000000                __vectors
  *(.vectors)
@@ -244,13 +244,13 @@ END GROUP
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x000000000000006e        0x0 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .init0         0x000000000000006e        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
                 0x000000000000006e                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x000000000000006e        0xc E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .init2         0x000000000000006e        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  *(.init2)
  *(.init3)
  *(.init3)
@@ -268,7 +268,7 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000000000000b6        0x8 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .init9         0x00000000000000b6        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  *(.init9)
                 0x00000000000000be                . = ALIGN (0x2)
  *(.fini9)
@@ -401,23 +401,23 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x130d
+.debug_info     0x0000000000000000     0x133d
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000      0x5f4 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
- .debug_info    0x00000000000005f4      0x3f0 I2C_Master_C_file.o
- .debug_info    0x00000000000009e4      0x929 main.o
+ .debug_info    0x0000000000000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .debug_info    0x00000000000005f4      0x40f I2C_Master_C_file.o
+ .debug_info    0x0000000000000a03      0x93a main.o
 
-.debug_abbrev   0x0000000000000000      0x8b5
+.debug_abbrev   0x0000000000000000      0x8aa
  *(.debug_abbrev)
- .debug_abbrev  0x0000000000000000      0x5a2 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .debug_abbrev  0x0000000000000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  .debug_abbrev  0x00000000000005a2       0xca I2C_Master_C_file.o
- .debug_abbrev  0x000000000000066c      0x249 main.o
+ .debug_abbrev  0x000000000000066c      0x23e main.o
 
-.debug_line     0x0000000000000000      0x732
+.debug_line     0x0000000000000000      0x733
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x0000000000000000      0x137 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .debug_line    0x0000000000000000      0x137 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  .debug_line    0x0000000000000137      0x2a9 I2C_Master_C_file.o
- .debug_line    0x00000000000003e0      0x352 main.o
+ .debug_line    0x00000000000003e0      0x353 main.o
 
 .debug_frame    0x0000000000000000      0x184
  *(.debug_frame)
@@ -426,14 +426,14 @@ END GROUP
 
 .debug_str      0x0000000000000000      0x268
  *(.debug_str)
- .debug_str     0x0000000000000000      0x208 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .debug_str     0x0000000000000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
  .debug_str     0x0000000000000208       0x15 I2C_Master_C_file.o
  .debug_str     0x000000000000021d       0x4b main.o
 
-.debug_loc      0x0000000000000000      0x5b6
+.debug_loc      0x0000000000000000      0x5c2
  *(.debug_loc)
  .debug_loc     0x0000000000000000      0x1d7 I2C_Master_C_file.o
- .debug_loc     0x00000000000001d7      0x3df main.o
+ .debug_loc     0x00000000000001d7      0x3eb main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -467,7 +467,7 @@ LOAD data_init
 .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x3c
  .note.gnu.avr.deviceinfo
-                0x0000000000000000       0x3c E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+                0x0000000000000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
 
 .text.main      0x00000000000000c2       0x64
  .text.main     0x00000000000000c2       0x64 main.o
@@ -554,7 +554,7 @@ LOAD data_init
                 0x0000000000000326                I2C_Init
 
 .text           0x0000000000000332        0x4
- .text          0x0000000000000332        0x4 E:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
+ .text          0x0000000000000332        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega168.o
                 0x0000000000000332                __vector_22
                 0x0000000000000332                __vector_1
                 0x0000000000000332                __vector_24

@@ -15,23 +15,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000c8  00000000  00000000  00000411  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000130d  00000000  00000000  000004d9  2**0
+  6 .debug_info   0000133d  00000000  00000000  000004d9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008b5  00000000  00000000  000017e6  2**0
+  7 .debug_abbrev 000008aa  00000000  00000000  00001816  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000732  00000000  00000000  0000209b  2**0
+  8 .debug_line   00000733  00000000  00000000  000020c0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000184  00000000  00000000  000027d0  2**2
+  9 .debug_frame  00000184  00000000  00000000  000027f4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000268  00000000  00000000  00002954  2**0
+ 10 .debug_str    00000268  00000000  00000000  00002978  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000005b6  00000000  00000000  00002bbc  2**0
+ 11 .debug_loc    000005c2  00000000  00000000  00002be0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a8  00000000  00000000  00003172  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  000031a2  2**0
                   CONTENTS, READONLY, DEBUGGING
  13 .text         00000004  00000332  00000332  000003c6  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000321c  2**2
+ 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000324c  2**2
                   CONTENTS, READONLY, DEBUGGING
  15 .text.I2C_Init 0000000c  00000326  00000326  000003ba  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
@@ -165,14 +165,14 @@ Disassembly of section .text:
 Disassembly of section .text.I2C_Init:
 
 00000326 <I2C_Init>:
-
 #include "I2C_Master_H_file.h"								/* Include I2C header file */
 
 void I2C_Init()												/* I2C initialize function */
 {
+	//TWBR = 12;
 	TWBR = BITRATE(TWSR = 0x00);							/* Get bit rate register value by formula */
  326:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 32a:	80 e2       	ldi	r24, 0x20	; 32
+ 32a:	8f ef       	ldi	r24, 0xFF	; 255
  32c:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7fc0b8>
  330:	08 95       	ret
 
@@ -423,6 +423,8 @@ void SPI_MasterTransmit(char cData, uint8_t ss)
  2c4:	0d b4       	in	r0, 0x2d	; 45
  2c6:	07 fe       	sbrs	r0, 7
  2c8:	fd cf       	rjmp	.-6      	; 0x2c4 <SPI_MasterTransmit+0x18>
+
+	//return SPDR;
 }
  2ca:	08 95       	ret
 
@@ -557,47 +559,47 @@ uint8_t poll_I2cDevice(uint8_t address){
 		uint8_t data;
 		I2C_Start_Wait(address); // wait for ACK signal
  12a:	0e 94 e2 00 	call	0x1c4	; 0x1c4 <I2C_Start_Wait>
- 12e:	89 ef       	ldi	r24, 0xF9	; 249
- 130:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	81 ee       	ldi	r24, 0xE1	; 225
+ 130:	94 e0       	ldi	r25, 0x04	; 4
  132:	01 97       	sbiw	r24, 0x01	; 1
  134:	f1 f7       	brne	.-4      	; 0x132 <poll_I2cDevice+0xc>
  136:	00 c0       	rjmp	.+0      	; 0x138 <poll_I2cDevice+0x12>
  138:	00 00       	nop
-		_delay_ms(1);
+		_delay_ms(5);
 
-		I2C_Write(0xAE); //numero de l'instruction attendu par slave
- 13a:	8e ea       	ldi	r24, 0xAE	; 174
+		I2C_Write(0x25); //numero de l'instruction attendu par slave
+ 13a:	85 e2       	ldi	r24, 0x25	; 37
  13c:	0e 94 1a 01 	call	0x234	; 0x234 <I2C_Write>
- 140:	89 ef       	ldi	r24, 0xF9	; 249
- 142:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	81 ee       	ldi	r24, 0xE1	; 225
+ 142:	94 e0       	ldi	r25, 0x04	; 4
  144:	01 97       	sbiw	r24, 0x01	; 1
  146:	f1 f7       	brne	.-4      	; 0x144 <poll_I2cDevice+0x1e>
  148:	00 c0       	rjmp	.+0      	; 0x14a <poll_I2cDevice+0x24>
  14a:	00 00       	nop
-		_delay_ms(1);
+		_delay_ms(5);
 
-		I2C_Repeated_Start(address | 0b1); // force Least Meaningful bit to 1 for read mode
+		I2C_Repeated_Start(address | 0b00000001); // force Least Meaningful bit to 1 for read mode
  14c:	8c 2f       	mov	r24, r28
  14e:	81 60       	ori	r24, 0x01	; 1
  150:	0e 94 be 00 	call	0x17c	; 0x17c <I2C_Repeated_Start>
- 154:	89 ef       	ldi	r24, 0xF9	; 249
- 156:	90 e0       	ldi	r25, 0x00	; 0
+ 154:	81 ee       	ldi	r24, 0xE1	; 225
+ 156:	94 e0       	ldi	r25, 0x04	; 4
  158:	01 97       	sbiw	r24, 0x01	; 1
  15a:	f1 f7       	brne	.-4      	; 0x158 <poll_I2cDevice+0x32>
  15c:	00 c0       	rjmp	.+0      	; 0x15e <poll_I2cDevice+0x38>
  15e:	00 00       	nop
-		_delay_ms(1);
+		_delay_ms(5);
 
 		data = I2C_Read_Ack();
  160:	0e 94 71 01 	call	0x2e2	; 0x2e2 <I2C_Read_Ack>
  164:	c8 2f       	mov	r28, r24
- 166:	89 ef       	ldi	r24, 0xF9	; 249
- 168:	90 e0       	ldi	r25, 0x00	; 0
+ 166:	81 ee       	ldi	r24, 0xE1	; 225
+ 168:	94 e0       	ldi	r25, 0x04	; 4
  16a:	01 97       	sbiw	r24, 0x01	; 1
  16c:	f1 f7       	brne	.-4      	; 0x16a <poll_I2cDevice+0x44>
  16e:	00 c0       	rjmp	.+0      	; 0x170 <poll_I2cDevice+0x4a>
  170:	00 00       	nop
-		_delay_ms(1);
+		_delay_ms(5);
 		
 		I2C_Stop();
  172:	0e 94 84 01 	call	0x308	; 0x308 <I2C_Stop>

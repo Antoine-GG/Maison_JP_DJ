@@ -35,6 +35,8 @@ void SPI_MasterTransmit(char cData, uint8_t ss)
 	SPDR = cData;
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));
+
+	//return SPDR;
 }
 uint8_t SPI_MasterReceive(uint8_t ss)
 {
@@ -90,31 +92,31 @@ void printString(const char myString[]) {
 uint8_t poll_I2cDevice(uint8_t address){
 		uint8_t data;
 		I2C_Start_Wait(address); // wait for ACK signal
-		_delay_ms(1);
+		_delay_ms(5);
 
-		I2C_Write(0xAE); //numero de l'instruction attendu par slave
-		_delay_ms(1);
+		I2C_Write(0x25); //numero de l'instruction attendu par slave
+		_delay_ms(5);
 
-		I2C_Repeated_Start(address | 0b1); // force Least Meaningful bit to 1 for read mode
-		_delay_ms(1);
+		I2C_Repeated_Start(address | 0b00000001); // force Least Meaningful bit to 1 for read mode
+		_delay_ms(5);
 
 		data = I2C_Read_Ack();
-		_delay_ms(1);
+		_delay_ms(5);
 		
 		I2C_Stop();
 		return data;
 }
 
 int main() {
+	uint8_t received;
 	SPI_MasterInit();
 	initUSART();
 	I2C_Init();
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
-	//DDRB |= (1 << PB0) | (1 << PB1);	
 	
 	while (1) {
+		received = 0;
 		
-		uint8_t received;
 		//i2c calls
 		//POLL U1, window1 and window2 are the 2 last bits as 0000 0012
 		received = poll_I2cDevice(SLAVE1);
