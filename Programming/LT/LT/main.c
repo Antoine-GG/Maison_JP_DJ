@@ -29,40 +29,18 @@ void SPI_MasterInit(void)
 	/* Enable SPI, Master, set clock rate fck/16 */
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
 }
-void SPI_MasterTransmit(char cData, uint8_t ss)
+char SPI_MasterTransmit(char cData, uint8_t ss)
 {
 	//set all SS high
 	PORTD |= (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
-	/* Set SS low */
+	/* Set le slave qu'on veut low */
 	PORTD &= ~(1<<ss);
+	_delay_ms(1);
 	/* Start transmission */
 	SPDR = cData;
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));
-}
-uint8_t SPI_MasterReceive(uint8_t ss)
-{
-	PORTD |= (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
-	/* Set SS low */
-	PORTB &= ~(1<<ss);
-	/* Wait for reception complete */
-	SPDR = 0x00;
-	while(!(SPSR & (1<<SPIF)));
-	/* Return Data Register */
 	return SPDR;
-}
-uint8_t pollSpiDevice(uint8_t ss){
-	uint8_t data;
-	SPI_MasterTransmit(0xAE, ss);
-	_delay_ms(1);
-	data = SPI_MasterReceive(ss);
-	_delay_ms(1);
-	return data;
-}
-void SetSpiDevice(uint8_t status, uint8_t ss){
-	SPI_MasterTransmit(status, ss);
-	_delay_ms(1);
-	return;
 }
 
 //init UART
@@ -128,18 +106,20 @@ int main() {
 		status.window1 = (received >> 1) & 0x01; // Shift right by 1 and mask with 0x01
 		//POLL U2, get the door status;
 		received = poll_I2cDevice(SLAVE2, 0x25);
+		status.door = received & 0x01; //Mask the lsb
+		
 		}
 		if(useSPI){
-		status.door = received & 0x01; //Mask the lsb
+		
 		//spi calls
 		//Set U3 door lock status
-		SetSpiDevice(status.lock, SLAVE3);
+		//SPI_MasterTransmit(status.lock, SLAVE3);
 		//Set U4 light status
-		SetSpiDevice(status.light, SLAVE4);
+		SPI_MasterTransmit(status.light, SLAVE4);
 		//POLL U5, get the keyboard char
-		status.keyboardChar = pollSpiDevice(SLAVE5);
+		status.keyboardChar = SPI_MasterTransmit('Y', SLAVE5);
 		}
-		_delay_ms(50); // Attendre avant de refaire la demande
+		_delay_ms(5); // Attendre avant de refaire la demande
 	}
 
 	return 0;

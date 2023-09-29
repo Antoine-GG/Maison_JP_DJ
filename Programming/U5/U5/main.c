@@ -3,7 +3,7 @@
  *
  * Created: 9/14/2023 3:46:22 PM
  *  Author: JP Toutant, ChatGPT
- *	Prototype arduino ensuite porté sur avr
+ *	Prototype arduino ensuite port sur avr
  *	
  */ 
 
@@ -44,12 +44,31 @@ void initIOports(){
 	DDRC |= (1 << CLOCK_PIN); // Clock pin as output
 	DDRC &= ~(1 << DATA_PIN); // Data pin as input
 	//MISO as output, all others input
-	DDRB |= (1 )
+	DDRB |= (1 << MISO_PIN);
+	//SPI inputs
+	DDRB &= ~(1 << SS_PIN);
+	DDRB &= ~(1 << MOSI_PIN);
+	DDRB &= ~(1 << SCK_PIN);
 	
 	// Enable pull-up resistor for data pin
 	PORTC |= (1 << DATA_PIN);
 		
 }
+void SPI_SlaveInit(void)
+{
+	/* Enable SPI */
+	SPCR = (1<<SPE);
+}
+
+char SPI_SlaveReceive(void)
+{	
+	/* Wait for reception complete */
+	while(!(SPSR & (1<<SPIF)))
+	;
+	/* Return Data Register */
+	return SPDR;
+}
+
 
 //initialiser UART
 void initUSART(void) {
@@ -59,24 +78,29 @@ void initUSART(void) {
 	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
 	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
 }
-//transmettre un caractère
-void transmitByte(uint8_t data) {
+
+//transmettre un caractï¿½re
+void SPI_SlaveTransmit(uint8_t data) {
 	while ( !( UCSR0A & (1<<UDRE0)) ); /* Attendre que le buffer de transmission soit vide */
-	UDR0 = data;                      /* envoyer la donnée */
+	UDR0 = data;                      /* envoyer la donnï¿½e */
 }
-//recevoir un caractère
+
+//recevoir un caractï¿½re
 uint8_t receiveByte(void) {
-	while ( !( UCSR0A & (1<<RXC0)) ); /* Attendre que le buffer de réception soit plein */
+	while ( !( UCSR0A & (1<<RXC0)) ); /* Attendre que le buffer de rï¿½ception soit plein */
 	return UDR0;                                /* retourner la valeur lue */
 }
-//envoyer une chaine de caractères
+
+//envoyer une chaine de caractï¿½res
 void printString(const char myString[]) {
 	uint8_t i = 0;
 	while (myString[i]) {
-		transmitByte(myString[i]);
+		SPI_SlaveTransmit(myString[i]);
 		i++;
 	}
 }
+//SPI CALLS
+
 
 // Function to read data from the shift registers
 uint16_t readShiftRegisters() {
@@ -103,11 +127,14 @@ uint16_t readShiftRegisters() {
 }
 
 int main() {
+	uint8_t feedback =0;
 	initIOports();
-	sound_fail();
-	sound_input();
-	sound_success();
+	SPI_SlaveInit();
+	//sound_fail();
+	//sound_input();
+	//sound_success();
 	while (1) {
+
 		// Read data from shift registers
 		uint16_t shiftRegisterData = readShiftRegisters();
 		switch (shiftRegisterData)
@@ -116,60 +143,73 @@ int main() {
 			break;
 		case KEY_0:
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('0');
+			SPDR = '0';
 			break;
 		case KEY_1:
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('1');
+			SPDR = '1';
 			break;
 		case KEY_2:
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('2');
+			SPDR = '2';
 			break;
 		case KEY_3:
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('2');
+			SPDR = '3';
 			break;
 		case KEY_4:
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('4'); 
+			SPDR = '4'; 
 			break;
 		case KEY_5:
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('5');
+			SPDR = '5'; 
 			break;
 		case KEY_6:
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('6'); 
+			SPDR = '6';  
 			break;
 		case KEY_7:
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('7'); 
+			SPDR = '7';  
 			break;
 		case KEY_8:
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('8');
+			SPDR = '8'; 
 			break;
 		case KEY_9:
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('9');
+			SPDR = '9'; 
 			break;
 		case KEY_STAR:
 			PORTB |= (1 << DEBUG_PIN);
-			transmitByte('*');
+			SPDR = 'A';
 			break;
 		case KEY_SHARP:
 			PORTB &= ~(1 << DEBUG_PIN);
-			transmitByte('#');
+			SPDR = 'B';
 			break;
+		default:
+			SPDR = 'X';
+			break;
+		}
+		feedback = SPI_SlaveReceive();
+		switch (feedback)
+		{
+		case 0xF0:
+			sound_input();	 
+			break;
+		case 0xE0:
+			sound_fail();	 
+			break;
+		case 0xD0:
+			sound_success();	 
+			break;		
 		default:
 			break;
 		}
-		// Process and use the received data as needed
-		// You can print it, send it to other devices, or perform any desired operations
 		
-		// Delay between data reads (adjust as needed)
-		_delay_ms(10); // We need a responsive rate
+		_delay_ms(1); // We need a responsive rate
 	}
 	return 0;
 }
