@@ -8,6 +8,7 @@
 
 void I2C_Init()												/* I2C initialize function */
 {
+	//TWBR = 12;
 	TWBR = BITRATE(TWSR = 0x00);							/* Get bit rate register value by formula */
 }	
 

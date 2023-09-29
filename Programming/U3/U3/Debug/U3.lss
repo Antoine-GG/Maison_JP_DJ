@@ -1,0 +1,222 @@
+
+U3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000158  2**0
+                  ALLOC, LOAD, DATA
+  1 .text         00000080  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      0000002f  00000000  00000000  00000158  2**0
+                  CONTENTS, READONLY
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  00000187  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000038  00000000  00000000  00000195  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000009ab  00000000  00000000  000001cd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000006b7  00000000  00000000  00000b78  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000285  00000000  00000000  0000122f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  000014b4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000208  00000000  00000000  00001508  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000004a  00000000  00000000  00001710  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000028  00000000  00000000  0000175a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .text         00000004  000000d6  000000d6  0000014a  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001784  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .text.IO_Init 00000006  000000d0  000000d0  00000144  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .text.SPI_SlaveInit 0000000a  000000bc  000000bc  00000130  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 16 .text.SPI_SlaveReceive 0000000a  000000c6  000000c6  0000013a  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 17 .text.main    00000026  00000080  00000080  000000f4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .text.__dummy_fini 00000002  000000de  000000de  00000152  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 19 .text.__dummy_funcs_on_exit 00000002  000000e0  000000e0  00000154  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .text.__dummy_simulator_exit 00000002  000000e2  000000e2  00000156  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 21 .text.exit    00000016  000000a6  000000a6  0000011a  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 22 .text._Exit   00000004  000000da  000000da  0000014e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+   8:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+   c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  10:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  14:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  18:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  1c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  20:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  24:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  28:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  2c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  30:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  34:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  38:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  3c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  40:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  44:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  48:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  4c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  50:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  54:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  58:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  5c:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  60:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+  64:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 40 00 	call	0x80	; 0x80 <_etext>
+  78:	0c 94 53 00 	jmp	0xa6	; 0xa6 <exit>
+
+0000007c <_exit>:
+  7c:	f8 94       	cli
+
+0000007e <__stop_program>:
+  7e:	ff cf       	rjmp	.-2      	; 0x7e <__stop_program>
+
+Disassembly of section .text:
+
+000000d6 <__bad_interrupt>:
+  d6:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.IO_Init:
+
+000000d0 <IO_Init>:
+#define LIGHT PC5
+
+void IO_Init(void)
+{
+	//SET PC5 as output
+	DDRC = 0xFF;
+  d0:	8f ef       	ldi	r24, 0xFF	; 255
+  d2:	87 b9       	out	0x07, r24	; 7
+  d4:	08 95       	ret
+
+Disassembly of section .text.SPI_SlaveInit:
+
+000000bc <SPI_SlaveInit>:
+}
+
+void SPI_SlaveInit(void)
+{
+	/* Set MISO output, all others input */
+	DDRB = (1<<PB4);
+  bc:	80 e1       	ldi	r24, 0x10	; 16
+  be:	84 b9       	out	0x04, r24	; 4
+	/* Enable SPI */
+	SPCR = (1<<SPE);
+  c0:	80 e4       	ldi	r24, 0x40	; 64
+  c2:	8c bd       	out	0x2c, r24	; 44
+  c4:	08 95       	ret
+
+Disassembly of section .text.SPI_SlaveReceive:
+
+000000c6 <SPI_SlaveReceive>:
+}
+char SPI_SlaveReceive(void)
+{
+	/* Wait for reception complete */
+	while(!(SPSR & (1<<SPIF)))
+  c6:	0d b4       	in	r0, 0x2d	; 45
+  c8:	07 fe       	sbrs	r0, 7
+  ca:	fd cf       	rjmp	.-6      	; 0xc6 <SPI_SlaveReceive>
+	;
+	/* Return Data Register */
+	return SPDR;
+  cc:	8e b5       	in	r24, 0x2e	; 46
+}
+  ce:	08 95       	ret
+
+Disassembly of section .text.main:
+
+00000080 <main>:
+
+int main(void)
+{
+	uint8_t data;
+	IO_Init();
+  80:	0e 94 68 00 	call	0xd0	; 0xd0 <IO_Init>
+	SPI_SlaveInit();
+  84:	0e 94 5e 00 	call	0xbc	; 0xbc <SPI_SlaveInit>
+    while(1)
+    {
+		data = SPI_SlaveReceive();
+  88:	0e 94 63 00 	call	0xc6	; 0xc6 <SPI_SlaveReceive>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <main+0xe>
+  8e:	00 c0       	rjmp	.+0      	; 0x90 <main+0x10>
+  90:	00 00       	nop
+		_delay_us(5);
+		if(data == 0x01){
+  92:	81 30       	cpi	r24, 0x01	; 1
+  94:	21 f4       	brne	.+8      	; 0x9e <main+0x1e>
+			PORTC |= (1<<LIGHT);
+  96:	88 b1       	in	r24, 0x08	; 8
+  98:	80 62       	ori	r24, 0x20	; 32
+  9a:	88 b9       	out	0x08, r24	; 8
+  9c:	f5 cf       	rjmp	.-22     	; 0x88 <main+0x8>
+		} 
+		else{
+			PORTC &= ~(1<<LIGHT);
+  9e:	88 b1       	in	r24, 0x08	; 8
+  a0:	8f 7d       	andi	r24, 0xDF	; 223
+  a2:	88 b9       	out	0x08, r24	; 8
+  a4:	f1 cf       	rjmp	.-30     	; 0x88 <main+0x8>
+
+Disassembly of section .text.__dummy_fini:
+
+000000de <_fini>:
+  de:	08 95       	ret
+
+Disassembly of section .text.__dummy_funcs_on_exit:
+
+000000e0 <__funcs_on_exit>:
+  e0:	08 95       	ret
+
+Disassembly of section .text.__dummy_simulator_exit:
+
+000000e2 <__simulator_exit>:
+  e2:	08 95       	ret
+
+Disassembly of section .text.exit:
+
+000000a6 <exit>:
+  a6:	ec 01       	movw	r28, r24
+  a8:	0e 94 70 00 	call	0xe0	; 0xe0 <__funcs_on_exit>
+  ac:	0e 94 6f 00 	call	0xde	; 0xde <_fini>
+  b0:	ce 01       	movw	r24, r28
+  b2:	0e 94 71 00 	call	0xe2	; 0xe2 <__simulator_exit>
+  b6:	ce 01       	movw	r24, r28
+  b8:	0e 94 6d 00 	call	0xda	; 0xda <_Exit>
+
+Disassembly of section .text._Exit:
+
+000000da <_Exit>:
+  da:	0e 94 3e 00 	call	0x7c	; 0x7c <_exit>

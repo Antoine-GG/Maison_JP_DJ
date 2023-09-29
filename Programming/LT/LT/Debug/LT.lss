@@ -3,104 +3,92 @@ LT.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000003d4  2**0
+  0 .data         00000000  00800100  00800100  00000296  2**0
                   ALLOC, LOAD, DATA
   1 .text         000000c2  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000006  00800100  00800100  000003d4  2**0
+  2 .bss          00000006  00800100  00800100  00000296  2**0
                   ALLOC
-  3 .comment      0000002f  00000000  00000000  000003d4  2**0
+  3 .comment      0000002f  00000000  00000000  00000296  2**0
                   CONTENTS, READONLY
-  4 .stack.descriptors.hdr 0000000e  00000000  00000000  00000403  2**0
+  4 .stack.descriptors.hdr 0000000e  00000000  00000000  000002c5  2**0
                   CONTENTS, READONLY
-  5 .debug_aranges 000000c8  00000000  00000000  00000411  2**0
+  5 .debug_aranges 000000c8  00000000  00000000  000002d3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000130d  00000000  00000000  000004d9  2**0
+  6 .debug_info   0000132d  00000000  00000000  0000039b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008b5  00000000  00000000  000017e6  2**0
+  7 .debug_abbrev 000008b9  00000000  00000000  000016c8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000732  00000000  00000000  0000209b  2**0
+  8 .debug_line   00000702  00000000  00000000  00001f81  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000184  00000000  00000000  000027d0  2**2
+  9 .debug_frame  00000188  00000000  00000000  00002684  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000268  00000000  00000000  00002954  2**0
+ 10 .debug_str    00000268  00000000  00000000  0000280c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000005b6  00000000  00000000  00002bbc  2**0
+ 11 .debug_loc    000005d1  00000000  00000000  00002a74  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a8  00000000  00000000  00003172  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  00003045  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .text         00000004  00000332  00000332  000003c6  2**1
+ 13 .text         00000004  000001f4  000001f4  00000288  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000321c  2**2
+ 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000030f0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 15 .text.I2C_Init 0000000c  00000326  00000326  000003ba  2**1
+ 15 .text.I2C_Init 0000000c  000001e8  000001e8  0000027c  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.I2C_Repeated_Start 00000048  0000017c  0000017c  00000210  2**1
+ 16 .text.SPI_MasterInit 0000000e  000001da  000001da  0000026e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.I2C_Stop 00000010  00000308  00000308  0000039c  2**1
+ 17 .text.SPI_MasterTransmit 00000026  0000018c  0000018c  00000220  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.I2C_Start_Wait 00000042  000001c4  000001c4  00000258  2**1
+ 18 .text.SPI_MasterReceive 00000028  00000164  00000164  000001f8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 19 .text.I2C_Write 0000002c  00000234  00000234  000002c8  2**1
+ 19 .text.pollSpiDevice 0000002e  0000010c  0000010c  000001a0  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 20 .text.I2C_Read_Ack 00000014  000002e2  000002e2  00000376  2**1
+ 20 .text.SetSpiDevice 00000012  000001c8  000001c8  0000025c  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 21 .text.SPI_MasterInit 0000000e  00000318  00000318  000003ac  2**1
+ 21 .text.initUSART 0000002a  0000013a  0000013a  000001ce  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 22 .text.SPI_MasterTransmit 00000020  000002ac  000002ac  00000340  2**1
+ 22 .text.main    0000004a  000000c2  000000c2  00000156  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 23 .text.SPI_MasterReceive 00000022  0000028a  0000028a  0000031e  2**1
+ 23 .text.__dummy_fini 00000002  000001fc  000001fc  00000290  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 24 .text.pollSpiDevice 0000002e  00000206  00000206  0000029a  2**1
+ 24 .text.__dummy_funcs_on_exit 00000002  000001fe  000001fe  00000292  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 25 .text.SetSpiDevice 00000012  000002f6  000002f6  0000038a  2**1
+ 25 .text.__dummy_simulator_exit 00000002  00000200  00000200  00000294  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 26 .text.initUSART 0000002a  00000260  00000260  000002f4  2**1
+ 26 .text.exit    00000016  000001b2  000001b2  00000246  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 27 .text.poll_I2cDevice 00000056  00000126  00000126  000001ba  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
- 28 .text.main    00000064  000000c2  000000c2  00000156  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
- 29 .text.__dummy_fini 00000002  0000033a  0000033a  000003ce  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
- 30 .text.__dummy_funcs_on_exit 00000002  0000033c  0000033c  000003d0  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
- 31 .text.__dummy_simulator_exit 00000002  0000033e  0000033e  000003d2  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
- 32 .text.exit    00000016  000002cc  000002cc  00000360  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
- 33 .text._Exit   00000004  00000336  00000336  000003ca  2**1
+ 27 .text._Exit   00000004  000001f8  000001f8  0000028c  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 37 00 	jmp	0x6e	; 0x6e <__ctors_end>
-   4:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-   8:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-   c:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  10:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  14:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  18:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  1c:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  20:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  24:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  28:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  2c:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  30:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  34:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  38:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  3c:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  40:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  44:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  48:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  4c:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  50:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  54:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  58:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  5c:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  60:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
-  64:	0c 94 99 01 	jmp	0x332	; 0x332 <__bad_interrupt>
+   4:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+   8:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+   c:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  10:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  14:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  18:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  1c:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  20:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  24:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  28:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  2c:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  30:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  34:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  38:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  3c:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  40:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  44:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  48:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  4c:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  50:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  54:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  58:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  5c:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  60:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
+  64:	0c 94 fa 00 	jmp	0x1f4	; 0x1f4 <__bad_interrupt>
 
 00000068 <.dinit>:
   68:	01 00       	.word	0x0001	; ????
@@ -149,7 +137,7 @@ Disassembly of section .text:
   b2:	f4 07       	cpc	r31, r20
   b4:	31 f7       	brne	.-52     	; 0x82 <__do_copy_data+0x8>
   b6:	0e 94 61 00 	call	0xc2	; 0xc2 <_etext>
-  ba:	0c 94 66 01 	jmp	0x2cc	; 0x2cc <exit>
+  ba:	0c 94 d9 00 	jmp	0x1b2	; 0x1b2 <exit>
 
 000000be <_exit>:
   be:	f8 94       	cli
@@ -159,466 +147,214 @@ Disassembly of section .text:
 
 Disassembly of section .text:
 
-00000332 <__bad_interrupt>:
- 332:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+000001f4 <__bad_interrupt>:
+ 1f4:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 Disassembly of section .text.I2C_Init:
 
-00000326 <I2C_Init>:
-
+000001e8 <I2C_Init>:
 #include "I2C_Master_H_file.h"								/* Include I2C header file */
 
 void I2C_Init()												/* I2C initialize function */
 {
+	//TWBR = 12;
 	TWBR = BITRATE(TWSR = 0x00);							/* Get bit rate register value by formula */
- 326:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 32a:	80 e2       	ldi	r24, 0x20	; 32
- 32c:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7fc0b8>
- 330:	08 95       	ret
-
-Disassembly of section .text.I2C_Repeated_Start:
-
-0000017c <I2C_Repeated_Start>:
-}
-
-uint8_t I2C_Repeated_Start(char read_address)				/* I2C repeated start function */
-{
-	uint8_t status;											/* Declare variable */
-	TWCR = (1<<TWSTA)|(1<<TWEN)|(1<<TWINT);					/* Enable TWI, generate start condition and clear interrupt flag */
- 17c:	94 ea       	ldi	r25, 0xA4	; 164
- 17e:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (start condition) */
- 182:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 186:	99 23       	and	r25, r25
- 188:	e4 f7       	brge	.-8      	; 0x182 <I2C_Repeated_Start+0x6>
-	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
- 18a:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 18e:	98 7f       	andi	r25, 0xF8	; 248
-	if (status != 0x10)										/* Check weather repeated start condition transmitted successfully or not? */
- 190:	90 31       	cpi	r25, 0x10	; 16
- 192:	91 f4       	brne	.+36     	; 0x1b8 <I2C_Repeated_Start+0x3c>
-	return 0;												/* If no then return 0 to indicate repeated start condition fail */
-	TWDR = read_address;									/* If yes then write SLA+R in TWI data register */
- 194:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
-	TWCR = (1<<TWEN)|(1<<TWINT);							/* Enable TWI and clear interrupt flag */
- 198:	84 e8       	ldi	r24, 0x84	; 132
- 19a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (Write operation) */
- 19e:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 1a2:	88 23       	and	r24, r24
- 1a4:	e4 f7       	brge	.-8      	; 0x19e <I2C_Repeated_Start+0x22>
-	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
- 1a6:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 1aa:	88 7f       	andi	r24, 0xF8	; 248
-	if (status == 0x40)										/* Check weather SLA+R transmitted & ack received or not? */
- 1ac:	80 34       	cpi	r24, 0x40	; 64
- 1ae:	31 f0       	breq	.+12     	; 0x1bc <I2C_Repeated_Start+0x40>
-	return 1;												/* If yes then return 1 to indicate ack received */ 
-	if (status == 0x20)										/* Check weather SLA+R transmitted & nack received or not? */
- 1b0:	80 32       	cpi	r24, 0x20	; 32
- 1b2:	31 f4       	brne	.+12     	; 0x1c0 <I2C_Repeated_Start+0x44>
-	return 2;												/* If yes then return 2 to indicate nack received i.e. device is busy */
- 1b4:	82 e0       	ldi	r24, 0x02	; 2
- 1b6:	08 95       	ret
-	uint8_t status;											/* Declare variable */
-	TWCR = (1<<TWSTA)|(1<<TWEN)|(1<<TWINT);					/* Enable TWI, generate start condition and clear interrupt flag */
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (start condition) */
-	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
-	if (status != 0x10)										/* Check weather repeated start condition transmitted successfully or not? */
-	return 0;												/* If no then return 0 to indicate repeated start condition fail */
- 1b8:	80 e0       	ldi	r24, 0x00	; 0
- 1ba:	08 95       	ret
-	TWDR = read_address;									/* If yes then write SLA+R in TWI data register */
-	TWCR = (1<<TWEN)|(1<<TWINT);							/* Enable TWI and clear interrupt flag */
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (Write operation) */
-	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
-	if (status == 0x40)										/* Check weather SLA+R transmitted & ack received or not? */
-	return 1;												/* If yes then return 1 to indicate ack received */ 
- 1bc:	81 e0       	ldi	r24, 0x01	; 1
- 1be:	08 95       	ret
-	if (status == 0x20)										/* Check weather SLA+R transmitted & nack received or not? */
-	return 2;												/* If yes then return 2 to indicate nack received i.e. device is busy */
-	else
-	return 3;												/* Else return 3 to indicate SLA+W failed */
- 1c0:	83 e0       	ldi	r24, 0x03	; 3
-}
- 1c2:	08 95       	ret
-
-Disassembly of section .text.I2C_Stop:
-
-00000308 <I2C_Stop>:
-
-void I2C_Stop()												/* I2C stop function */
-{
-	TWCR=(1<<TWSTO)|(1<<TWINT)|(1<<TWEN);					/* Enable TWI, generate stop condition and clear interrupt flag */
- 308:	84 e9       	ldi	r24, 0x94	; 148
- 30a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-	while(TWCR & (1<<TWSTO));								/* Wait until stop condition execution */ 
- 30e:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 312:	84 fd       	sbrc	r24, 4
- 314:	fc cf       	rjmp	.-8      	; 0x30e <I2C_Stop+0x6>
-}
- 316:	08 95       	ret
-
-Disassembly of section .text.I2C_Start_Wait:
-
-000001c4 <I2C_Start_Wait>:
-
-void I2C_Start_Wait(char write_address)						/* I2C start wait function */
-{
- 1c4:	cf 93       	push	r28
- 1c6:	c8 2f       	mov	r28, r24
-	uint8_t status;											/* Declare variable */
-	while (1)
-	{
-		TWCR = (1<<TWSTA)|(1<<TWEN)|(1<<TWINT);				/* Enable TWI, generate start condition and clear interrupt flag */
- 1c8:	84 ea       	ldi	r24, 0xA4	; 164
- 1ca:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-		while (!(TWCR & (1<<TWINT)));						/* Wait until TWI finish its current job (start condition) */
- 1ce:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 1d2:	88 23       	and	r24, r24
- 1d4:	e4 f7       	brge	.-8      	; 0x1ce <I2C_Start_Wait+0xa>
-		status = TWSR & 0xF8;								/* Read TWI status register with masking lower three bits */
- 1d6:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 1da:	88 7f       	andi	r24, 0xF8	; 248
-		if (status != 0x08)									/* Check weather start condition transmitted successfully or not? */
- 1dc:	88 30       	cpi	r24, 0x08	; 8
- 1de:	a1 f7       	brne	.-24     	; 0x1c8 <I2C_Start_Wait+0x4>
-		continue;											/* If no then continue with start loop again */
-		TWDR = write_address;								/* If yes then write SLA+W in TWI data register */
- 1e0:	c0 93 bb 00 	sts	0x00BB, r28	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
-		TWCR = (1<<TWEN)|(1<<TWINT);						/* Enable TWI and clear interrupt flag */
- 1e4:	84 e8       	ldi	r24, 0x84	; 132
- 1e6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-		while (!(TWCR & (1<<TWINT)));						/* Wait until TWI finish its current job (Write operation) */
- 1ea:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 1ee:	88 23       	and	r24, r24
- 1f0:	e4 f7       	brge	.-8      	; 0x1ea <I2C_Start_Wait+0x26>
-		status = TWSR & 0xF8;								/* Read TWI status register with masking lower three bits */
- 1f2:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 1f6:	88 7f       	andi	r24, 0xF8	; 248
-		if (status != 0x18 )								/* Check weather SLA+W transmitted & ack received or not? */
- 1f8:	88 31       	cpi	r24, 0x18	; 24
- 1fa:	19 f0       	breq	.+6      	; 0x202 <__EEPROM_REGION_LENGTH__+0x2>
-		{
-			I2C_Stop();										/* If not then generate stop condition */
- 1fc:	0e 94 84 01 	call	0x308	; 0x308 <I2C_Stop>
-			continue;										/* continue with start loop again */
- 200:	e3 cf       	rjmp	.-58     	; 0x1c8 <I2C_Start_Wait+0x4>
-		}
-		break;												/* If yes then break loop */
-	}
-}
- 202:	cf 91       	pop	r28
- 204:	08 95       	ret
-
-Disassembly of section .text.I2C_Write:
-
-00000234 <I2C_Write>:
-
-uint8_t I2C_Write(char data)								/* I2C write function */
-{
-	uint8_t status;											/* Declare variable */
-	TWDR = data;											/* Copy data in TWI data register */
- 234:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
-	TWCR = (1<<TWEN)|(1<<TWINT);							/* Enable TWI and clear interrupt flag */
- 238:	84 e8       	ldi	r24, 0x84	; 132
- 23a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (Write operation) */
- 23e:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 242:	88 23       	and	r24, r24
- 244:	e4 f7       	brge	.-8      	; 0x23e <I2C_Write+0xa>
-	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
- 246:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
- 24a:	88 7f       	andi	r24, 0xF8	; 248
-	if (status == 0x28)										/* Check weather data transmitted & ack received or not? */
- 24c:	88 32       	cpi	r24, 0x28	; 40
- 24e:	21 f0       	breq	.+8      	; 0x258 <I2C_Write+0x24>
-	return 0;												/* If yes then return 0 to indicate ack received */
-	if (status == 0x30)										/* Check weather data transmitted & nack received or not? */
- 250:	80 33       	cpi	r24, 0x30	; 48
- 252:	21 f4       	brne	.+8      	; 0x25c <I2C_Write+0x28>
-	return 1;												/* If yes then return 1 to indicate nack received */
- 254:	81 e0       	ldi	r24, 0x01	; 1
- 256:	08 95       	ret
-	TWDR = data;											/* Copy data in TWI data register */
-	TWCR = (1<<TWEN)|(1<<TWINT);							/* Enable TWI and clear interrupt flag */
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (Write operation) */
-	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
-	if (status == 0x28)										/* Check weather data transmitted & ack received or not? */
-	return 0;												/* If yes then return 0 to indicate ack received */
- 258:	80 e0       	ldi	r24, 0x00	; 0
- 25a:	08 95       	ret
-	if (status == 0x30)										/* Check weather data transmitted & nack received or not? */
-	return 1;												/* If yes then return 1 to indicate nack received */
-	else
-	return 2;												/* Else return 2 to indicate data transmission failed */
- 25c:	82 e0       	ldi	r24, 0x02	; 2
-}
- 25e:	08 95       	ret
-
-Disassembly of section .text.I2C_Read_Ack:
-
-000002e2 <I2C_Read_Ack>:
-
-char I2C_Read_Ack()											/* I2C read ack function */
-{
-	TWCR=(1<<TWEN)|(1<<TWINT)|(1<<TWEA);					/* Enable TWI, generation of ack and clear interrupt flag */
- 2e2:	84 ec       	ldi	r24, 0xC4	; 196
- 2e4:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
-	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (read operation) */
- 2e8:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
- 2ec:	88 23       	and	r24, r24
- 2ee:	e4 f7       	brge	.-8      	; 0x2e8 <I2C_Read_Ack+0x6>
-	return TWDR;											/* Return received data */
- 2f0:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
-}	
- 2f4:	08 95       	ret
+ 1e8:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 1ec:	8f ef       	ldi	r24, 0xFF	; 255
+ 1ee:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7fc0b8>
+ 1f2:	08 95       	ret
 
 Disassembly of section .text.SPI_MasterInit:
 
-00000318 <SPI_MasterInit>:
+000001da <SPI_MasterInit>:
 
 //SPI
 void SPI_MasterInit(void)
 {
 	/* Set MOSI and SCK output SS,  */
 	DDRB = (1<<PB3)|(1<<PB5)|(1<<PB2);
- 318:	8c e2       	ldi	r24, 0x2C	; 44
- 31a:	84 b9       	out	0x04, r24	; 4
+ 1da:	8c e2       	ldi	r24, 0x2C	; 44
+ 1dc:	84 b9       	out	0x04, r24	; 4
 	// set Port C pins for 3 ss	
 	DDRD = (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
- 31c:	8c e1       	ldi	r24, 0x1C	; 28
- 31e:	8a b9       	out	0x0a, r24	; 10
+ 1de:	8c e1       	ldi	r24, 0x1C	; 28
+ 1e0:	8a b9       	out	0x0a, r24	; 10
 	/* Enable SPI, Master, set clock rate fck/16 */
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
- 320:	81 e5       	ldi	r24, 0x51	; 81
- 322:	8c bd       	out	0x2c, r24	; 44
- 324:	08 95       	ret
+ 1e2:	81 e5       	ldi	r24, 0x51	; 81
+ 1e4:	8c bd       	out	0x2c, r24	; 44
+ 1e6:	08 95       	ret
 
 Disassembly of section .text.SPI_MasterTransmit:
 
-000002ac <SPI_MasterTransmit>:
+0000018c <SPI_MasterTransmit>:
 }
 void SPI_MasterTransmit(char cData, uint8_t ss)
 {
+	//set all SS high
+	PORTD |= (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
+ 18c:	9b b1       	in	r25, 0x0b	; 11
+ 18e:	9c 61       	ori	r25, 0x1C	; 28
+ 190:	9b b9       	out	0x0b, r25	; 11
 	/* Set SS low */
 	PORTD &= ~(1<<ss);
- 2ac:	9b b1       	in	r25, 0x0b	; 11
- 2ae:	21 e0       	ldi	r18, 0x01	; 1
- 2b0:	30 e0       	ldi	r19, 0x00	; 0
- 2b2:	02 c0       	rjmp	.+4      	; 0x2b8 <SPI_MasterTransmit+0xc>
- 2b4:	22 0f       	add	r18, r18
- 2b6:	33 1f       	adc	r19, r19
- 2b8:	6a 95       	dec	r22
- 2ba:	e2 f7       	brpl	.-8      	; 0x2b4 <SPI_MasterTransmit+0x8>
- 2bc:	20 95       	com	r18
- 2be:	29 23       	and	r18, r25
- 2c0:	2b b9       	out	0x0b, r18	; 11
+ 192:	9b b1       	in	r25, 0x0b	; 11
+ 194:	21 e0       	ldi	r18, 0x01	; 1
+ 196:	30 e0       	ldi	r19, 0x00	; 0
+ 198:	02 c0       	rjmp	.+4      	; 0x19e <SPI_MasterTransmit+0x12>
+ 19a:	22 0f       	add	r18, r18
+ 19c:	33 1f       	adc	r19, r19
+ 19e:	6a 95       	dec	r22
+ 1a0:	e2 f7       	brpl	.-8      	; 0x19a <SPI_MasterTransmit+0xe>
+ 1a2:	20 95       	com	r18
+ 1a4:	29 23       	and	r18, r25
+ 1a6:	2b b9       	out	0x0b, r18	; 11
 	/* Start transmission */
 	SPDR = cData;
- 2c2:	8e bd       	out	0x2e, r24	; 46
+ 1a8:	8e bd       	out	0x2e, r24	; 46
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));
- 2c4:	0d b4       	in	r0, 0x2d	; 45
- 2c6:	07 fe       	sbrs	r0, 7
- 2c8:	fd cf       	rjmp	.-6      	; 0x2c4 <SPI_MasterTransmit+0x18>
+ 1aa:	0d b4       	in	r0, 0x2d	; 45
+ 1ac:	07 fe       	sbrs	r0, 7
+ 1ae:	fd cf       	rjmp	.-6      	; 0x1aa <SPI_MasterTransmit+0x1e>
 }
- 2ca:	08 95       	ret
+ 1b0:	08 95       	ret
 
 Disassembly of section .text.SPI_MasterReceive:
 
-0000028a <SPI_MasterReceive>:
+00000164 <SPI_MasterReceive>:
 uint8_t SPI_MasterReceive(uint8_t ss)
 {
+	PORTD |= (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
+ 164:	9b b1       	in	r25, 0x0b	; 11
+ 166:	9c 61       	ori	r25, 0x1C	; 28
+ 168:	9b b9       	out	0x0b, r25	; 11
 	/* Set SS low */
 	PORTB &= ~(1<<ss);
- 28a:	95 b1       	in	r25, 0x05	; 5
- 28c:	21 e0       	ldi	r18, 0x01	; 1
- 28e:	30 e0       	ldi	r19, 0x00	; 0
- 290:	02 c0       	rjmp	.+4      	; 0x296 <SPI_MasterReceive+0xc>
- 292:	22 0f       	add	r18, r18
- 294:	33 1f       	adc	r19, r19
- 296:	8a 95       	dec	r24
- 298:	e2 f7       	brpl	.-8      	; 0x292 <SPI_MasterReceive+0x8>
- 29a:	20 95       	com	r18
- 29c:	29 23       	and	r18, r25
- 29e:	25 b9       	out	0x05, r18	; 5
+ 16a:	95 b1       	in	r25, 0x05	; 5
+ 16c:	21 e0       	ldi	r18, 0x01	; 1
+ 16e:	30 e0       	ldi	r19, 0x00	; 0
+ 170:	02 c0       	rjmp	.+4      	; 0x176 <SPI_MasterReceive+0x12>
+ 172:	22 0f       	add	r18, r18
+ 174:	33 1f       	adc	r19, r19
+ 176:	8a 95       	dec	r24
+ 178:	e2 f7       	brpl	.-8      	; 0x172 <SPI_MasterReceive+0xe>
+ 17a:	20 95       	com	r18
+ 17c:	29 23       	and	r18, r25
+ 17e:	25 b9       	out	0x05, r18	; 5
 	/* Wait for reception complete */
 	SPDR = 0x00;
- 2a0:	1e bc       	out	0x2e, r1	; 46
+ 180:	1e bc       	out	0x2e, r1	; 46
 	while(!(SPSR & (1<<SPIF)));
- 2a2:	0d b4       	in	r0, 0x2d	; 45
- 2a4:	07 fe       	sbrs	r0, 7
- 2a6:	fd cf       	rjmp	.-6      	; 0x2a2 <SPI_MasterReceive+0x18>
+ 182:	0d b4       	in	r0, 0x2d	; 45
+ 184:	07 fe       	sbrs	r0, 7
+ 186:	fd cf       	rjmp	.-6      	; 0x182 <SPI_MasterReceive+0x1e>
 	/* Return Data Register */
 	return SPDR;
- 2a8:	8e b5       	in	r24, 0x2e	; 46
+ 188:	8e b5       	in	r24, 0x2e	; 46
 }
- 2aa:	08 95       	ret
+ 18a:	08 95       	ret
 
 Disassembly of section .text.pollSpiDevice:
 
-00000206 <pollSpiDevice>:
+0000010c <pollSpiDevice>:
 uint8_t pollSpiDevice(uint8_t ss){
- 206:	cf 93       	push	r28
- 208:	c8 2f       	mov	r28, r24
+ 10c:	cf 93       	push	r28
+ 10e:	c8 2f       	mov	r28, r24
 	uint8_t data;
 	SPI_MasterTransmit(0xAE, ss);
- 20a:	68 2f       	mov	r22, r24
- 20c:	8e ea       	ldi	r24, 0xAE	; 174
- 20e:	0e 94 56 01 	call	0x2ac	; 0x2ac <SPI_MasterTransmit>
+ 110:	68 2f       	mov	r22, r24
+ 112:	8e ea       	ldi	r24, 0xAE	; 174
+ 114:	0e 94 c6 00 	call	0x18c	; 0x18c <SPI_MasterTransmit>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 212:	89 ef       	ldi	r24, 0xF9	; 249
- 214:	90 e0       	ldi	r25, 0x00	; 0
- 216:	01 97       	sbiw	r24, 0x01	; 1
- 218:	f1 f7       	brne	.-4      	; 0x216 <pollSpiDevice+0x10>
- 21a:	00 c0       	rjmp	.+0      	; 0x21c <pollSpiDevice+0x16>
- 21c:	00 00       	nop
+ 118:	89 ef       	ldi	r24, 0xF9	; 249
+ 11a:	90 e0       	ldi	r25, 0x00	; 0
+ 11c:	01 97       	sbiw	r24, 0x01	; 1
+ 11e:	f1 f7       	brne	.-4      	; 0x11c <pollSpiDevice+0x10>
+ 120:	00 c0       	rjmp	.+0      	; 0x122 <pollSpiDevice+0x16>
+ 122:	00 00       	nop
 	_delay_ms(1);
 	data = SPI_MasterReceive(ss);
- 21e:	8c 2f       	mov	r24, r28
- 220:	0e 94 45 01 	call	0x28a	; 0x28a <SPI_MasterReceive>
- 224:	e9 ef       	ldi	r30, 0xF9	; 249
- 226:	f0 e0       	ldi	r31, 0x00	; 0
- 228:	31 97       	sbiw	r30, 0x01	; 1
- 22a:	f1 f7       	brne	.-4      	; 0x228 <pollSpiDevice+0x22>
- 22c:	00 c0       	rjmp	.+0      	; 0x22e <pollSpiDevice+0x28>
- 22e:	00 00       	nop
+ 124:	8c 2f       	mov	r24, r28
+ 126:	0e 94 b2 00 	call	0x164	; 0x164 <SPI_MasterReceive>
+ 12a:	e9 ef       	ldi	r30, 0xF9	; 249
+ 12c:	f0 e0       	ldi	r31, 0x00	; 0
+ 12e:	31 97       	sbiw	r30, 0x01	; 1
+ 130:	f1 f7       	brne	.-4      	; 0x12e <pollSpiDevice+0x22>
+ 132:	00 c0       	rjmp	.+0      	; 0x134 <pollSpiDevice+0x28>
+ 134:	00 00       	nop
 	_delay_ms(1);
 	return data;
 }
- 230:	cf 91       	pop	r28
- 232:	08 95       	ret
+ 136:	cf 91       	pop	r28
+ 138:	08 95       	ret
 
 Disassembly of section .text.SetSpiDevice:
 
-000002f6 <SetSpiDevice>:
+000001c8 <SetSpiDevice>:
 void SetSpiDevice(uint8_t status, uint8_t ss){
 	SPI_MasterTransmit(status, ss);
- 2f6:	0e 94 56 01 	call	0x2ac	; 0x2ac <SPI_MasterTransmit>
- 2fa:	89 ef       	ldi	r24, 0xF9	; 249
- 2fc:	90 e0       	ldi	r25, 0x00	; 0
- 2fe:	01 97       	sbiw	r24, 0x01	; 1
- 300:	f1 f7       	brne	.-4      	; 0x2fe <SetSpiDevice+0x8>
- 302:	00 c0       	rjmp	.+0      	; 0x304 <SetSpiDevice+0xe>
- 304:	00 00       	nop
- 306:	08 95       	ret
+ 1c8:	0e 94 c6 00 	call	0x18c	; 0x18c <SPI_MasterTransmit>
+ 1cc:	89 ef       	ldi	r24, 0xF9	; 249
+ 1ce:	90 e0       	ldi	r25, 0x00	; 0
+ 1d0:	01 97       	sbiw	r24, 0x01	; 1
+ 1d2:	f1 f7       	brne	.-4      	; 0x1d0 <SetSpiDevice+0x8>
+ 1d4:	00 c0       	rjmp	.+0      	; 0x1d6 <SetSpiDevice+0xe>
+ 1d6:	00 00       	nop
+ 1d8:	08 95       	ret
 
 Disassembly of section .text.initUSART:
 
-00000260 <initUSART>:
+0000013a <initUSART>:
 	return;
 }
 
 //init UART
 void initUSART(void) {
 	UBRR0H = 0;              /* baud rate  */
- 260:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
+ 13a:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
 	UBRR0L = 0x0C;           /* 9600 */
- 264:	8c e0       	ldi	r24, 0x0C	; 12
- 266:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
+ 13e:	8c e0       	ldi	r24, 0x0C	; 12
+ 140:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
 	UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
- 26a:	e0 ec       	ldi	r30, 0xC0	; 192
- 26c:	f0 e0       	ldi	r31, 0x00	; 0
- 26e:	80 81       	ld	r24, Z
- 270:	82 60       	ori	r24, 0x02	; 2
- 272:	80 83       	st	Z, r24
+ 144:	e0 ec       	ldi	r30, 0xC0	; 192
+ 146:	f0 e0       	ldi	r31, 0x00	; 0
+ 148:	80 81       	ld	r24, Z
+ 14a:	82 60       	ori	r24, 0x02	; 2
+ 14c:	80 83       	st	Z, r24
 	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
- 274:	e1 ec       	ldi	r30, 0xC1	; 193
- 276:	f0 e0       	ldi	r31, 0x00	; 0
- 278:	80 81       	ld	r24, Z
- 27a:	88 61       	ori	r24, 0x18	; 24
- 27c:	80 83       	st	Z, r24
+ 14e:	e1 ec       	ldi	r30, 0xC1	; 193
+ 150:	f0 e0       	ldi	r31, 0x00	; 0
+ 152:	80 81       	ld	r24, Z
+ 154:	88 61       	ori	r24, 0x18	; 24
+ 156:	80 83       	st	Z, r24
 	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
- 27e:	e2 ec       	ldi	r30, 0xC2	; 194
- 280:	f0 e0       	ldi	r31, 0x00	; 0
- 282:	80 81       	ld	r24, Z
- 284:	86 60       	ori	r24, 0x06	; 6
- 286:	80 83       	st	Z, r24
- 288:	08 95       	ret
-
-Disassembly of section .text.poll_I2cDevice:
-
-00000126 <poll_I2cDevice>:
-		transmitByte(myString[i]);
-		i++;
-	}
-}
-//i2c
-uint8_t poll_I2cDevice(uint8_t address){
- 126:	cf 93       	push	r28
- 128:	c8 2f       	mov	r28, r24
-		uint8_t data;
-		I2C_Start_Wait(address); // wait for ACK signal
- 12a:	0e 94 e2 00 	call	0x1c4	; 0x1c4 <I2C_Start_Wait>
- 12e:	89 ef       	ldi	r24, 0xF9	; 249
- 130:	90 e0       	ldi	r25, 0x00	; 0
- 132:	01 97       	sbiw	r24, 0x01	; 1
- 134:	f1 f7       	brne	.-4      	; 0x132 <poll_I2cDevice+0xc>
- 136:	00 c0       	rjmp	.+0      	; 0x138 <poll_I2cDevice+0x12>
- 138:	00 00       	nop
-		_delay_ms(1);
-
-		I2C_Write(0xAE); //numero de l'instruction attendu par slave
- 13a:	8e ea       	ldi	r24, 0xAE	; 174
- 13c:	0e 94 1a 01 	call	0x234	; 0x234 <I2C_Write>
- 140:	89 ef       	ldi	r24, 0xF9	; 249
- 142:	90 e0       	ldi	r25, 0x00	; 0
- 144:	01 97       	sbiw	r24, 0x01	; 1
- 146:	f1 f7       	brne	.-4      	; 0x144 <poll_I2cDevice+0x1e>
- 148:	00 c0       	rjmp	.+0      	; 0x14a <poll_I2cDevice+0x24>
- 14a:	00 00       	nop
-		_delay_ms(1);
-
-		I2C_Repeated_Start(address | 0b1); // force Least Meaningful bit to 1 for read mode
- 14c:	8c 2f       	mov	r24, r28
- 14e:	81 60       	ori	r24, 0x01	; 1
- 150:	0e 94 be 00 	call	0x17c	; 0x17c <I2C_Repeated_Start>
- 154:	89 ef       	ldi	r24, 0xF9	; 249
- 156:	90 e0       	ldi	r25, 0x00	; 0
- 158:	01 97       	sbiw	r24, 0x01	; 1
- 15a:	f1 f7       	brne	.-4      	; 0x158 <poll_I2cDevice+0x32>
- 15c:	00 c0       	rjmp	.+0      	; 0x15e <poll_I2cDevice+0x38>
- 15e:	00 00       	nop
-		_delay_ms(1);
-
-		data = I2C_Read_Ack();
- 160:	0e 94 71 01 	call	0x2e2	; 0x2e2 <I2C_Read_Ack>
- 164:	c8 2f       	mov	r28, r24
- 166:	89 ef       	ldi	r24, 0xF9	; 249
- 168:	90 e0       	ldi	r25, 0x00	; 0
- 16a:	01 97       	sbiw	r24, 0x01	; 1
- 16c:	f1 f7       	brne	.-4      	; 0x16a <poll_I2cDevice+0x44>
- 16e:	00 c0       	rjmp	.+0      	; 0x170 <poll_I2cDevice+0x4a>
- 170:	00 00       	nop
-		_delay_ms(1);
-		
-		I2C_Stop();
- 172:	0e 94 84 01 	call	0x308	; 0x308 <I2C_Stop>
-		return data;
-}
- 176:	8c 2f       	mov	r24, r28
- 178:	cf 91       	pop	r28
- 17a:	08 95       	ret
+ 158:	e2 ec       	ldi	r30, 0xC2	; 194
+ 15a:	f0 e0       	ldi	r31, 0x00	; 0
+ 15c:	80 81       	ld	r24, Z
+ 15e:	86 60       	ori	r24, 0x06	; 6
+ 160:	80 83       	st	Z, r24
+ 162:	08 95       	ret
 
 Disassembly of section .text.main:
 
 000000c2 <main>:
-	uint8_t i = 0;
-	while (myString[i]) {
-		transmitByte(myString[i]);
-		i++;
-	}
+		return data;
 }
-  c2:	0e 94 8c 01 	call	0x318	; 0x318 <SPI_MasterInit>
-  c6:	0e 94 30 01 	call	0x260	; 0x260 <initUSART>
-  ca:	0e 94 93 01 	call	0x326	; 0x326 <I2C_Init>
+
+int main() {
+	uint8_t received;
+	SPI_MasterInit();
+  c2:	0e 94 ed 00 	call	0x1da	; 0x1da <SPI_MasterInit>
+	initUSART();
+  c6:	0e 94 9d 00 	call	0x13a	; 0x13a <initUSART>
+	I2C_Init();
+  ca:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <I2C_Init>
   ce:	2f e9       	ldi	r18, 0x9F	; 159
   d0:	86 e8       	ldi	r24, 0x86	; 134
   d2:	91 e0       	ldi	r25, 0x01	; 1
@@ -628,64 +364,66 @@ Disassembly of section .text.main:
   da:	e1 f7       	brne	.-8      	; 0xd4 <main+0x12>
   dc:	00 c0       	rjmp	.+0      	; 0xde <main+0x1c>
   de:	00 00       	nop
-  e0:	8c e3       	ldi	r24, 0x3C	; 60
-  e2:	0e 94 93 00 	call	0x126	; 0x126 <poll_I2cDevice>
-  e6:	c0 e0       	ldi	r28, 0x00	; 0
-  e8:	d1 e0       	ldi	r29, 0x01	; 1
-  ea:	98 2f       	mov	r25, r24
-  ec:	91 70       	andi	r25, 0x01	; 1
-  ee:	99 83       	std	Y+1, r25	; 0x01
-  f0:	86 95       	lsr	r24
-  f2:	81 70       	andi	r24, 0x01	; 1
-  f4:	88 83       	st	Y, r24
-  f6:	8a e5       	ldi	r24, 0x5A	; 90
-  f8:	0e 94 93 00 	call	0x126	; 0x126 <poll_I2cDevice>
-  fc:	81 70       	andi	r24, 0x01	; 1
-  fe:	8a 83       	std	Y+2, r24	; 0x02
- 100:	62 e0       	ldi	r22, 0x02	; 2
- 102:	8b 81       	ldd	r24, Y+3	; 0x03
- 104:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <SetSpiDevice>
- 108:	63 e0       	ldi	r22, 0x03	; 3
- 10a:	8c 81       	ldd	r24, Y+4	; 0x04
- 10c:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <SetSpiDevice>
- 110:	84 e0       	ldi	r24, 0x04	; 4
- 112:	0e 94 03 01 	call	0x206	; 0x206 <pollSpiDevice>
- 116:	8d 83       	std	Y+5, r24	; 0x05
- 118:	83 ed       	ldi	r24, 0xD3	; 211
- 11a:	90 e3       	ldi	r25, 0x30	; 48
- 11c:	01 97       	sbiw	r24, 0x01	; 1
- 11e:	f1 f7       	brne	.-4      	; 0x11c <main+0x5a>
- 120:	00 c0       	rjmp	.+0      	; 0x122 <main+0x60>
- 122:	00 00       	nop
- 124:	dd cf       	rjmp	.-70     	; 0xe0 <main+0x1e>
+		status.window1 = (received >> 1) & 0x01; // Shift right by 1 and mask with 0x01
+		//POLL U2, get the door status;
+		received = poll_I2cDevice(SLAVE2, 0x25);
+		}
+		if(useSPI){
+		status.door = received & 0x01; //Mask the lsb
+  e0:	c0 e0       	ldi	r28, 0x00	; 0
+  e2:	d1 e0       	ldi	r29, 0x01	; 1
+  e4:	1a 82       	std	Y+2, r1	; 0x02
+		//spi calls
+		//Set U3 door lock status
+		SetSpiDevice(status.lock, SLAVE3);
+  e6:	62 e0       	ldi	r22, 0x02	; 2
+  e8:	8b 81       	ldd	r24, Y+3	; 0x03
+  ea:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <SetSpiDevice>
+		//Set U4 light status
+		SetSpiDevice(status.light, SLAVE4);
+  ee:	63 e0       	ldi	r22, 0x03	; 3
+  f0:	8c 81       	ldd	r24, Y+4	; 0x04
+  f2:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <SetSpiDevice>
+		//POLL U5, get the keyboard char
+		status.keyboardChar = pollSpiDevice(SLAVE5);
+  f6:	84 e0       	ldi	r24, 0x04	; 4
+  f8:	0e 94 86 00 	call	0x10c	; 0x10c <pollSpiDevice>
+  fc:	8d 83       	std	Y+5, r24	; 0x05
+  fe:	83 ed       	ldi	r24, 0xD3	; 211
+ 100:	90 e3       	ldi	r25, 0x30	; 48
+ 102:	01 97       	sbiw	r24, 0x01	; 1
+ 104:	f1 f7       	brne	.-4      	; 0x102 <main+0x40>
+ 106:	00 c0       	rjmp	.+0      	; 0x108 <main+0x46>
+ 108:	00 00       	nop
+ 10a:	ea cf       	rjmp	.-44     	; 0xe0 <main+0x1e>
 
 Disassembly of section .text.__dummy_fini:
 
-0000033a <_fini>:
- 33a:	08 95       	ret
+000001fc <_fini>:
+ 1fc:	08 95       	ret
 
 Disassembly of section .text.__dummy_funcs_on_exit:
 
-0000033c <__funcs_on_exit>:
- 33c:	08 95       	ret
+000001fe <__funcs_on_exit>:
+ 1fe:	08 95       	ret
 
 Disassembly of section .text.__dummy_simulator_exit:
 
-0000033e <__simulator_exit>:
- 33e:	08 95       	ret
+00000200 <__simulator_exit>:
+ 200:	08 95       	ret
 
 Disassembly of section .text.exit:
 
-000002cc <exit>:
- 2cc:	ec 01       	movw	r28, r24
- 2ce:	0e 94 9e 01 	call	0x33c	; 0x33c <__funcs_on_exit>
- 2d2:	0e 94 9d 01 	call	0x33a	; 0x33a <_fini>
- 2d6:	ce 01       	movw	r24, r28
- 2d8:	0e 94 9f 01 	call	0x33e	; 0x33e <__simulator_exit>
- 2dc:	ce 01       	movw	r24, r28
- 2de:	0e 94 9b 01 	call	0x336	; 0x336 <_Exit>
+000001b2 <exit>:
+ 1b2:	ec 01       	movw	r28, r24
+ 1b4:	0e 94 ff 00 	call	0x1fe	; 0x1fe <__funcs_on_exit>
+ 1b8:	0e 94 fe 00 	call	0x1fc	; 0x1fc <_fini>
+ 1bc:	ce 01       	movw	r24, r28
+ 1be:	0e 94 00 01 	call	0x200	; 0x200 <__EEPROM_REGION_LENGTH__>
+ 1c2:	ce 01       	movw	r24, r28
+ 1c4:	0e 94 fc 00 	call	0x1f8	; 0x1f8 <_Exit>
 
 Disassembly of section .text._Exit:
 
-00000336 <_Exit>:
- 336:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
+000001f8 <_Exit>:
+ 1f8:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>

@@ -15,17 +15,16 @@
 
 #define SLAVE_ADDRESS 0x5A//addresse i2c de U2
 
-volatile uint8_t doorStatus = 0;
-
 void initIOports(){
 	// Set PD7 as input pin
-	DDRD &= ~(1 << PD7);
+	DDRD &= ~(1 << PD6);
 	//Set PB1 as output pin
 	DDRB |= (1 << PB1);
 }
 
 int main(void) {
 	int drapeau=0;
+	uint8_t doorStatus =0;
 	int8_t instructionCode = 0;
 
 	I2C_Slave_Init(SLAVE_ADDRESS);
@@ -33,8 +32,9 @@ int main(void) {
 	
 
 	while (1) {
-		//pick door status on pin PD7
-		doorStatus = PIND & (1 << PD7);
+		//read pin PD6
+		doorStatus =0;
+		doorStatus = PIND & (1 << PD6);
 		//put door status out on PB1
 		if(doorStatus == 0){
 			PORTB &= ~(1 << PB1); //debug led for tension divider tweaks
@@ -50,7 +50,7 @@ int main(void) {
 				{
 	
 					instructionCode = I2C_Slave_Receive();/* Receive data byte*/
-					if(instructionCode==0xAE) drapeau=1;  // vérifier si c'est 0xAE (code) alors autoriser la transmission
+					if(instructionCode==0x25)drapeau=1;  // vérifier si c'est 0xAE (code) alors autoriser la transmission
 				} while (instructionCode != -1);			/* Receive until STOP/REPEATED START received */
 				
 				break;
