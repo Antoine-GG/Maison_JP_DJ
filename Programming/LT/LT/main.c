@@ -14,7 +14,7 @@
 #define SLAVE3    2 //
 #define SLAVE4    3 //
 #define SLAVE5    4 //
-#define useI2C 	  0 //
+#define useI2C 	  1 //
 #define useSPI    1 //
 
 HouseStatus status;
@@ -70,19 +70,19 @@ void printString(const char myString[]) {
 	}
 }
 //i2c
-uint8_t poll_I2cDevice(uint8_t address, uint8_t instructionCode){
+uint8_t poll_I2cDevice(uint8_t address, uint8_t codeWord){
 		uint8_t data;
 		I2C_Start_Wait(address); // wait for ACK signal
 		_delay_ms(5);
 
-		I2C_Write(instructionCode); //numero de l'instruction attendu par slave
-		_delay_ms(5);
+		I2C_Write(codeWord); //numero de l'instruction attendu par slave
+		_delay_ms(500);
 
 		I2C_Repeated_Start(address | 0b00000001); // force Least Meaningful bit to 1 for read mode
 		_delay_ms(5);
 
 		data = I2C_Read_Ack();
-		_delay_ms(5);
+		_delay_ms(500);
 		
 		I2C_Stop();
 		return data;
