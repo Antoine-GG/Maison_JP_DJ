@@ -43,8 +43,8 @@ int getWindowState(uint8_t inPin, uint8_t ledPin){
 	}
 }
 void slave_answerPoll(uint8_t data, int8_t codeWord){
-int drapeau = 0;
-switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
+	int drapeau = 0;
+	switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
 		{
 			case 0://receive
 			{
@@ -84,7 +84,7 @@ int main(void)
 	while(1)
     {
 		// concatenation of the two window states to send LT
-		windows = ((1 << getWindowState(PD7, PB2)) | getWindowState(PD6, PB1))
+		windows = ((1 << getWindowState(PD7, PB2)) | getWindowState(PD6, PB1));
 		// Add a delay for debouncing or to prevent rapid toggling
 		_delay_ms(100);
         //TODO:: Please write your application code 

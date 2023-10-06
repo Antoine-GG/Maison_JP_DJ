@@ -118,6 +118,9 @@
     <Compile Include="houseStatus.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="i2c.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="I2C_Master_C_file.c">
       <SubType>compile</SubType>
     </Compile>
@@ -127,6 +130,11 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="i2c.cpp">
+      <SubType>compile</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

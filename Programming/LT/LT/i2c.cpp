@@ -1,7 +1,7 @@
 #include "i2c.h"
 
 void initI2C(void) {
-	TWBR = 2;                               /* set bit rate, */
+	TWBR = 32;                               /* set bit rate, see p. 242 */
 	/* 8MHz / (16+2*TWBR*1) ~= 100kHz */
 	TWCR |= (1 << TWEN);                                       /* enable */
 }
@@ -11,28 +11,28 @@ void i2cWaitForComplete(void) {
 }
 
 void i2cStart(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTA);
+	TWCR = (_BV(TWINT) | _BV(TWEN) | _BV(TWSTA));
 	i2cWaitForComplete();
 }
 
 void i2cStop(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN) | (1 <<TWSTO);
+	TWCR = (_BV(TWINT) | _BV(TWEN) | _BV(TWSTO));
 }
 
 uint8_t i2cReadAck(void) {
-	TWCR =(1 <<TWINT) | (1 <<TWEN) | (1 <<TWEA);
+	TWCR = (_BV(TWINT) | _BV(TWEN) | _BV(TWEA));
 	i2cWaitForComplete();
 	return (TWDR);
 }
 
 uint8_t i2cReadNoAck(void) {
-	TWCR = (1 <<TWINT) | (1 <<TWEN);
+	TWCR = (_BV(TWINT) | _BV(TWEN));
 	i2cWaitForComplete();
 	return (TWDR);
 }
 
 void i2cSend(uint8_t data) {
 	TWDR = data;
-	TWCR = (1 <<TWINT) | (1 <<TWEN);                  /* init and enable */
+	TWCR = (_BV(TWINT) | _BV(TWEN));                  /* init and enable */
 	i2cWaitForComplete();
 }
