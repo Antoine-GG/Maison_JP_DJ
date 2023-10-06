@@ -24,14 +24,19 @@
 #define SS_PIN      PB2     // SS: Slave Select (Chip Select)
 #define DEBUG_PIN   PB0     // SS: Slave Select (Chip Select)
 
-#define KEY_STAR  0x0008
 #define KEY_7	  0x0001
+#define KEY_0002  0x0002
+#define KEY_0004  0x0004
+#define KEY_STAR  0x0008
+
 #define KEY_4     0x0010
 #define KEY_1     0x0020
 #define KEY_0     0x0040
 #define KEY_8     0x0080
-#define KEY_5     0x0800
 #define KEY_2     0x0100
+#define KEY_0200  0x0200
+#define KEY_0400  0x0400
+#define KEY_5     0x0800
 #define KEY_SHARP 0x1000
 #define KEY_9     0x2000
 #define KEY_6     0x4000
@@ -140,6 +145,22 @@ int main() {
 		switch (shiftRegisterData)
 		{
 		case 0:
+			break;
+		case KEY_0002:
+			PORTB |= (1 << DEBUG_PIN);
+			SPDR = 'W';
+			break;
+		case KEY_0004:
+			PORTB |= (1 << DEBUG_PIN);
+			SPDR = 'E';
+			break;
+		case KEY_0200:
+			PORTB |= (1 << DEBUG_PIN);
+			SPDR = 'R';
+			break;
+		case KEY_0400:
+			PORTB |= (1 << DEBUG_PIN);
+			SPDR = 'T';
 			break;
 		case KEY_0:
 			PORTB |= (1 << DEBUG_PIN);
