@@ -19,7 +19,7 @@
 #define SLAVE4        3 //
 #define SLAVE5        4 //
 #define useI2C 	      0 //
-#define useII2C       1 //
+#define useII2C       0 //
 #define useManualI2C  0 // i2c avec la violence
 #define useSPI        1 //
 #define SDApin		  4 // 
@@ -311,9 +311,8 @@ int main() {
 		 	   
 		}
 		//uart 
-		status.window1
-		firstByte = 
-		uartTransmitByte();
+		//firstByte = status.keyboardChar;
+		uartTransmitByte(status.keyboardChar);
 		
 		_delay_ms(5); // Attendre avant de refaire la demande
 	}

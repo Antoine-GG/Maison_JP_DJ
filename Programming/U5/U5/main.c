@@ -85,7 +85,7 @@ void initUSART(void) {
 }
 
 //transmettre un caract�re
-void SPI_SlaveTransmit(uint8_t data) {
+void uartByteTransmit(uint8_t data) {
 	while ( !( UCSR0A & (1<<UDRE0)) ); /* Attendre que le buffer de transmission soit vide */
 	UDR0 = data;                      /* envoyer la donn�e */
 }
@@ -135,13 +135,19 @@ int main() {
 	uint8_t feedback =0;
 	initIOports();
 	SPI_SlaveInit();
+	initUSART();
 	//sound_fail();
 	//sound_input();
 	//sound_success();
 	while (1) {
-
+		
 		// Read data from shift registers
 		uint16_t shiftRegisterData = readShiftRegisters();
+		uint8_t lower = (shiftRegisterData & 0xFF);
+		uint8_t higher = (shiftRegisterData >> 8);
+		
+		uartByteTransmit(higher);
+		uartByteTransmit(lower);                                                                                                                                                                                                                                                                                               
 		switch (shiftRegisterData)
 		{
 		case 0:
