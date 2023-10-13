@@ -1868,7 +1868,7 @@
           (reference "J4") (unit 1)
         )
         (path "/ed06f8de-d1bb-4b1a-bfe3-5df11d3a9162"
-          (reference "Jmaster") (unit 1)
+          (reference "Jmaster1") (unit 1)
         )
       )
     )
@@ -1935,7 +1935,7 @@
   (symbol (lib_id "MCU_Microchip_ATmega:ATmega8A-A") (at 212.09 109.22 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3214ea9b-202a-40cf-ab5e-50319b74ab3a)
-    (property "Reference" "LT" (at 215.3159 68.58 0)
+    (property "Reference" "LT1" (at 215.3159 68.58 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "ATmega8A-A" (at 216.5859 73.66 0)
@@ -1982,7 +1982,7 @@
     (instances
       (project "MaisonEtape1"
         (path "/ed06f8de-d1bb-4b1a-bfe3-5df11d3a9162"
-          (reference "LT") (unit 1)
+          (reference "LT1") (unit 1)
         )
       )
     )
@@ -2230,7 +2230,7 @@
   (symbol (lib_id "Connector:Conn_01x02_Socket") (at 179.07 132.08 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9f5d2676-6f9c-46d4-9e94-57edb9029747)
-    (property "Reference" "Door" (at 171.45 139.7 90)
+    (property "Reference" "Door1" (at 171.45 139.7 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x02_Socket" (at 170.18 142.24 90)
@@ -2247,7 +2247,7 @@
     (instances
       (project "MaisonEtape1"
         (path "/ed06f8de-d1bb-4b1a-bfe3-5df11d3a9162"
-          (reference "Door") (unit 1)
+          (reference "Door1") (unit 1)
         )
       )
     )

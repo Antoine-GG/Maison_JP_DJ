@@ -12,7 +12,10 @@
 #include <xc.h>
 #include <util/delay.h>
 #include <avr/sfr_defs.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "BuzzerSounds.h"
+
 
 
 #define LATCH_PIN   PC0
@@ -41,6 +44,8 @@
 #define KEY_9     0x2000
 #define KEY_6     0x4000
 #define KEY_3     0x8000
+
+char buffer[16];
 
 void initIOports(){
 	// Initialize I/O pins
@@ -74,7 +79,6 @@ char SPI_SlaveReceive(void)
 	return SPDR;
 }
 
-
 //initialiser UART
 void initUSART(void) {
 	UBRR0H = 0;              /* baud rate  */
@@ -100,33 +104,35 @@ uint8_t receiveByte(void) {
 void printString(const char myString[]) {
 	uint8_t i = 0;
 	while (myString[i]) {
-		SPI_SlaveTransmit(myString[i]);
+		uartByteTransmit(myString[i]);
 		i++;
 	}
 }
+
 //SPI CALLS
-
-
 // Function to read data from the shift registers
 uint16_t readShiftRegisters() {
 	uint16_t data = 0;
 	
 	// Latch low, fin de la dompe parallele precedente
 	PORTC |= (1 << LATCH_PIN);
-	_delay_us(15);
+	_delay_us(20);
 	PORTC &= ~(1 << LATCH_PIN);
-	_delay_us(15);
+	_delay_us(20);
 	PORTC &= ~(1 << LATCH_PIN);
-	_delay_us(15);
+	_delay_us(20);
 	// 16 clocks pour acheminer 16bits serial vers notre pin data
 	for (int i = 0; i < 16; i++) {
 		// Pulse the clock pin to shift in the next bit
+		_delay_us(30);
+		if((PINC & (1 << PC2))) data |= (1 << i);
 		PORTC |= (1 << CLOCK_PIN);
-		_delay_us(15); // Adjust delay as needed based on your clock frequency
+		_delay_us(30);
 		PORTC &= ~(1 << CLOCK_PIN);
 		
 		// Read the data pin and store the bit
-		data |= (PINC & (1 << DATA_PIN)) << i;
+		//data |= (PINC & (1 << DATA_PIN)) << i;
+		
 	}
 	return data;
 }
@@ -143,81 +149,50 @@ int main() {
 		
 		// Read data from shift registers
 		uint16_t shiftRegisterData = readShiftRegisters();
-		uint8_t lower = (shiftRegisterData & 0xFF);
-		uint8_t higher = (shiftRegisterData >> 8);
-		
-		uartByteTransmit(higher);
-		uartByteTransmit(lower);                                                                                                                                                                                                                                                                                               
+		                                                                                                                                                                                                                                                                                              
 		switch (shiftRegisterData)
 		{
 		case 0:
-			break;
-		case KEY_0002:
-			PORTB |= (1 << DEBUG_PIN);
-			SPDR = 'W';
-			break;
-		case KEY_0004:
-			PORTB |= (1 << DEBUG_PIN);
-			SPDR = 'E';
-			break;
-		case KEY_0200:
-			PORTB |= (1 << DEBUG_PIN);
-			SPDR = 'R';
-			break;
-		case KEY_0400:
-			PORTB |= (1 << DEBUG_PIN);
-			SPDR = 'T';
+			SPDR = '<';
 			break;
 		case KEY_0:
-			PORTB |= (1 << DEBUG_PIN);
 			SPDR = '0';
 			break;
 		case KEY_1:
-			PORTB &= ~(1 << DEBUG_PIN);
 			SPDR = '1';
 			break;
 		case KEY_2:
-			PORTB |= (1 << DEBUG_PIN);
 			SPDR = '2';
 			break;
 		case KEY_3:
-			PORTB &= ~(1 << DEBUG_PIN);
 			SPDR = '3';
 			break;
 		case KEY_4:
-			PORTB |= (1 << DEBUG_PIN);
 			SPDR = '4'; 
 			break;
 		case KEY_5:
-			PORTB &= ~(1 << DEBUG_PIN);
 			SPDR = '5'; 
 			break;
 		case KEY_6:
-			PORTB |= (1 << DEBUG_PIN);
 			SPDR = '6';  
 			break;
 		case KEY_7:
-			PORTB &= ~(1 << DEBUG_PIN);
 			SPDR = '7';  
 			break;
 		case KEY_8:
-			PORTB |= (1 << DEBUG_PIN);
 			SPDR = '8'; 
 			break;
 		case KEY_9:
-			PORTB &= ~(1 << DEBUG_PIN);
 			SPDR = '9'; 
 			break;
 		case KEY_STAR:
-			PORTB |= (1 << DEBUG_PIN);
-			SPDR = 'A';
+			SPDR = ':';
 			break;
 		case KEY_SHARP:
-			PORTB &= ~(1 << DEBUG_PIN);
-			SPDR = 'B';
+			SPDR = ';';
 			break;
 		default:
-			SPDR = 'X';
+			SPDR = '<';
 			break;
 		}
 		feedback = SPI_SlaveReceive();
