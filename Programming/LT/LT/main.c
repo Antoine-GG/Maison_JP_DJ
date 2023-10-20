@@ -1,25 +1,31 @@
 // Authors:  Idir Chahed, JP Toutant, Jeremy Diaphrase Lachappelle, ChatGPT
 // Date: 2023-9-20
 
-#define F_CPU 1000000UL
+#define F_CPU 8000000UL
 
 #include <xc.h>
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdio.h>							/* Include standard I/O header file */
 #include <string.h>
+#include <avr/sfr_defs.h>
 #include "I2C_Master_H_file.h"				/* Include I2C header file */
 #include "houseStatus.h"
 #include "i2c.h"
 #include "i2c.cpp"
 
-#define SLAVE1        0x3C ///0011 1100
+#define Slave_Write_Address1		0x3C     //Atemga 328P Slave Ecriture Slave 1 Fenetres
+#define Slave_Read_Address1		0x3D    //Atemga 328P Slave Lecture  Slave 1  fenetres
+#define Slave_Write_Address2		0x5A     //Atemga 328P Slave Ecriture Slave 2 Porte
+#define Slave_Read_Address2		0x5B
+#define SLAVE1	  0x3C ///0011 1100
 #define SLAVE2        0x5A ///0101 1010
 #define SLAVE3        2 //
 #define SLAVE4        3 //
 #define SLAVE5        4 //
 #define useI2C 	      0 //
 #define useII2C       0 //
+#define useIdir2C		 1 //
 #define useManualI2C  0 // i2c avec la violence
 #define useSPI        1 //
 #define SDApin		  4 // 
@@ -30,12 +36,17 @@
 #define read_temperature 0xAA
 #define access_config 0xAC //control register
 #define start_conversion 0xEE
+
 #define temp_h 0xA1 //temperature high byte
 #define temp_l 0xA2 //temperature low byte
 
 uint8_t firstByte();
 uint8_t secondByte();
 uint8_t thirdByte();
+
+uint8_t tmp_msb;
+uint8_t tmp_lsb;
+
 
 HouseStatus status;
 
@@ -85,7 +96,7 @@ uint8_t uartReceiveByte(void) {
 void printString(const char myString[]) {
 	uint8_t i = 0;
 	while (myString[i]) {
-		transmitByte(myString[i]);
+		uartTransmitByte(myString[i]);
 		i++;
 	}
 }
@@ -217,8 +228,8 @@ uint8_t poll_ii2cDevice(uint8_t address, uint8_t command){
 	 i2cSend(command);
 	 i2cStart(); // start
 	 i2cSend(address | 0b00000001);
-	 uint8_t tmp_msb = i2cReadAck(); //lecture MSB
-	 uint8_t tmp_lsb = i2cReadNoAck(); //lecture LSB
+	 tmp_msb = i2cReadAck(); //lecture MSB
+	 tmp_lsb = i2cReadNoAck(); //lecture LSB
 	 i2cStop();
 	 _delay_ms(5);
 	 //Temperature=tmp_msb+0.5*(tmp_lsb/128);
@@ -232,11 +243,110 @@ uint8_t sendByte_ii2c(uint8_t address, uint8_t data){
 	 i2cStop();
 	 _delay_ms(5);
 }
+//Idir2c
+init1621(){
+	
+	I2C_Start_Wait(TEMP_W);  //Start I2C communication with SLA+W
+	_delay_ms(5);
+	I2C_Write(access_config);
+	_delay_ms(5);
+	I2C_Write(0x03);    // execution en mode ordre de conversion
+	_delay_ms(5);
+	I2C_Stop();
+	_delay_ms(5);	
+}
+char poll_Slave1(){
+	
+	char valFenetre;
+	// communication avec le Atmega328P Slave 1 Fenetres I2C -----------------------------------------------------------
+	I2C_Start_Wait(Slave_Write_Address1);// Start I2C communication with SLA+W
+	_delay_ms(5);
+	
+	I2C_Write(0x25);					// Envoyer 0x25 code pour demander d'envoyer une donn�es
+	_delay_ms(100);
+	
+	
+	I2C_Repeated_Start(Slave_Read_Address1);	// Repeated Start I2C communication with SLA+R
+	_delay_ms(5);
+	
+	valFenetre=I2C_Read_Nack(); //lire la donn�e (1 seule) et envoyer sur le port D   v�rifier l'�tat de PD0
+	_delay_ms(5);
+	
+	I2C_Stop();   // Stop I2C
+	_delay_ms(5);
+	return valFenetre;
+}
+char poll_Slave2(){
+	char valPorte;
+	// communication avec le Atmega328P Slave 2 Porte I2C -----------------------------------------------------------
+	I2C_Start_Wait(Slave_Write_Address2);// Start I2C communication with SLA+W
+	_delay_ms(5);
+	
+	I2C_Write(0x35);					// Envoyer 0x25 code pour demander d'envoyer une donn�es
+	_delay_ms(100);
+	
+	
+	I2C_Repeated_Start(Slave_Read_Address2);	// Repeated Start I2C communication with SLA+R
+	_delay_ms(5);
+	
+	valPorte=I2C_Read_Nack(); //lire la donn�e (1 seule) et envoyer sur le port D   v�rifier l'�tat de PD0
+	_delay_ms(5);
+	I2C_Stop();   // Stop I2C
+	_delay_ms(5);
+	return valPorte;
+	//afficher l'�tat desporte
+	//PORTE
+	if ((valPorte & 0b10000000)==0b00000000) {
+		PORTC |=(1<<PC0); //allumer temoin PORTE
+	}
+	else {
+		
+		PORTC &=~(1<<PC0); //eteindre Temoin Porte
+	}
+	_delay_ms(100);
+}
+double poll_DS1621(){
+	
+	double temperature;
+	//communication avec le capteur de temperature i2c ds1621-------------------------------------------------
+	// convertir une donn�e,
+	I2C_Start_Wait(TEMP_W);
+	_delay_ms(5);
+	I2C_Write(start_conversion);//ordre de conversion
+	_delay_ms(5);
+	I2C_Stop();
+	_delay_ms(5);
+	// lire une temperature
+	I2C_Start_Wait(TEMP_W);
+	_delay_ms(5);
+	I2C_Write(read_temperature);//code pour lire la temperature
+	_delay_ms(5);
+	I2C_Repeated_Start(TEMP_R);
+	_delay_ms(5);
+	tmp_msb=I2C_Read_Ack();//lecture de la temperature
+	_delay_ms(5);
+	tmp_lsb=I2C_Read_Nack();//lecture de la partie decimale de la temperature
+	_delay_ms(5);
+	I2C_Stop();
+	_delay_ms(5);
+	temperature=tmp_msb; //Temp�rature pas de 1oC
+	//Temperature=tmp_msb+0.5*(tmp_lsb/128); //Temp�rature pas de 0.5oC
+	
+	//convertir la valeur de la temperature en string et pr�t a etre envoyer au ESP
+	//temperature=25;
+	return temperature;
+	//------------------------
+}
+
 int main() {
 	
 	double Temperature;
 	int8_t tmp_msb,tmp_lsb;
 	uint8_t received;
+	if(useIdir2C){
+		I2C_Init();
+		init1621();		
+	}
 	if(useII2C)initIi2c();
 	if(useSPI) SPI_MasterInit();
 	initUSART();
@@ -247,6 +357,39 @@ int main() {
 	while (1) {
 
 		received = 0;
+		if(useIdir2C){
+			char windows= poll_Slave1;
+			if ((windows & 0b01000000)==0b00000000) {
+					status.window1 = 1; 
+			}
+			else {
+					
+					status.window1 = 0;
+			}
+				
+
+			if ((windows & 0b10000000)==0b00000000) {
+					status.window2 = 1; 
+			}
+			else {
+					
+				status.window2 = 0; 
+			}
+				
+			_delay_ms(100);
+			char valdoor = poll_Slave2();
+			if ((valdoor & 0b10000000)==0b00000000) {
+				status.door = 1; //allumer temoin PORTE
+			}
+			else {
+				
+				status.door = 0; //eteindre Temoin Porte
+			}
+			_delay_ms(100);
+			
+			
+		}
+		
 		if(useI2C){
 		//i2c calls
 		//POLL U1, window1 and window2 are the 2 last bits as 0000 0012

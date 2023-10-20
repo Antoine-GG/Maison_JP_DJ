@@ -3,90 +3,108 @@ LT.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000236  2**0
+  0 .data         00000000  00800100  00800100  00000494  2**0
                   ALLOC, LOAD, DATA
   1 .text         000000c2  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000006  00800100  00800100  00000236  2**0
+  2 .bss          00000008  00800100  00800100  00000494  2**0
                   ALLOC
-  3 .comment      0000002f  00000000  00000000  00000236  2**0
+  3 .comment      0000002f  00000000  00000000  00000494  2**0
                   CONTENTS, READONLY
-  4 .stack.descriptors.hdr 0000000e  00000000  00000000  00000265  2**0
+  4 .stack.descriptors.hdr 0000000e  00000000  00000000  000004c3  2**0
                   CONTENTS, READONLY
-  5 .debug_aranges 000000d0  00000000  00000000  00000273  2**0
+  5 .debug_aranges 00000148  00000000  00000000  000004d1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001657  00000000  00000000  00000343  2**0
+  6 .debug_info   000022a7  00000000  00000000  00000619  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008b2  00000000  00000000  0000199a  2**0
+  7 .debug_abbrev 000009b6  00000000  00000000  000028c0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000007b3  00000000  00000000  0000224c  2**0
+  8 .debug_line   00000cae  00000000  00000000  00003276  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001bc  00000000  00000000  00002a00  2**2
+  9 .debug_frame  000002a8  00000000  00000000  00003f24  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000285  00000000  00000000  00002bbc  2**0
+ 10 .debug_str    000002a4  00000000  00000000  000041cc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000818  00000000  00000000  00002e41  2**0
+ 11 .debug_loc    0000120b  00000000  00000000  00004470  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000d8  00000000  00000000  00003659  2**0
+ 12 .debug_ranges 00000140  00000000  00000000  0000567b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .text         00000004  00000194  00000194  00000228  2**1
+ 13 .text         00000004  000003f2  000003f2  00000486  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00003734  2**2
+ 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000057bc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 15 .text.SPI_MasterInit 0000000e  00000178  00000178  0000020c  2**1
+ 15 .text.I2C_Init 0000000c  000003e6  000003e6  0000047a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.SPI_MasterTransmit 00000034  00000104  00000104  00000198  2**1
+ 16 .text.I2C_Repeated_Start 00000048  00000234  00000234  000002c8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.initUSART 0000002a  00000138  00000138  000001cc  2**1
+ 17 .text.I2C_Stop 00000010  000003ba  000003ba  0000044e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.uartTransmitByte 0000000e  00000186  00000186  0000021a  2**1
+ 18 .text.I2C_Start_Wait 00000042  000002c4  000002c4  00000358  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 19 .text.main    00000042  000000c2  000000c2  00000156  2**1
+ 19 .text.I2C_Write 0000002c  0000033a  0000033a  000003ce  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 20 .text.__dummy_fini 00000002  0000019c  0000019c  00000230  2**1
+ 20 .text.I2C_Read_Nack 00000014  000003a6  000003a6  0000043a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 21 .text.__dummy_funcs_on_exit 00000002  0000019e  0000019e  00000232  2**1
+ 21 .text.poll_Slave1 00000066  00000168  00000168  000001fc  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 22 .text.__dummy_simulator_exit 00000002  000001a0  000001a0  00000234  2**1
+ 22 .text.SPI_MasterInit 0000000e  000003ca  000003ca  0000045e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 23 .text.exit    00000016  00000162  00000162  000001f6  2**1
+ 23 .text.SPI_MasterTransmit 00000034  00000306  00000306  0000039a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 24 .text._Exit   00000004  00000198  00000198  0000022c  2**1
+ 24 .text.initUSART 0000002a  00000366  00000366  000003fa  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 25 .text.uartTransmitByte 0000000e  000003d8  000003d8  0000046c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 26 .text.init1621 00000048  0000027c  0000027c  00000310  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 27 .text.poll_Slave2 00000066  000001ce  000001ce  00000262  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 28 .text.main    000000a6  000000c2  000000c2  00000156  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 29 .text.__dummy_fini 00000002  000003fa  000003fa  0000048e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 30 .text.__dummy_funcs_on_exit 00000002  000003fc  000003fc  00000490  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 31 .text.__dummy_simulator_exit 00000002  000003fe  000003fe  00000492  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 32 .text.exit    00000016  00000390  00000390  00000424  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 33 .text._Exit   00000004  000003f6  000003f6  0000048a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 37 00 	jmp	0x6e	; 0x6e <__ctors_end>
-   4:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-   8:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-   c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  10:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  14:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  18:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  1c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  20:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  24:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  28:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  2c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  30:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  34:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  38:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  3c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  40:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  44:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  48:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  4c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  50:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  54:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  58:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  5c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  60:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
-  64:	0c 94 ca 00 	jmp	0x194	; 0x194 <__bad_interrupt>
+   4:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+   8:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+   c:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  10:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  14:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  18:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  1c:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  20:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  24:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  28:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  2c:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  30:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  34:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  38:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  3c:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  40:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  44:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  48:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  4c:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  50:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  54:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  58:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  5c:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  60:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
+  64:	0c 94 f9 01 	jmp	0x3f2	; 0x3f2 <__bad_interrupt>
 
 00000068 <.dinit>:
   68:	01 00       	.word	0x0001	; ????
-  6a:	01 06       	cpc	r0, r17
+  6a:	01 08       	sbc	r0, r1
   6c:	80 00       	.word	0x0080	; ????
 
 0000006e <__ctors_end>:
@@ -131,7 +149,7 @@ Disassembly of section .text:
   b2:	f4 07       	cpc	r31, r20
   b4:	31 f7       	brne	.-52     	; 0x82 <__do_copy_data+0x8>
   b6:	0e 94 61 00 	call	0xc2	; 0xc2 <_etext>
-  ba:	0c 94 b1 00 	jmp	0x162	; 0x162 <exit>
+  ba:	0c 94 c8 01 	jmp	0x390	; 0x390 <exit>
 
 000000be <_exit>:
   be:	f8 94       	cli
@@ -141,164 +159,487 @@ Disassembly of section .text:
 
 Disassembly of section .text:
 
-00000194 <__bad_interrupt>:
- 194:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+000003f2 <__bad_interrupt>:
+ 3f2:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
 
-Disassembly of section .text.SPI_MasterInit:
+Disassembly of section .text.I2C_Init:
 
-00000178 <SPI_MasterInit>:
+000003e6 <I2C_Init>:
+#include "I2C_Master_H_file.h"								/* Include I2C header file */
 
-//SPI
-void SPI_MasterInit(void)
+void I2C_Init()												/* I2C initialize function */
 {
-	/* Set MOSI and SCK output SS,  */
-	DDRB = (1<<PB3)|(1<<PB5)|(1<<PB2);
- 178:	8c e2       	ldi	r24, 0x2C	; 44
- 17a:	84 b9       	out	0x04, r24	; 4
-	// set Port C pins for 3 ss	
-	DDRD = (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
- 17c:	8c e1       	ldi	r24, 0x1C	; 28
- 17e:	8a b9       	out	0x0a, r24	; 10
-	/* Enable SPI, Master, set clock rate fck/16 */
-	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
- 180:	81 e5       	ldi	r24, 0x51	; 81
- 182:	8c bd       	out	0x2c, r24	; 44
- 184:	08 95       	ret
+	//TWBR = 12;
+	TWBR = BITRATE(TWSR = 0x00);							/* Get bit rate register value by formula */
+ 3e6:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 3ea:	8f ef       	ldi	r24, 0xFF	; 255
+ 3ec:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7fc0b8>
+ 3f0:	08 95       	ret
 
-Disassembly of section .text.SPI_MasterTransmit:
+Disassembly of section .text.I2C_Repeated_Start:
 
-00000104 <SPI_MasterTransmit>:
+00000234 <I2C_Repeated_Start>:
+char I2C_Read_Ack()											/* I2C read ack function */
+{
+	TWCR=(1<<TWEN)|(1<<TWINT)|(1<<TWEA);					/* Enable TWI, generation of ack and clear interrupt flag */
+	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (read operation) */
+	return TWDR;											/* Return received data */
+}	
+ 234:	94 ea       	ldi	r25, 0xA4	; 164
+ 236:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 23a:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 23e:	99 23       	and	r25, r25
+ 240:	e4 f7       	brge	.-8      	; 0x23a <I2C_Repeated_Start+0x6>
+ 242:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 246:	98 7f       	andi	r25, 0xF8	; 248
+ 248:	90 31       	cpi	r25, 0x10	; 16
+ 24a:	91 f4       	brne	.+36     	; 0x270 <I2C_Repeated_Start+0x3c>
+ 24c:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
+ 250:	84 e8       	ldi	r24, 0x84	; 132
+ 252:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 256:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 25a:	88 23       	and	r24, r24
+ 25c:	e4 f7       	brge	.-8      	; 0x256 <I2C_Repeated_Start+0x22>
+ 25e:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 262:	88 7f       	andi	r24, 0xF8	; 248
+ 264:	80 34       	cpi	r24, 0x40	; 64
+ 266:	31 f0       	breq	.+12     	; 0x274 <I2C_Repeated_Start+0x40>
+ 268:	80 32       	cpi	r24, 0x20	; 32
+ 26a:	31 f4       	brne	.+12     	; 0x278 <I2C_Repeated_Start+0x44>
+ 26c:	82 e0       	ldi	r24, 0x02	; 2
+ 26e:	08 95       	ret
+ 270:	80 e0       	ldi	r24, 0x00	; 0
+ 272:	08 95       	ret
+ 274:	81 e0       	ldi	r24, 0x01	; 1
+ 276:	08 95       	ret
+ 278:	83 e0       	ldi	r24, 0x03	; 3
+ 27a:	08 95       	ret
+
+Disassembly of section .text.I2C_Stop:
+
+000003ba <I2C_Stop>:
+	return 3;												/* Else return 3 to indicate SLA+W failed */
+}
+
+void I2C_Stop()												/* I2C stop function */
+{
+	TWCR=(1<<TWSTO)|(1<<TWINT)|(1<<TWEN);					/* Enable TWI, generate stop condition and clear interrupt flag */
+ 3ba:	84 e9       	ldi	r24, 0x94	; 148
+ 3bc:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+	while(TWCR & (1<<TWSTO));								/* Wait until stop condition execution */ 
+ 3c0:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 3c4:	84 fd       	sbrc	r24, 4
+ 3c6:	fc cf       	rjmp	.-8      	; 0x3c0 <I2C_Stop+0x6>
+}
+ 3c8:	08 95       	ret
+
+Disassembly of section .text.I2C_Start_Wait:
+
+000002c4 <I2C_Start_Wait>:
+char I2C_Read_Ack()											/* I2C read ack function */
+{
+	TWCR=(1<<TWEN)|(1<<TWINT)|(1<<TWEA);					/* Enable TWI, generation of ack and clear interrupt flag */
+	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (read operation) */
+	return TWDR;											/* Return received data */
+}	
+ 2c4:	cf 93       	push	r28
+ 2c6:	c8 2f       	mov	r28, r24
+ 2c8:	84 ea       	ldi	r24, 0xA4	; 164
+ 2ca:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 2ce:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 2d2:	88 23       	and	r24, r24
+ 2d4:	e4 f7       	brge	.-8      	; 0x2ce <I2C_Start_Wait+0xa>
+ 2d6:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 2da:	88 7f       	andi	r24, 0xF8	; 248
+ 2dc:	88 30       	cpi	r24, 0x08	; 8
+ 2de:	a1 f7       	brne	.-24     	; 0x2c8 <I2C_Start_Wait+0x4>
+ 2e0:	c0 93 bb 00 	sts	0x00BB, r28	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
+ 2e4:	84 e8       	ldi	r24, 0x84	; 132
+ 2e6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 2ea:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 2ee:	88 23       	and	r24, r24
+ 2f0:	e4 f7       	brge	.-8      	; 0x2ea <I2C_Start_Wait+0x26>
+ 2f2:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 2f6:	88 7f       	andi	r24, 0xF8	; 248
+ 2f8:	88 31       	cpi	r24, 0x18	; 24
+ 2fa:	19 f0       	breq	.+6      	; 0x302 <I2C_Start_Wait+0x3e>
+ 2fc:	0e 94 dd 01 	call	0x3ba	; 0x3ba <I2C_Stop>
+ 300:	e3 cf       	rjmp	.-58     	; 0x2c8 <I2C_Start_Wait+0x4>
+ 302:	cf 91       	pop	r28
+ 304:	08 95       	ret
+
+Disassembly of section .text.I2C_Write:
+
+0000033a <I2C_Write>:
+ 33a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
+ 33e:	84 e8       	ldi	r24, 0x84	; 132
+ 340:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 344:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 348:	88 23       	and	r24, r24
+ 34a:	e4 f7       	brge	.-8      	; 0x344 <I2C_Write+0xa>
+ 34c:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+ 350:	88 7f       	andi	r24, 0xF8	; 248
+ 352:	88 32       	cpi	r24, 0x28	; 40
+ 354:	21 f0       	breq	.+8      	; 0x35e <I2C_Write+0x24>
+ 356:	80 33       	cpi	r24, 0x30	; 48
+ 358:	21 f4       	brne	.+8      	; 0x362 <I2C_Write+0x28>
+ 35a:	81 e0       	ldi	r24, 0x01	; 1
+ 35c:	08 95       	ret
+ 35e:	80 e0       	ldi	r24, 0x00	; 0
+ 360:	08 95       	ret
+ 362:	82 e0       	ldi	r24, 0x02	; 2
+ 364:	08 95       	ret
+
+Disassembly of section .text.I2C_Read_Nack:
+
+000003a6 <I2C_Read_Nack>:
+
+char I2C_Read_Nack()										/* I2C read nack function */
+{
+	TWCR=(1<<TWEN)|(1<<TWINT);								/* Enable TWI and clear interrupt flag */
+ 3a6:	84 e8       	ldi	r24, 0x84	; 132
+ 3a8:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (read operation) */
+ 3ac:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+ 3b0:	88 23       	and	r24, r24
+ 3b2:	e4 f7       	brge	.-8      	; 0x3ac <I2C_Read_Nack+0x6>
+	return TWDR;											/* Return received data */
+ 3b4:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
+}	
+ 3b8:	08 95       	ret
+
+Disassembly of section .text.poll_Slave1:
+
+00000168 <poll_Slave1>:
 }
 
 void i2cSend(uint8_t data) {
 	TWDR = data;
 	TWCR = (_BV(TWINT) | _BV(TWEN));                  /* init and enable */
 	i2cWaitForComplete();
- 104:	9b b1       	in	r25, 0x0b	; 11
- 106:	9c 61       	ori	r25, 0x1C	; 28
- 108:	9b b9       	out	0x0b, r25	; 11
- 10a:	9b b1       	in	r25, 0x0b	; 11
- 10c:	21 e0       	ldi	r18, 0x01	; 1
- 10e:	30 e0       	ldi	r19, 0x00	; 0
- 110:	02 c0       	rjmp	.+4      	; 0x116 <SPI_MasterTransmit+0x12>
- 112:	22 0f       	add	r18, r18
- 114:	33 1f       	adc	r19, r19
- 116:	6a 95       	dec	r22
- 118:	e2 f7       	brpl	.-8      	; 0x112 <SPI_MasterTransmit+0xe>
- 11a:	20 95       	com	r18
- 11c:	29 23       	and	r18, r25
- 11e:	2b b9       	out	0x0b, r18	; 11
- 120:	e9 ef       	ldi	r30, 0xF9	; 249
- 122:	f0 e0       	ldi	r31, 0x00	; 0
- 124:	31 97       	sbiw	r30, 0x01	; 1
- 126:	f1 f7       	brne	.-4      	; 0x124 <SPI_MasterTransmit+0x20>
- 128:	00 c0       	rjmp	.+0      	; 0x12a <SPI_MasterTransmit+0x26>
- 12a:	00 00       	nop
- 12c:	8e bd       	out	0x2e, r24	; 46
- 12e:	0d b4       	in	r0, 0x2d	; 45
- 130:	07 fe       	sbrs	r0, 7
- 132:	fd cf       	rjmp	.-6      	; 0x12e <SPI_MasterTransmit+0x2a>
- 134:	8e b5       	in	r24, 0x2e	; 46
- 136:	08 95       	ret
+ 168:	cf 93       	push	r28
+ 16a:	8c e3       	ldi	r24, 0x3C	; 60
+ 16c:	0e 94 62 01 	call	0x2c4	; 0x2c4 <I2C_Start_Wait>
+ 170:	8f e0       	ldi	r24, 0x0F	; 15
+ 172:	97 e2       	ldi	r25, 0x27	; 39
+ 174:	01 97       	sbiw	r24, 0x01	; 1
+ 176:	f1 f7       	brne	.-4      	; 0x174 <poll_Slave1+0xc>
+ 178:	00 c0       	rjmp	.+0      	; 0x17a <poll_Slave1+0x12>
+ 17a:	00 00       	nop
+ 17c:	85 e2       	ldi	r24, 0x25	; 37
+ 17e:	0e 94 9d 01 	call	0x33a	; 0x33a <I2C_Write>
+ 182:	9f ef       	ldi	r25, 0xFF	; 255
+ 184:	20 e7       	ldi	r18, 0x70	; 112
+ 186:	82 e0       	ldi	r24, 0x02	; 2
+ 188:	91 50       	subi	r25, 0x01	; 1
+ 18a:	20 40       	sbci	r18, 0x00	; 0
+ 18c:	80 40       	sbci	r24, 0x00	; 0
+ 18e:	e1 f7       	brne	.-8      	; 0x188 <poll_Slave1+0x20>
+ 190:	00 c0       	rjmp	.+0      	; 0x192 <poll_Slave1+0x2a>
+ 192:	00 00       	nop
+ 194:	8d e3       	ldi	r24, 0x3D	; 61
+ 196:	0e 94 1a 01 	call	0x234	; 0x234 <I2C_Repeated_Start>
+ 19a:	8f e0       	ldi	r24, 0x0F	; 15
+ 19c:	97 e2       	ldi	r25, 0x27	; 39
+ 19e:	01 97       	sbiw	r24, 0x01	; 1
+ 1a0:	f1 f7       	brne	.-4      	; 0x19e <poll_Slave1+0x36>
+ 1a2:	00 c0       	rjmp	.+0      	; 0x1a4 <poll_Slave1+0x3c>
+ 1a4:	00 00       	nop
+ 1a6:	0e 94 d3 01 	call	0x3a6	; 0x3a6 <I2C_Read_Nack>
+ 1aa:	c8 2f       	mov	r28, r24
+ 1ac:	8f e0       	ldi	r24, 0x0F	; 15
+ 1ae:	97 e2       	ldi	r25, 0x27	; 39
+ 1b0:	01 97       	sbiw	r24, 0x01	; 1
+ 1b2:	f1 f7       	brne	.-4      	; 0x1b0 <poll_Slave1+0x48>
+ 1b4:	00 c0       	rjmp	.+0      	; 0x1b6 <poll_Slave1+0x4e>
+ 1b6:	00 00       	nop
+ 1b8:	0e 94 dd 01 	call	0x3ba	; 0x3ba <I2C_Stop>
+ 1bc:	8f e0       	ldi	r24, 0x0F	; 15
+ 1be:	97 e2       	ldi	r25, 0x27	; 39
+ 1c0:	01 97       	sbiw	r24, 0x01	; 1
+ 1c2:	f1 f7       	brne	.-4      	; 0x1c0 <poll_Slave1+0x58>
+ 1c4:	00 c0       	rjmp	.+0      	; 0x1c6 <poll_Slave1+0x5e>
+ 1c6:	00 00       	nop
+ 1c8:	8c 2f       	mov	r24, r28
+ 1ca:	cf 91       	pop	r28
+ 1cc:	08 95       	ret
+
+Disassembly of section .text.SPI_MasterInit:
+
+000003ca <SPI_MasterInit>:
+
+//SPI
+void SPI_MasterInit(void)
+{
+	/* Set MOSI and SCK output SS,  */
+	DDRB = (1<<PB3)|(1<<PB5)|(1<<PB2);
+ 3ca:	8c e2       	ldi	r24, 0x2C	; 44
+ 3cc:	84 b9       	out	0x04, r24	; 4
+	// set Port C pins for 3 ss	
+	DDRD = (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
+ 3ce:	8c e1       	ldi	r24, 0x1C	; 28
+ 3d0:	8a b9       	out	0x0a, r24	; 10
+	/* Enable SPI, Master, set clock rate fck/16 */
+	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
+ 3d2:	81 e5       	ldi	r24, 0x51	; 81
+ 3d4:	8c bd       	out	0x2c, r24	; 44
+ 3d6:	08 95       	ret
+
+Disassembly of section .text.SPI_MasterTransmit:
+
+00000306 <SPI_MasterTransmit>:
+ 306:	9b b1       	in	r25, 0x0b	; 11
+ 308:	9c 61       	ori	r25, 0x1C	; 28
+ 30a:	9b b9       	out	0x0b, r25	; 11
+ 30c:	9b b1       	in	r25, 0x0b	; 11
+ 30e:	21 e0       	ldi	r18, 0x01	; 1
+ 310:	30 e0       	ldi	r19, 0x00	; 0
+ 312:	02 c0       	rjmp	.+4      	; 0x318 <SPI_MasterTransmit+0x12>
+ 314:	22 0f       	add	r18, r18
+ 316:	33 1f       	adc	r19, r19
+ 318:	6a 95       	dec	r22
+ 31a:	e2 f7       	brpl	.-8      	; 0x314 <SPI_MasterTransmit+0xe>
+ 31c:	20 95       	com	r18
+ 31e:	29 23       	and	r18, r25
+ 320:	2b b9       	out	0x0b, r18	; 11
+ 322:	ef ec       	ldi	r30, 0xCF	; 207
+ 324:	f7 e0       	ldi	r31, 0x07	; 7
+ 326:	31 97       	sbiw	r30, 0x01	; 1
+ 328:	f1 f7       	brne	.-4      	; 0x326 <SPI_MasterTransmit+0x20>
+ 32a:	00 c0       	rjmp	.+0      	; 0x32c <SPI_MasterTransmit+0x26>
+ 32c:	00 00       	nop
+ 32e:	8e bd       	out	0x2e, r24	; 46
+ 330:	0d b4       	in	r0, 0x2d	; 45
+ 332:	07 fe       	sbrs	r0, 7
+ 334:	fd cf       	rjmp	.-6      	; 0x330 <SPI_MasterTransmit+0x2a>
+ 336:	8e b5       	in	r24, 0x2e	; 46
+ 338:	08 95       	ret
 
 Disassembly of section .text.initUSART:
 
-00000138 <initUSART>:
- 138:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
- 13c:	8c e0       	ldi	r24, 0x0C	; 12
- 13e:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
- 142:	e0 ec       	ldi	r30, 0xC0	; 192
- 144:	f0 e0       	ldi	r31, 0x00	; 0
- 146:	80 81       	ld	r24, Z
- 148:	82 60       	ori	r24, 0x02	; 2
- 14a:	80 83       	st	Z, r24
- 14c:	e1 ec       	ldi	r30, 0xC1	; 193
- 14e:	f0 e0       	ldi	r31, 0x00	; 0
- 150:	80 81       	ld	r24, Z
- 152:	88 61       	ori	r24, 0x18	; 24
- 154:	80 83       	st	Z, r24
- 156:	e2 ec       	ldi	r30, 0xC2	; 194
- 158:	f0 e0       	ldi	r31, 0x00	; 0
- 15a:	80 81       	ld	r24, Z
- 15c:	86 60       	ori	r24, 0x06	; 6
- 15e:	80 83       	st	Z, r24
- 160:	08 95       	ret
+00000366 <initUSART>:
+ 366:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
+ 36a:	8c e0       	ldi	r24, 0x0C	; 12
+ 36c:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
+ 370:	e0 ec       	ldi	r30, 0xC0	; 192
+ 372:	f0 e0       	ldi	r31, 0x00	; 0
+ 374:	80 81       	ld	r24, Z
+ 376:	82 60       	ori	r24, 0x02	; 2
+ 378:	80 83       	st	Z, r24
+ 37a:	e1 ec       	ldi	r30, 0xC1	; 193
+ 37c:	f0 e0       	ldi	r31, 0x00	; 0
+ 37e:	80 81       	ld	r24, Z
+ 380:	88 61       	ori	r24, 0x18	; 24
+ 382:	80 83       	st	Z, r24
+ 384:	e2 ec       	ldi	r30, 0xC2	; 194
+ 386:	f0 e0       	ldi	r31, 0x00	; 0
+ 388:	80 81       	ld	r24, Z
+ 38a:	86 60       	ori	r24, 0x06	; 6
+ 38c:	80 83       	st	Z, r24
+ 38e:	08 95       	ret
 
 Disassembly of section .text.uartTransmitByte:
 
-00000186 <uartTransmitByte>:
+000003d8 <uartTransmitByte>:
 	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
 	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
 }
 //transmettre un caractere
 void uartTransmitByte(uint8_t data) {
 	while ( !( UCSR0A & (1<<UDRE0)) ); /* Attendre que le buffer de transmission soit vide */
- 186:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7fc0c0>
- 18a:	95 ff       	sbrs	r25, 5
- 18c:	fc cf       	rjmp	.-8      	; 0x186 <uartTransmitByte>
+ 3d8:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7fc0c0>
+ 3dc:	95 ff       	sbrs	r25, 5
+ 3de:	fc cf       	rjmp	.-8      	; 0x3d8 <uartTransmitByte>
 	UDR0 = data;                      /* envoyer la donn�e */
- 18e:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7fc0c6>
- 192:	08 95       	ret
+ 3e0:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7fc0c6>
+ 3e4:	08 95       	ret
+
+Disassembly of section .text.init1621:
+
+0000027c <init1621>:
+ 27c:	80 e9       	ldi	r24, 0x90	; 144
+ 27e:	0e 94 62 01 	call	0x2c4	; 0x2c4 <I2C_Start_Wait>
+ 282:	8f e0       	ldi	r24, 0x0F	; 15
+ 284:	97 e2       	ldi	r25, 0x27	; 39
+ 286:	01 97       	sbiw	r24, 0x01	; 1
+ 288:	f1 f7       	brne	.-4      	; 0x286 <init1621+0xa>
+ 28a:	00 c0       	rjmp	.+0      	; 0x28c <init1621+0x10>
+ 28c:	00 00       	nop
+ 28e:	8c ea       	ldi	r24, 0xAC	; 172
+ 290:	0e 94 9d 01 	call	0x33a	; 0x33a <I2C_Write>
+ 294:	8f e0       	ldi	r24, 0x0F	; 15
+ 296:	97 e2       	ldi	r25, 0x27	; 39
+ 298:	01 97       	sbiw	r24, 0x01	; 1
+ 29a:	f1 f7       	brne	.-4      	; 0x298 <init1621+0x1c>
+ 29c:	00 c0       	rjmp	.+0      	; 0x29e <init1621+0x22>
+ 29e:	00 00       	nop
+ 2a0:	83 e0       	ldi	r24, 0x03	; 3
+ 2a2:	0e 94 9d 01 	call	0x33a	; 0x33a <I2C_Write>
+ 2a6:	8f e0       	ldi	r24, 0x0F	; 15
+ 2a8:	97 e2       	ldi	r25, 0x27	; 39
+ 2aa:	01 97       	sbiw	r24, 0x01	; 1
+ 2ac:	f1 f7       	brne	.-4      	; 0x2aa <init1621+0x2e>
+ 2ae:	00 c0       	rjmp	.+0      	; 0x2b0 <init1621+0x34>
+ 2b0:	00 00       	nop
+ 2b2:	0e 94 dd 01 	call	0x3ba	; 0x3ba <I2C_Stop>
+ 2b6:	8f e0       	ldi	r24, 0x0F	; 15
+ 2b8:	97 e2       	ldi	r25, 0x27	; 39
+ 2ba:	01 97       	sbiw	r24, 0x01	; 1
+ 2bc:	f1 f7       	brne	.-4      	; 0x2ba <init1621+0x3e>
+ 2be:	00 c0       	rjmp	.+0      	; 0x2c0 <init1621+0x44>
+ 2c0:	00 00       	nop
+ 2c2:	08 95       	ret
+
+Disassembly of section .text.poll_Slave2:
+
+000001ce <poll_Slave2>:
+ 1ce:	cf 93       	push	r28
+ 1d0:	8a e5       	ldi	r24, 0x5A	; 90
+ 1d2:	0e 94 62 01 	call	0x2c4	; 0x2c4 <I2C_Start_Wait>
+ 1d6:	8f e0       	ldi	r24, 0x0F	; 15
+ 1d8:	97 e2       	ldi	r25, 0x27	; 39
+ 1da:	01 97       	sbiw	r24, 0x01	; 1
+ 1dc:	f1 f7       	brne	.-4      	; 0x1da <poll_Slave2+0xc>
+ 1de:	00 c0       	rjmp	.+0      	; 0x1e0 <poll_Slave2+0x12>
+ 1e0:	00 00       	nop
+ 1e2:	85 e3       	ldi	r24, 0x35	; 53
+ 1e4:	0e 94 9d 01 	call	0x33a	; 0x33a <I2C_Write>
+ 1e8:	9f ef       	ldi	r25, 0xFF	; 255
+ 1ea:	20 e7       	ldi	r18, 0x70	; 112
+ 1ec:	82 e0       	ldi	r24, 0x02	; 2
+ 1ee:	91 50       	subi	r25, 0x01	; 1
+ 1f0:	20 40       	sbci	r18, 0x00	; 0
+ 1f2:	80 40       	sbci	r24, 0x00	; 0
+ 1f4:	e1 f7       	brne	.-8      	; 0x1ee <poll_Slave2+0x20>
+ 1f6:	00 c0       	rjmp	.+0      	; 0x1f8 <poll_Slave2+0x2a>
+ 1f8:	00 00       	nop
+ 1fa:	8b e5       	ldi	r24, 0x5B	; 91
+ 1fc:	0e 94 1a 01 	call	0x234	; 0x234 <I2C_Repeated_Start>
+ 200:	8f e0       	ldi	r24, 0x0F	; 15
+ 202:	97 e2       	ldi	r25, 0x27	; 39
+ 204:	01 97       	sbiw	r24, 0x01	; 1
+ 206:	f1 f7       	brne	.-4      	; 0x204 <__EEPROM_REGION_LENGTH__+0x4>
+ 208:	00 c0       	rjmp	.+0      	; 0x20a <__EEPROM_REGION_LENGTH__+0xa>
+ 20a:	00 00       	nop
+ 20c:	0e 94 d3 01 	call	0x3a6	; 0x3a6 <I2C_Read_Nack>
+ 210:	c8 2f       	mov	r28, r24
+ 212:	8f e0       	ldi	r24, 0x0F	; 15
+ 214:	97 e2       	ldi	r25, 0x27	; 39
+ 216:	01 97       	sbiw	r24, 0x01	; 1
+ 218:	f1 f7       	brne	.-4      	; 0x216 <__EEPROM_REGION_LENGTH__+0x16>
+ 21a:	00 c0       	rjmp	.+0      	; 0x21c <__EEPROM_REGION_LENGTH__+0x1c>
+ 21c:	00 00       	nop
+ 21e:	0e 94 dd 01 	call	0x3ba	; 0x3ba <I2C_Stop>
+ 222:	8f e0       	ldi	r24, 0x0F	; 15
+ 224:	97 e2       	ldi	r25, 0x27	; 39
+ 226:	01 97       	sbiw	r24, 0x01	; 1
+ 228:	f1 f7       	brne	.-4      	; 0x226 <__EEPROM_REGION_LENGTH__+0x26>
+ 22a:	00 c0       	rjmp	.+0      	; 0x22c <__EEPROM_REGION_LENGTH__+0x2c>
+ 22c:	00 00       	nop
+ 22e:	8c 2f       	mov	r24, r28
+ 230:	cf 91       	pop	r28
+ 232:	08 95       	ret
 
 Disassembly of section .text.main:
 
 000000c2 <main>:
-  c2:	0e 94 bc 00 	call	0x178	; 0x178 <SPI_MasterInit>
-  c6:	0e 94 9c 00 	call	0x138	; 0x138 <initUSART>
-  ca:	2f e9       	ldi	r18, 0x9F	; 159
-  cc:	86 e8       	ldi	r24, 0x86	; 134
-  ce:	91 e0       	ldi	r25, 0x01	; 1
-  d0:	21 50       	subi	r18, 0x01	; 1
-  d2:	80 40       	sbci	r24, 0x00	; 0
-  d4:	90 40       	sbci	r25, 0x00	; 0
-  d6:	e1 f7       	brne	.-8      	; 0xd0 <main+0xe>
-  d8:	00 c0       	rjmp	.+0      	; 0xda <main+0x18>
-  da:	00 00       	nop
-  dc:	c0 e0       	ldi	r28, 0x00	; 0
-  de:	d1 e0       	ldi	r29, 0x01	; 1
-  e0:	63 e0       	ldi	r22, 0x03	; 3
-  e2:	8c 81       	ldd	r24, Y+4	; 0x04
-  e4:	0e 94 82 00 	call	0x104	; 0x104 <SPI_MasterTransmit>
-  e8:	64 e0       	ldi	r22, 0x04	; 4
-  ea:	89 e5       	ldi	r24, 0x59	; 89
-  ec:	0e 94 82 00 	call	0x104	; 0x104 <SPI_MasterTransmit>
-  f0:	8d 83       	std	Y+5, r24	; 0x05
-  f2:	0e 94 c3 00 	call	0x186	; 0x186 <uartTransmitByte>
-  f6:	81 ee       	ldi	r24, 0xE1	; 225
-  f8:	94 e0       	ldi	r25, 0x04	; 4
-  fa:	01 97       	sbiw	r24, 0x01	; 1
-  fc:	f1 f7       	brne	.-4      	; 0xfa <main+0x38>
-  fe:	00 c0       	rjmp	.+0      	; 0x100 <main+0x3e>
- 100:	00 00       	nop
- 102:	ec cf       	rjmp	.-40     	; 0xdc <main+0x1a>
+  c2:	0e 94 f3 01 	call	0x3e6	; 0x3e6 <I2C_Init>
+  c6:	0e 94 3e 01 	call	0x27c	; 0x27c <init1621>
+  ca:	0e 94 e5 01 	call	0x3ca	; 0x3ca <SPI_MasterInit>
+  ce:	0e 94 b3 01 	call	0x366	; 0x366 <initUSART>
+  d2:	2f ef       	ldi	r18, 0xFF	; 255
+  d4:	84 e3       	ldi	r24, 0x34	; 52
+  d6:	9c e0       	ldi	r25, 0x0C	; 12
+  d8:	21 50       	subi	r18, 0x01	; 1
+  da:	80 40       	sbci	r24, 0x00	; 0
+  dc:	90 40       	sbci	r25, 0x00	; 0
+  de:	e1 f7       	brne	.-8      	; 0xd8 <main+0x16>
+  e0:	00 c0       	rjmp	.+0      	; 0xe2 <main+0x20>
+  e2:	00 00       	nop
+  e4:	84 eb       	ldi	r24, 0xB4	; 180
+  e6:	90 e0       	ldi	r25, 0x00	; 0
+  e8:	86 fd       	sbrc	r24, 6
+  ea:	04 c0       	rjmp	.+8      	; 0xf4 <main+0x32>
+  ec:	21 e0       	ldi	r18, 0x01	; 1
+  ee:	20 93 02 01 	sts	0x0102, r18	; 0x800102 <status>
+  f2:	02 c0       	rjmp	.+4      	; 0xf8 <main+0x36>
+  f4:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <status>
+  f8:	88 23       	and	r24, r24
+  fa:	24 f0       	brlt	.+8      	; 0x104 <main+0x42>
+  fc:	81 e0       	ldi	r24, 0x01	; 1
+  fe:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <status+0x1>
+ 102:	02 c0       	rjmp	.+4      	; 0x108 <main+0x46>
+ 104:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <status+0x1>
+ 108:	2f ef       	ldi	r18, 0xFF	; 255
+ 10a:	80 e7       	ldi	r24, 0x70	; 112
+ 10c:	92 e0       	ldi	r25, 0x02	; 2
+ 10e:	21 50       	subi	r18, 0x01	; 1
+ 110:	80 40       	sbci	r24, 0x00	; 0
+ 112:	90 40       	sbci	r25, 0x00	; 0
+ 114:	e1 f7       	brne	.-8      	; 0x10e <main+0x4c>
+ 116:	00 c0       	rjmp	.+0      	; 0x118 <main+0x56>
+ 118:	00 00       	nop
+ 11a:	0e 94 e7 00 	call	0x1ce	; 0x1ce <poll_Slave2>
+ 11e:	88 23       	and	r24, r24
+ 120:	24 f0       	brlt	.+8      	; 0x12a <main+0x68>
+ 122:	81 e0       	ldi	r24, 0x01	; 1
+ 124:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <status+0x2>
+ 128:	02 c0       	rjmp	.+4      	; 0x12e <main+0x6c>
+ 12a:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <status+0x2>
+ 12e:	2f ef       	ldi	r18, 0xFF	; 255
+ 130:	80 e7       	ldi	r24, 0x70	; 112
+ 132:	92 e0       	ldi	r25, 0x02	; 2
+ 134:	21 50       	subi	r18, 0x01	; 1
+ 136:	80 40       	sbci	r24, 0x00	; 0
+ 138:	90 40       	sbci	r25, 0x00	; 0
+ 13a:	e1 f7       	brne	.-8      	; 0x134 <main+0x72>
+ 13c:	00 c0       	rjmp	.+0      	; 0x13e <main+0x7c>
+ 13e:	00 00       	nop
+ 140:	c2 e0       	ldi	r28, 0x02	; 2
+ 142:	d1 e0       	ldi	r29, 0x01	; 1
+ 144:	63 e0       	ldi	r22, 0x03	; 3
+ 146:	8c 81       	ldd	r24, Y+4	; 0x04
+ 148:	0e 94 83 01 	call	0x306	; 0x306 <SPI_MasterTransmit>
+ 14c:	64 e0       	ldi	r22, 0x04	; 4
+ 14e:	89 e5       	ldi	r24, 0x59	; 89
+ 150:	0e 94 83 01 	call	0x306	; 0x306 <SPI_MasterTransmit>
+ 154:	8d 83       	std	Y+5, r24	; 0x05
+ 156:	0e 94 ec 01 	call	0x3d8	; 0x3d8 <uartTransmitByte>
+ 15a:	8f e0       	ldi	r24, 0x0F	; 15
+ 15c:	97 e2       	ldi	r25, 0x27	; 39
+ 15e:	01 97       	sbiw	r24, 0x01	; 1
+ 160:	f1 f7       	brne	.-4      	; 0x15e <main+0x9c>
+ 162:	00 c0       	rjmp	.+0      	; 0x164 <main+0xa2>
+ 164:	00 00       	nop
+ 166:	be cf       	rjmp	.-132    	; 0xe4 <main+0x22>
 
 Disassembly of section .text.__dummy_fini:
 
-0000019c <_fini>:
- 19c:	08 95       	ret
+000003fa <_fini>:
+ 3fa:	08 95       	ret
 
 Disassembly of section .text.__dummy_funcs_on_exit:
 
-0000019e <__funcs_on_exit>:
- 19e:	08 95       	ret
+000003fc <__funcs_on_exit>:
+ 3fc:	08 95       	ret
 
 Disassembly of section .text.__dummy_simulator_exit:
 
-000001a0 <__simulator_exit>:
- 1a0:	08 95       	ret
+000003fe <__simulator_exit>:
+ 3fe:	08 95       	ret
 
 Disassembly of section .text.exit:
 
-00000162 <exit>:
- 162:	ec 01       	movw	r28, r24
- 164:	0e 94 cf 00 	call	0x19e	; 0x19e <__funcs_on_exit>
- 168:	0e 94 ce 00 	call	0x19c	; 0x19c <_fini>
- 16c:	ce 01       	movw	r24, r28
- 16e:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <__simulator_exit>
- 172:	ce 01       	movw	r24, r28
- 174:	0e 94 cc 00 	call	0x198	; 0x198 <_Exit>
+00000390 <exit>:
+ 390:	ec 01       	movw	r28, r24
+ 392:	0e 94 fe 01 	call	0x3fc	; 0x3fc <__funcs_on_exit>
+ 396:	0e 94 fd 01 	call	0x3fa	; 0x3fa <_fini>
+ 39a:	ce 01       	movw	r24, r28
+ 39c:	0e 94 ff 01 	call	0x3fe	; 0x3fe <__simulator_exit>
+ 3a0:	ce 01       	movw	r24, r28
+ 3a2:	0e 94 fb 01 	call	0x3f6	; 0x3f6 <_Exit>
 
 Disassembly of section .text._Exit:
 
-00000198 <_Exit>:
- 198:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
+000003f6 <_Exit>:
+ 3f6:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
