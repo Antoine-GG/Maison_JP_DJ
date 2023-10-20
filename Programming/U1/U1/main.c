@@ -5,89 +5,80 @@
  *  Author: JP Toutant
  */ 
 
-#define F_CPU 1000000UL
-#include <xc.h>
-#include <util/twi.h>
-#include <avr/io.h>
+#define F_CPU 8000000UL							/* Define CPU clock Frequency e.g. here its 8MHz */
+#include <avr/io.h>								/* Include AVR std. library file */
+#include <util/delay.h>							/* Include inbuilt defined Delay header file */
+#include <stdio.h>								/* Include standard I/O header file */
+#include <string.h>								/* Include string header file */
 #include <avr/sfr_defs.h>
-#include <util/delay.h>
-#include <stdio.h>								
-#include <string.h>
-#include "I2C_Slave_H_File.h"
+#include "I2C_Slave_H_File.h"					/* Include I2C slave header file */
 
+#define Slave_Address			0x3C
 
-#define SLAVE_ADDRESS 0x3C//addresse i2c de U2
-
-uint8_t windows;
-
-//ports + window states
-void iniIOports(void){
-	// Set PD7 and 6 as inputs
-	DDRD &= ~(1 << PD6) | (1 << PD7);
-	// Enable the internal pull-up resistor for PD7
-	PORTD |= (1 << PD6) | (1 << PD7);
-	// Set PD6 (Pin 6 of Port D) as an output (for an LED)
-	DDRB |= (1 << PB1) | (1 << PB2);
-}
-int getWindowState(uint8_t inPin, uint8_t ledPin){
-	// Check if PD7 is clear (low)
-	if (!(PIND & (1 << inPin)))
+int main(void)
+{
+	int drapeau=0;
+	int8_t count = 0;
+	uint8_t valeur=0b00000000;
+	
+	DDRB |=(1<<PB2);//temoin fenetre 2
+	DDRB |=(1<<PB1);//temoin fenetre 1
+	
+	PORTD|=(1<<PD6);//Resistance de Rappel activé pour le Bouton Poussoir FENETRE 1
+	PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir FENETRE 2
+	
+	
+	I2C_Slave_Init(Slave_Address);
+	
+	while (1)
 	{
-		// If PD7 is clear, set PD6 (turn on the LED)
-		PORTB &= ~(1 << ledPin);
-		return 0;
-		} else {
-		// If PD7 is set, clear PD6 (turn off the LED)
-		PORTB |= (1 << ledPin);
-		return 1;
-	}
-}
-void slave_answerPoll(uint8_t data, int8_t codeWord){
-	int drapeau = 0;
-	switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
+		//afficher les etats des fenetres sur les leds
+		if (bit_is_clear(PIND,PD7))
+		{
+			PORTB |=(1<<PB2) ; //allumer le temoin de la fenetre 2
+		} else
+		{
+			PORTB &=~(1<<PB2) ; //eteindre le temoin de la fenetre 2
+		}
+		
+		if (bit_is_clear(PIND,PD6))
+		{
+			PORTB |=(1<<PB1) ; //allumer le temoin de la fenetre 1
+		} else
+		{
+			PORTB &=~(1<<PB1) ; //eteindre le temoin de la fenetre 1
+		}
+		switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
 		{
 			case 0://receive
 			{
 				do
 				{
-	
-					codeWord = I2C_Slave_Receive();/* Receive data byte*/
-					if(codeWord==0x25) drapeau=1;  // vérifier si c'est 0x25 (code) alors autoriser la transmission
-				} while (codeWord != -1);			/* Receive until STOP/REPEATED START received */
-				
-				break;
-			}
-			
-			case 1://transmit
-			{
-				int8_t Ack_status;
-		        if(drapeau==1){ //si bon code envoi l'état de PB0
-				do
-					{  Ack_status = I2C_Slave_Transmit(data);	/* Send data byte */
-				
-					} while (Ack_status == 0);		/* Send until Acknowledgment is received */
-				
-					drapeau=0;//reset pour lire une autre donnée
+					
+					count = I2C_Slave_Receive();/* Receive data byte*/
+					if(count==0x25) drapeau=1;  // vérifier si c'est 0x25 (code) alors autoriser la transmission
+					PORTD=count;
+					} while (count != -1);			/* Receive until STOP/REPEATED START received */
+					
+					break;
 				}
-				break;
+				
+				case 1://transmit
+				{
+					int8_t Ack_status;
+					if(drapeau==1){ //si bon code envoi l'état de PD7 et PD6
+						do
+						{   valeur=(PIND & 0b11000000);  //valeur de PD7, et PD6
+							Ack_status = I2C_Slave_Transmit(valeur);	/* Send data byte */
+							
+							} while (Ack_status == 0);		/* Send until Acknowledgment is received */
+							
+							drapeau=0;//reset pour lire une autre donnée
+						}
+						break;
+					}
+					default:
+					break;
+				}
 			}
-			default:
-				break;
 		}
-}
-
-int main(void)
-{
-	I2C_Slave_Init(SLAVE_ADDRESS);
-	iniIOports();
-    
-	while(1)
-    {
-		// concatenation of the two window states to send LT
-		windows = ((1 << getWindowState(PD7, PB2)) | getWindowState(PD6, PB1));
-		// Add a delay for debouncing or to prevent rapid toggling
-		_delay_ms(100);
-        //TODO:: Please write your application code 
-		slave_answerPoll(windows, 0x25);
-    }
-}
