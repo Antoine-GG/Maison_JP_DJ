@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 3.2,
-          "height": 6.4,
-          "width": 6.4
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -406,12 +406,9 @@
   },
   "libraries": {
     "pinned_footprint_libs": [
-      "JPLibrary",
-      "JP_Library"
+      "JPLibrary"
     ],
-    "pinned_symbol_libs": [
-      "JP_Library"
-    ]
+    "pinned_symbol_libs": []
   },
   "meta": {
     "filename": "MaisonEtape1.kicad_pro",
@@ -431,7 +428,7 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.4,
+        "track_width": 0.25,
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
