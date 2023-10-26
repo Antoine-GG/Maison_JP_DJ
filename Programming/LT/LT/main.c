@@ -14,18 +14,18 @@
 #include "i2c.h"
 #include "i2c.cpp"
 
-#define Slave_Write_Address1		0x3C     //Atemga 328P Slave Ecriture Slave 1 Fenetres
-#define Slave_Read_Address1		0x3D    //Atemga 328P Slave Lecture  Slave 1  fenetres
-#define Slave_Write_Address2		0x5A     //Atemga 328P Slave Ecriture Slave 2 Porte
-#define Slave_Read_Address2		0x5B
-#define SLAVE1	  0x3C ///0011 1100
+#define Slave_Write_Address1     0x3C     //Atemga 328P Slave Ecriture Slave 1 Fenetres
+#define Slave_Read_Address1		 0x3D    //Atemga 328P Slave Lecture  Slave 1  fenetres
+#define Slave_Write_Address2	 0x5A     //Atemga 328P Slave Ecriture Slave 2 Porte
+#define Slave_Read_Address2		 0x5B
+#define SLAVE1	      0x3C ///0011 1100
 #define SLAVE2        0x5A ///0101 1010
 #define SLAVE3        2 //
 #define SLAVE4        3 //
 #define SLAVE5        4 //
 #define useI2C 	      0 //
 #define useII2C       0 //
-#define useIdir2C		 1 //
+#define useIdir2C	  0 //
 #define useManualI2C  0 // i2c avec la violence
 #define useSPI        1 //
 #define SDApin		  4 // 
@@ -418,6 +418,8 @@ int main() {
 		SPI_MasterTransmit(status.light, SLAVE4);
 		//POLL U5, get the keyboard char
 		status.keyboardChar = SPI_MasterTransmit('Y', SLAVE5);
+		uartTransmitByte(status.keyboardChar);
+
 		}
 		if(useII2C){
 			//DS1621 
@@ -455,7 +457,7 @@ int main() {
 		}
 		//uart 
 		//firstByte = status.keyboardChar;
-		uartTransmitByte(status.keyboardChar);
+		//uartTransmitByte(status.keyboardChar);
 		
 		_delay_ms(5); // Attendre avant de refaire la demande
 	}
