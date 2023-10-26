@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('electronics-background.gif'); /* Add your background image URL here */
+            background-size: cover;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        span.status {
+            font-weight: bold;
+            color: green;
+        }
+
+        span.status[data-status="Unknown"] {
+            color: gray;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Device Control</h1>
+    <table>
+        <tr>
+            <th>Device</th>
+            <th>Status</th>
+            <th>Control</th>
+        </tr>
+        <tr>
+            <td>Window 1</td>
+            <td><span class="status" id="status_window1">Unknown</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Window 2</td>
+            <td><span class="status" id="status_window2">Unknown</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Door</td>
+            <td><span class="status" id="status_door">Unknown</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lock</td>
+            <td><span class="status" id="status_lock">Unknown</span></td>
+            <td><button class="toggle-btn" id="toggle_lock">Toggle Lock</button></td>
+        </tr>
+        <tr>
+            <td>Light</td>
+            <td><span class="status" id="status_light">Unknown</span></td>
+            <td><button class="toggle-btn" id="toggle_light">Toggle Light</button></td>
+        </tr>
+    </table>
+
+    <script>
+        // Replace these values with the actual status of your devices
+        document.getElementById("status_window1").textContent = "Closed";
+        document.getElementById("status_window2").textContent = "Open";
+        document.getElementById("status_door").textContent = "Locked";
+        document.getElementById("status_lock").textContent = "Unlocked";
+        document.getElementById("status_light").textContent = "On";
+
+        // Toggle button event handlers (example toggling Lock and Light)
+        document.getElementById("toggle_lock").addEventListener("click", function () {
+            const lockStatus = document.getElementById("status_lock");
+            lockStatus.textContent = lockStatus.textContent === "Locked" ? "Unlocked" : "Locked";
+        });
+
+        document.getElementById("toggle_light").addEventListener("click", function () {
+            const lightStatus = document.getElementById("status_light");
+            lightStatus.textContent = lightStatus.textContent === "On" ? "Off" : "On";
+            sendmessage("monkeyPoxLight");
+        });
+    </script>
+</body>
+<script src="socket.js"></script>
+</html>
