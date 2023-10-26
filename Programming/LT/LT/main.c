@@ -358,7 +358,7 @@ int main() {
 
 		received = 0;
 		if(useIdir2C){
-			char windows= poll_Slave1;
+			char windows= poll_Slave1();
 			if ((windows & 0b01000000)==0b00000000) {
 					status.window1 = 1; 
 			}
@@ -415,13 +415,15 @@ int main() {
 		//Set U3 door lock status
 		//SPI_MasterTransmit(status.lock, SLAVE3);
 		//Set U4 light status
+		//manque la source ou ramener light
 		SPI_MasterTransmit(status.light, SLAVE4);
 		//POLL U5, get the keyboard char
 		status.keyboardChar = SPI_MasterTransmit('Y', SLAVE5);
 		uartTransmitByte(status.keyboardChar);
 
 		}
-		if(useII2C){
+		//if(useII2C){
+		if(useIdir2C){ //useIdir2C qui est utilise
 			//DS1621 
 		 // convertir une donnée,
 		 i2cStart();
@@ -442,8 +444,8 @@ int main() {
 		 _delay_ms(5);
 		 Temperature=tmp_msb+0.5*(tmp_lsb/128);	
 		 
-		 //SLAVE1
-		 i2cStart();
+		 //SLAVE1   a verifier
+		 /* i2cStart();
 		 i2cSend(SLAVE1);
 		 i2cSend(0x25);
 		 i2cStart(); // start
@@ -453,11 +455,12 @@ int main() {
 		 i2cStop();
 		 _delay_ms(5);
 		 //status.window1 =
-		 	   
+		 	   */
 		}
 		//uart 
 		//firstByte = status.keyboardChar;
-		//uartTransmitByte(status.keyboardChar);
+		//manque la source ou ramener keyboard doit etre definit
+		uartTransmitByte(status.keyboardChar);
 		
 		_delay_ms(5); // Attendre avant de refaire la demande
 	}
