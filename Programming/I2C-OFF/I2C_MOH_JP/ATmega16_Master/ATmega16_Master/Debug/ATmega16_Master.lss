@@ -21,11 +21,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_frame  00000148  00000000  00000000  00002ebc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000004d1  00000000  00000000  00003004  2**0
+  9 .debug_str    000004ef  00000000  00000000  00003004  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000a26  00000000  00000000  000034d5  2**0
+ 10 .debug_loc    00000a26  00000000  00000000  000034f3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000078  00000000  00000000  00003efb  2**0
+ 11 .debug_ranges 00000078  00000000  00000000  00003f19  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -66,7 +66,7 @@ Disassembly of section .text:
   70:	72 4e       	sbci	r23, 0xE2	; 226
   72:	18 09       	sbc	r17, r8
   74:	00 10       	cpse	r0, r0
-  76:	a5 d4       	rcall	.+2378   	; 0x9c2 <__stack+0xc3>
+  76:	a5 d4       	rcall	.+2378   	; 0x9c2 <__ftoa_engine+0xfc>
   78:	e8 00       	.word	0x00e8	; ????
   7a:	00 e8       	ldi	r16, 0x80	; 128
   7c:	76 48       	sbci	r23, 0x86	; 134
@@ -137,7 +137,7 @@ Disassembly of section .text:
   fe:	5c 93       	st	X, r21
  100:	6b 6c       	ori	r22, 0xCB	; 203
  102:	f9 67       	ori	r31, 0x79	; 121
- 104:	6d c1       	rjmp	.+730    	; 0x3e0 <main+0x200>
+ 104:	6d c1       	rjmp	.+730    	; 0x3e0 <__EEPROM_REGION_LENGTH__+0x1e0>
  106:	1b fc       	.word	0xfc1b	; ????
  108:	e0 e4       	ldi	r30, 0x40	; 64
  10a:	0d 47       	sbci	r16, 0x7D	; 125
@@ -189,7 +189,7 @@ Disassembly of section .text:
  162:	11 24       	eor	r1, r1
  164:	1f be       	out	0x3f, r1	; 63
  166:	cf ef       	ldi	r28, 0xFF	; 255
- 168:	d8 e0       	ldi	r29, 0x08	; 8
+ 168:	d4 e0       	ldi	r29, 0x04	; 4
  16a:	de bf       	out	0x3e, r29	; 62
  16c:	cd bf       	out	0x3d, r28	; 61
  16e:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <main>
@@ -205,9 +205,9 @@ uint8_t receiveByte(void) {
 	while ( !( UCSR0A & (1<<RXC0)) ); // Attendre que le buffer de réception soit plein 
 	return UDR0;                                // retourner la valeur lue 
 }
- 17a:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 17a:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
  17e:	87 e6       	ldi	r24, 0x67	; 103
- 180:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 180:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
  184:	e0 ec       	ldi	r30, 0xC0	; 192
  186:	f0 e0       	ldi	r31, 0x00	; 0
  188:	80 81       	ld	r24, Z
@@ -231,7 +231,7 @@ uint8_t receiveByte(void) {
  1a8:	90 81       	ld	r25, Z
  1aa:	95 ff       	sbrs	r25, 5
  1ac:	fd cf       	rjmp	.-6      	; 0x1a8 <transmitByte+0x4>
- 1ae:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 1ae:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7fc0c6>
  1b2:	08 95       	ret
 
 000001b4 <printString>:
@@ -319,8 +319,8 @@ int main()
  208:	8f e0       	ldi	r24, 0x0F	; 15
  20a:	97 e2       	ldi	r25, 0x27	; 39
  20c:	01 97       	sbiw	r24, 0x01	; 1
- 20e:	f1 f7       	brne	.-4      	; 0x20c <main+0x2c>
- 210:	00 c0       	rjmp	.+0      	; 0x212 <main+0x32>
+ 20e:	f1 f7       	brne	.-4      	; 0x20c <__EEPROM_REGION_LENGTH__+0xc>
+ 210:	00 c0       	rjmp	.+0      	; 0x212 <__EEPROM_REGION_LENGTH__+0x12>
  212:	00 00       	nop
 	 _delay_ms(5);
     I2C_Write(access_config);
@@ -329,8 +329,8 @@ int main()
  21a:	8f e0       	ldi	r24, 0x0F	; 15
  21c:	97 e2       	ldi	r25, 0x27	; 39
  21e:	01 97       	sbiw	r24, 0x01	; 1
- 220:	f1 f7       	brne	.-4      	; 0x21e <main+0x3e>
- 222:	00 c0       	rjmp	.+0      	; 0x224 <main+0x44>
+ 220:	f1 f7       	brne	.-4      	; 0x21e <__EEPROM_REGION_LENGTH__+0x1e>
+ 222:	00 c0       	rjmp	.+0      	; 0x224 <__EEPROM_REGION_LENGTH__+0x24>
  224:	00 00       	nop
 	 _delay_ms(5);
     I2C_Write(0x03);    // execution en mode ordre de conversion
@@ -339,8 +339,8 @@ int main()
  22c:	8f e0       	ldi	r24, 0x0F	; 15
  22e:	97 e2       	ldi	r25, 0x27	; 39
  230:	01 97       	sbiw	r24, 0x01	; 1
- 232:	f1 f7       	brne	.-4      	; 0x230 <main+0x50>
- 234:	00 c0       	rjmp	.+0      	; 0x236 <main+0x56>
+ 232:	f1 f7       	brne	.-4      	; 0x230 <__EEPROM_REGION_LENGTH__+0x30>
+ 234:	00 c0       	rjmp	.+0      	; 0x236 <__EEPROM_REGION_LENGTH__+0x36>
  236:	00 00       	nop
 	 _delay_ms(5);
    	I2C_Stop();
@@ -348,8 +348,8 @@ int main()
  23c:	8f e0       	ldi	r24, 0x0F	; 15
  23e:	97 e2       	ldi	r25, 0x27	; 39
  240:	01 97       	sbiw	r24, 0x01	; 1
- 242:	f1 f7       	brne	.-4      	; 0x240 <main+0x60>
- 244:	00 c0       	rjmp	.+0      	; 0x246 <main+0x66>
+ 242:	f1 f7       	brne	.-4      	; 0x240 <__EEPROM_REGION_LENGTH__+0x40>
+ 244:	00 c0       	rjmp	.+0      	; 0x246 <__EEPROM_REGION_LENGTH__+0x46>
  246:	00 00       	nop
 	///-----------------------------------	
 	
@@ -362,8 +362,8 @@ int main()
  24e:	8f e0       	ldi	r24, 0x0F	; 15
  250:	97 e2       	ldi	r25, 0x27	; 39
  252:	01 97       	sbiw	r24, 0x01	; 1
- 254:	f1 f7       	brne	.-4      	; 0x252 <main+0x72>
- 256:	00 c0       	rjmp	.+0      	; 0x258 <main+0x78>
+ 254:	f1 f7       	brne	.-4      	; 0x252 <__EEPROM_REGION_LENGTH__+0x52>
+ 256:	00 c0       	rjmp	.+0      	; 0x258 <__EEPROM_REGION_LENGTH__+0x58>
  258:	00 00       	nop
 		_delay_ms(5);
 			
@@ -376,8 +376,8 @@ int main()
  266:	91 50       	subi	r25, 0x01	; 1
  268:	20 40       	sbci	r18, 0x00	; 0
  26a:	80 40       	sbci	r24, 0x00	; 0
- 26c:	e1 f7       	brne	.-8      	; 0x266 <main+0x86>
- 26e:	00 c0       	rjmp	.+0      	; 0x270 <main+0x90>
+ 26c:	e1 f7       	brne	.-8      	; 0x266 <__EEPROM_REGION_LENGTH__+0x66>
+ 26e:	00 c0       	rjmp	.+0      	; 0x270 <__EEPROM_REGION_LENGTH__+0x70>
  270:	00 00       	nop
 		_delay_ms(100);
 		
@@ -388,8 +388,8 @@ int main()
  278:	8f e0       	ldi	r24, 0x0F	; 15
  27a:	97 e2       	ldi	r25, 0x27	; 39
  27c:	01 97       	sbiw	r24, 0x01	; 1
- 27e:	f1 f7       	brne	.-4      	; 0x27c <main+0x9c>
- 280:	00 c0       	rjmp	.+0      	; 0x282 <main+0xa2>
+ 27e:	f1 f7       	brne	.-4      	; 0x27c <__EEPROM_REGION_LENGTH__+0x7c>
+ 280:	00 c0       	rjmp	.+0      	; 0x282 <__EEPROM_REGION_LENGTH__+0x82>
  282:	00 00       	nop
 		_delay_ms(5);
 		
@@ -399,8 +399,8 @@ int main()
  28a:	8f e0       	ldi	r24, 0x0F	; 15
  28c:	97 e2       	ldi	r25, 0x27	; 39
  28e:	01 97       	sbiw	r24, 0x01	; 1
- 290:	f1 f7       	brne	.-4      	; 0x28e <main+0xae>
- 292:	00 c0       	rjmp	.+0      	; 0x294 <main+0xb4>
+ 290:	f1 f7       	brne	.-4      	; 0x28e <__EEPROM_REGION_LENGTH__+0x8e>
+ 292:	00 c0       	rjmp	.+0      	; 0x294 <__EEPROM_REGION_LENGTH__+0x94>
  294:	00 00       	nop
 		_delay_ms(5);
 		
@@ -409,8 +409,8 @@ int main()
  29a:	8f e0       	ldi	r24, 0x0F	; 15
  29c:	97 e2       	ldi	r25, 0x27	; 39
  29e:	01 97       	sbiw	r24, 0x01	; 1
- 2a0:	f1 f7       	brne	.-4      	; 0x29e <main+0xbe>
- 2a2:	00 c0       	rjmp	.+0      	; 0x2a4 <main+0xc4>
+ 2a0:	f1 f7       	brne	.-4      	; 0x29e <__EEPROM_REGION_LENGTH__+0x9e>
+ 2a2:	00 c0       	rjmp	.+0      	; 0x2a4 <__EEPROM_REGION_LENGTH__+0xa4>
  2a4:	00 00       	nop
 		_delay_ms(5);
 		
@@ -418,10 +418,10 @@ int main()
 		//fenetre 1
 		if ((valFenetre & 0b01000000)==0b00000000) { 
  2a6:	16 fd       	sbrc	r17, 6
- 2a8:	02 c0       	rjmp	.+4      	; 0x2ae <main+0xce>
+ 2a8:	02 c0       	rjmp	.+4      	; 0x2ae <__EEPROM_REGION_LENGTH__+0xae>
 		   PORTC |=(1<<PC1); //allumer temoin fenetre 1
  2aa:	41 9a       	sbi	0x08, 1	; 8
- 2ac:	01 c0       	rjmp	.+2      	; 0x2b0 <main+0xd0>
+ 2ac:	01 c0       	rjmp	.+2      	; 0x2b0 <__EEPROM_REGION_LENGTH__+0xb0>
 		}
 		else {
 		   
@@ -431,10 +431,10 @@ int main()
 		//fenetre 2
 		if ((valFenetre & 0b10000000)==0b00000000) {
  2b0:	11 23       	and	r17, r17
- 2b2:	14 f0       	brlt	.+4      	; 0x2b8 <main+0xd8>
+ 2b2:	14 f0       	brlt	.+4      	; 0x2b8 <__EEPROM_REGION_LENGTH__+0xb8>
 			PORTC |=(1<<PC2); //allumer temoin fenetre 2
  2b4:	42 9a       	sbi	0x08, 2	; 8
- 2b6:	01 c0       	rjmp	.+2      	; 0x2ba <main+0xda>
+ 2b6:	01 c0       	rjmp	.+2      	; 0x2ba <__EEPROM_REGION_LENGTH__+0xba>
 		}
 		else {
 			
@@ -446,8 +446,8 @@ int main()
  2c0:	91 50       	subi	r25, 0x01	; 1
  2c2:	20 40       	sbci	r18, 0x00	; 0
  2c4:	80 40       	sbci	r24, 0x00	; 0
- 2c6:	e1 f7       	brne	.-8      	; 0x2c0 <main+0xe0>
- 2c8:	00 c0       	rjmp	.+0      	; 0x2ca <main+0xea>
+ 2c6:	e1 f7       	brne	.-8      	; 0x2c0 <__EEPROM_REGION_LENGTH__+0xc0>
+ 2c8:	00 c0       	rjmp	.+0      	; 0x2ca <__EEPROM_REGION_LENGTH__+0xca>
  2ca:	00 00       	nop
 		_delay_ms(100);
 		
@@ -460,8 +460,8 @@ int main()
  2d2:	8f e0       	ldi	r24, 0x0F	; 15
  2d4:	97 e2       	ldi	r25, 0x27	; 39
  2d6:	01 97       	sbiw	r24, 0x01	; 1
- 2d8:	f1 f7       	brne	.-4      	; 0x2d6 <main+0xf6>
- 2da:	00 c0       	rjmp	.+0      	; 0x2dc <main+0xfc>
+ 2d8:	f1 f7       	brne	.-4      	; 0x2d6 <__EEPROM_REGION_LENGTH__+0xd6>
+ 2da:	00 c0       	rjmp	.+0      	; 0x2dc <__EEPROM_REGION_LENGTH__+0xdc>
  2dc:	00 00       	nop
 		_delay_ms(5);
 		
@@ -474,8 +474,8 @@ int main()
  2ea:	91 50       	subi	r25, 0x01	; 1
  2ec:	20 40       	sbci	r18, 0x00	; 0
  2ee:	80 40       	sbci	r24, 0x00	; 0
- 2f0:	e1 f7       	brne	.-8      	; 0x2ea <main+0x10a>
- 2f2:	00 c0       	rjmp	.+0      	; 0x2f4 <main+0x114>
+ 2f0:	e1 f7       	brne	.-8      	; 0x2ea <__EEPROM_REGION_LENGTH__+0xea>
+ 2f2:	00 c0       	rjmp	.+0      	; 0x2f4 <__EEPROM_REGION_LENGTH__+0xf4>
  2f4:	00 00       	nop
 		_delay_ms(100);
 		
@@ -486,8 +486,8 @@ int main()
  2fc:	8f e0       	ldi	r24, 0x0F	; 15
  2fe:	97 e2       	ldi	r25, 0x27	; 39
  300:	01 97       	sbiw	r24, 0x01	; 1
- 302:	f1 f7       	brne	.-4      	; 0x300 <main+0x120>
- 304:	00 c0       	rjmp	.+0      	; 0x306 <main+0x126>
+ 302:	f1 f7       	brne	.-4      	; 0x300 <__EEPROM_REGION_LENGTH__+0x100>
+ 304:	00 c0       	rjmp	.+0      	; 0x306 <__EEPROM_REGION_LENGTH__+0x106>
  306:	00 00       	nop
 		_delay_ms(5);
 		
@@ -497,8 +497,8 @@ int main()
  30e:	8f e0       	ldi	r24, 0x0F	; 15
  310:	97 e2       	ldi	r25, 0x27	; 39
  312:	01 97       	sbiw	r24, 0x01	; 1
- 314:	f1 f7       	brne	.-4      	; 0x312 <main+0x132>
- 316:	00 c0       	rjmp	.+0      	; 0x318 <main+0x138>
+ 314:	f1 f7       	brne	.-4      	; 0x312 <__EEPROM_REGION_LENGTH__+0x112>
+ 316:	00 c0       	rjmp	.+0      	; 0x318 <__EEPROM_REGION_LENGTH__+0x118>
  318:	00 00       	nop
 		_delay_ms(5);
 		I2C_Stop();   // Stop I2C
@@ -506,18 +506,18 @@ int main()
  31e:	8f e0       	ldi	r24, 0x0F	; 15
  320:	97 e2       	ldi	r25, 0x27	; 39
  322:	01 97       	sbiw	r24, 0x01	; 1
- 324:	f1 f7       	brne	.-4      	; 0x322 <main+0x142>
- 326:	00 c0       	rjmp	.+0      	; 0x328 <main+0x148>
+ 324:	f1 f7       	brne	.-4      	; 0x322 <__EEPROM_REGION_LENGTH__+0x122>
+ 326:	00 c0       	rjmp	.+0      	; 0x328 <__EEPROM_REGION_LENGTH__+0x128>
  328:	00 00       	nop
 		_delay_ms(5);
 		//afficher l'état desporte
 		//PORTE
 		if ((valPorte & 0b10000000)==0b00000000) {
  32a:	11 23       	and	r17, r17
- 32c:	14 f0       	brlt	.+4      	; 0x332 <main+0x152>
+ 32c:	14 f0       	brlt	.+4      	; 0x332 <__EEPROM_REGION_LENGTH__+0x132>
 			PORTC |=(1<<PC0); //allumer temoin PORTE
  32e:	40 9a       	sbi	0x08, 0	; 8
- 330:	01 c0       	rjmp	.+2      	; 0x334 <main+0x154>
+ 330:	01 c0       	rjmp	.+2      	; 0x334 <__EEPROM_REGION_LENGTH__+0x134>
 		}
 		else {
 			
@@ -529,8 +529,8 @@ int main()
  33a:	91 50       	subi	r25, 0x01	; 1
  33c:	20 40       	sbci	r18, 0x00	; 0
  33e:	80 40       	sbci	r24, 0x00	; 0
- 340:	e1 f7       	brne	.-8      	; 0x33a <main+0x15a>
- 342:	00 c0       	rjmp	.+0      	; 0x344 <main+0x164>
+ 340:	e1 f7       	brne	.-8      	; 0x33a <__EEPROM_REGION_LENGTH__+0x13a>
+ 342:	00 c0       	rjmp	.+0      	; 0x344 <__EEPROM_REGION_LENGTH__+0x144>
  344:	00 00       	nop
 			
 	//---------------------------------------------------------------------------------------------------------
@@ -543,8 +543,8 @@ int main()
  34c:	8f e0       	ldi	r24, 0x0F	; 15
  34e:	97 e2       	ldi	r25, 0x27	; 39
  350:	01 97       	sbiw	r24, 0x01	; 1
- 352:	f1 f7       	brne	.-4      	; 0x350 <main+0x170>
- 354:	00 c0       	rjmp	.+0      	; 0x356 <main+0x176>
+ 352:	f1 f7       	brne	.-4      	; 0x350 <__EEPROM_REGION_LENGTH__+0x150>
+ 354:	00 c0       	rjmp	.+0      	; 0x356 <__EEPROM_REGION_LENGTH__+0x156>
  356:	00 00       	nop
 			_delay_ms(5);
 			I2C_Write(start_conversion);//ordre de conversion
@@ -553,8 +553,8 @@ int main()
  35e:	8f e0       	ldi	r24, 0x0F	; 15
  360:	97 e2       	ldi	r25, 0x27	; 39
  362:	01 97       	sbiw	r24, 0x01	; 1
- 364:	f1 f7       	brne	.-4      	; 0x362 <main+0x182>
- 366:	00 c0       	rjmp	.+0      	; 0x368 <main+0x188>
+ 364:	f1 f7       	brne	.-4      	; 0x362 <__EEPROM_REGION_LENGTH__+0x162>
+ 366:	00 c0       	rjmp	.+0      	; 0x368 <__EEPROM_REGION_LENGTH__+0x168>
  368:	00 00       	nop
 			_delay_ms(5);
 			I2C_Stop();
@@ -562,8 +562,8 @@ int main()
  36e:	8f e0       	ldi	r24, 0x0F	; 15
  370:	97 e2       	ldi	r25, 0x27	; 39
  372:	01 97       	sbiw	r24, 0x01	; 1
- 374:	f1 f7       	brne	.-4      	; 0x372 <main+0x192>
- 376:	00 c0       	rjmp	.+0      	; 0x378 <main+0x198>
+ 374:	f1 f7       	brne	.-4      	; 0x372 <__EEPROM_REGION_LENGTH__+0x172>
+ 376:	00 c0       	rjmp	.+0      	; 0x378 <__EEPROM_REGION_LENGTH__+0x178>
  378:	00 00       	nop
 			_delay_ms(5);
 	    // lire une temperature 	
@@ -573,8 +573,8 @@ int main()
  380:	8f e0       	ldi	r24, 0x0F	; 15
  382:	97 e2       	ldi	r25, 0x27	; 39
  384:	01 97       	sbiw	r24, 0x01	; 1
- 386:	f1 f7       	brne	.-4      	; 0x384 <main+0x1a4>
- 388:	00 c0       	rjmp	.+0      	; 0x38a <main+0x1aa>
+ 386:	f1 f7       	brne	.-4      	; 0x384 <__EEPROM_REGION_LENGTH__+0x184>
+ 388:	00 c0       	rjmp	.+0      	; 0x38a <__EEPROM_REGION_LENGTH__+0x18a>
  38a:	00 00       	nop
 			_delay_ms(5);
 			I2C_Write(read_temperature);//code pour lire la temperature
@@ -583,8 +583,8 @@ int main()
  392:	8f e0       	ldi	r24, 0x0F	; 15
  394:	97 e2       	ldi	r25, 0x27	; 39
  396:	01 97       	sbiw	r24, 0x01	; 1
- 398:	f1 f7       	brne	.-4      	; 0x396 <main+0x1b6>
- 39a:	00 c0       	rjmp	.+0      	; 0x39c <main+0x1bc>
+ 398:	f1 f7       	brne	.-4      	; 0x396 <__EEPROM_REGION_LENGTH__+0x196>
+ 39a:	00 c0       	rjmp	.+0      	; 0x39c <__EEPROM_REGION_LENGTH__+0x19c>
  39c:	00 00       	nop
 			_delay_ms(5);
 			I2C_Repeated_Start(TEMP_R);
@@ -593,8 +593,8 @@ int main()
  3a4:	8f e0       	ldi	r24, 0x0F	; 15
  3a6:	97 e2       	ldi	r25, 0x27	; 39
  3a8:	01 97       	sbiw	r24, 0x01	; 1
- 3aa:	f1 f7       	brne	.-4      	; 0x3a8 <main+0x1c8>
- 3ac:	00 c0       	rjmp	.+0      	; 0x3ae <main+0x1ce>
+ 3aa:	f1 f7       	brne	.-4      	; 0x3a8 <__EEPROM_REGION_LENGTH__+0x1a8>
+ 3ac:	00 c0       	rjmp	.+0      	; 0x3ae <__EEPROM_REGION_LENGTH__+0x1ae>
  3ae:	00 00       	nop
 			_delay_ms(5);
 			tmp_msb=I2C_Read_Ack();//lecture de la temperature
@@ -603,8 +603,8 @@ int main()
  3b6:	8f e0       	ldi	r24, 0x0F	; 15
  3b8:	97 e2       	ldi	r25, 0x27	; 39
  3ba:	01 97       	sbiw	r24, 0x01	; 1
- 3bc:	f1 f7       	brne	.-4      	; 0x3ba <main+0x1da>
- 3be:	00 c0       	rjmp	.+0      	; 0x3c0 <main+0x1e0>
+ 3bc:	f1 f7       	brne	.-4      	; 0x3ba <__EEPROM_REGION_LENGTH__+0x1ba>
+ 3be:	00 c0       	rjmp	.+0      	; 0x3c0 <__EEPROM_REGION_LENGTH__+0x1c0>
  3c0:	00 00       	nop
 			_delay_ms(5);
 			tmp_lsb=I2C_Read_Nack();//lecture de la partie decimale de la temperature
@@ -612,8 +612,8 @@ int main()
  3c6:	8f e0       	ldi	r24, 0x0F	; 15
  3c8:	97 e2       	ldi	r25, 0x27	; 39
  3ca:	01 97       	sbiw	r24, 0x01	; 1
- 3cc:	f1 f7       	brne	.-4      	; 0x3ca <main+0x1ea>
- 3ce:	00 c0       	rjmp	.+0      	; 0x3d0 <main+0x1f0>
+ 3cc:	f1 f7       	brne	.-4      	; 0x3ca <__EEPROM_REGION_LENGTH__+0x1ca>
+ 3ce:	00 c0       	rjmp	.+0      	; 0x3d0 <__EEPROM_REGION_LENGTH__+0x1d0>
  3d0:	00 00       	nop
 			_delay_ms(5);
 			I2C_Stop();
@@ -621,8 +621,8 @@ int main()
  3d6:	8f e0       	ldi	r24, 0x0F	; 15
  3d8:	97 e2       	ldi	r25, 0x27	; 39
  3da:	01 97       	sbiw	r24, 0x01	; 1
- 3dc:	f1 f7       	brne	.-4      	; 0x3da <main+0x1fa>
- 3de:	00 c0       	rjmp	.+0      	; 0x3e0 <main+0x200>
+ 3dc:	f1 f7       	brne	.-4      	; 0x3da <__EEPROM_REGION_LENGTH__+0x1da>
+ 3de:	00 c0       	rjmp	.+0      	; 0x3e0 <__EEPROM_REGION_LENGTH__+0x1e0>
  3e0:	00 00       	nop
 			temperature=tmp_msb; //Température pas de 1oC
 			//Temperature=tmp_msb+0.5*(tmp_lsb/128); //Température pas de 0.5oC
@@ -655,7 +655,7 @@ int main()
  410:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <transmitByte>
 	//-----------------------------------------------------------------------------------------------------------
 	};				
- 414:	19 cf       	rjmp	.-462    	; 0x248 <main+0x68>
+ 414:	19 cf       	rjmp	.-462    	; 0x248 <__EEPROM_REGION_LENGTH__+0x48>
 
 00000416 <I2C_Init>:
 	return 1;												/* If yes then return 1 to indicate ack received i.e. ready to accept data byte */
@@ -665,7 +665,7 @@ int main()
 	return 3;												/* Else return 3 to indicate SLA+W failed */
 }
  416:	80 e2       	ldi	r24, 0x20	; 32
- 418:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
+ 418:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7fc0b8>
  41c:	ec eb       	ldi	r30, 0xBC	; 188
  41e:	f0 e0       	ldi	r31, 0x00	; 0
  420:	80 81       	ld	r24, Z
@@ -680,7 +680,7 @@ uint8_t I2C_Repeated_Start(char read_address)				/* I2C repeated start function 
 	uint8_t status;											/* Declare variable */
 	TWCR = (1<<TWSTA)|(1<<TWEN)|(1<<TWINT);					/* Enable TWI, generate start condition and clear interrupt flag */
  428:	94 ea       	ldi	r25, 0xA4	; 164
- 42a:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 42a:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
 	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (start condition) */
  42e:	ec eb       	ldi	r30, 0xBC	; 188
  430:	f0 e0       	ldi	r31, 0x00	; 0
@@ -688,17 +688,17 @@ uint8_t I2C_Repeated_Start(char read_address)				/* I2C repeated start function 
  434:	99 23       	and	r25, r25
  436:	ec f7       	brge	.-6      	; 0x432 <I2C_Repeated_Start+0xa>
 	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
- 438:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 438:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
 	if (status != 0x10)										/* Check weather repeated start condition transmitted successfully or not? */
  43c:	98 7f       	andi	r25, 0xF8	; 248
  43e:	90 31       	cpi	r25, 0x10	; 16
  440:	99 f4       	brne	.+38     	; 0x468 <I2C_Repeated_Start+0x40>
 	return 0;												/* If no then return 0 to indicate repeated start condition fail */
 	TWDR = read_address;									/* If yes then write SLA+R in TWI data register */
- 442:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 442:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
 	TWCR = (1<<TWEN)|(1<<TWINT);							/* Enable TWI and clear interrupt flag */
  446:	84 e8       	ldi	r24, 0x84	; 132
- 448:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 448:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
 	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (Write operation) */
  44c:	ec eb       	ldi	r30, 0xBC	; 188
  44e:	f0 e0       	ldi	r31, 0x00	; 0
@@ -706,7 +706,7 @@ uint8_t I2C_Repeated_Start(char read_address)				/* I2C repeated start function 
  452:	88 23       	and	r24, r24
  454:	ec f7       	brge	.-6      	; 0x450 <I2C_Repeated_Start+0x28>
 	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
- 456:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 456:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
  45a:	88 7f       	andi	r24, 0xF8	; 248
 	if (status == 0x40)										/* Check weather SLA+R transmitted & ack received or not? */
  45c:	80 34       	cpi	r24, 0x40	; 64
@@ -750,7 +750,7 @@ void I2C_Stop()												/* I2C stop function */
 {
 	TWCR=(1<<TWSTO)|(1<<TWINT)|(1<<TWEN);					/* Enable TWI, generate stop condition and clear interrupt flag */
  474:	84 e9       	ldi	r24, 0x94	; 148
- 476:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 476:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
 	while(TWCR & (1<<TWSTO));								/* Wait until stop condition execution */
  47a:	ec eb       	ldi	r30, 0xBC	; 188
  47c:	f0 e0       	ldi	r31, 0x00	; 0
@@ -862,26 +862,26 @@ uint8_t I2C_Write(char data)								/* I2C write function */
 {
 	uint8_t status;											/* Declare variable */
 	TWDR = data;											/* Copy data in TWI data register */
- 4fe:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 4fe:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
 	TWCR = (1<<TWEN)|(1<<TWINT);							/* Enable TWI and clear interrupt flag */
  502:	84 e8       	ldi	r24, 0x84	; 132
- 504:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 504:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
 	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (Write operation) */
  508:	ec eb       	ldi	r30, 0xBC	; 188
  50a:	f0 e0       	ldi	r31, 0x00	; 0
  50c:	80 81       	ld	r24, Z
  50e:	88 23       	and	r24, r24
- 510:	ec f7       	brge	.-6      	; 0x50c <I2C_Write+0xe>
+ 510:	ec f7       	brge	.-6      	; 0x50c <__stack+0xd>
 	status = TWSR & 0xF8;									/* Read TWI status register with masking lower three bits */
- 512:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 512:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
  516:	88 7f       	andi	r24, 0xF8	; 248
 	if (status == 0x28)										/* Check weather data transmitted & ack received or not? */
  518:	88 32       	cpi	r24, 0x28	; 40
- 51a:	21 f0       	breq	.+8      	; 0x524 <I2C_Write+0x26>
+ 51a:	21 f0       	breq	.+8      	; 0x524 <__stack+0x25>
 	return 0;												/* If yes then return 0 to indicate ack received */
 	if (status == 0x30)										/* Check weather data transmitted & nack received or not? */
  51c:	80 33       	cpi	r24, 0x30	; 48
- 51e:	21 f0       	breq	.+8      	; 0x528 <I2C_Write+0x2a>
+ 51e:	21 f0       	breq	.+8      	; 0x528 <__stack+0x29>
 	return 1;												/* If yes then return 1 to indicate nack received */
 	else
 	return 2;												/* Else return 2 to indicate data transmission failed */
@@ -909,7 +909,7 @@ char I2C_Read_Ack()											/* I2C read ack function */
 {
 	TWCR=(1<<TWEN)|(1<<TWINT)|(1<<TWEA);					/* Enable TWI, generation of ack and clear interrupt flag */
  52c:	84 ec       	ldi	r24, 0xC4	; 196
- 52e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 52e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
 	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (read operation) */
  532:	ec eb       	ldi	r30, 0xBC	; 188
  534:	f0 e0       	ldi	r31, 0x00	; 0
@@ -917,7 +917,7 @@ char I2C_Read_Ack()											/* I2C read ack function */
  538:	88 23       	and	r24, r24
  53a:	ec f7       	brge	.-6      	; 0x536 <I2C_Read_Ack+0xa>
 	return TWDR;											/* Return received data */
- 53c:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 53c:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
 }	
  540:	08 95       	ret
 
@@ -927,7 +927,7 @@ char I2C_Read_Nack()										/* I2C read nack function */
 {
 	TWCR=(1<<TWEN)|(1<<TWINT);								/* Enable TWI and clear interrupt flag */
  542:	84 e8       	ldi	r24, 0x84	; 132
- 544:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 544:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
 	while (!(TWCR & (1<<TWINT)));							/* Wait until TWI finish its current job (read operation) */
  548:	ec eb       	ldi	r30, 0xBC	; 188
  54a:	f0 e0       	ldi	r31, 0x00	; 0
@@ -935,7 +935,7 @@ char I2C_Read_Nack()										/* I2C read nack function */
  54e:	88 23       	and	r24, r24
  550:	ec f7       	brge	.-6      	; 0x54c <I2C_Read_Nack+0xa>
 	return TWDR;											/* Return received data */
- 552:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 552:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
 }	
  556:	08 95       	ret
 
@@ -1211,7 +1211,7 @@ char I2C_Read_Nack()										/* I2C read nack function */
  76a:	10 82       	st	Z, r1
  76c:	8e ef       	ldi	r24, 0xFE	; 254
  76e:	9f ef       	ldi	r25, 0xFF	; 255
- 770:	a6 c0       	rjmp	.+332    	; 0x8be <__DATA_REGION_LENGTH__+0xbe>
+ 770:	a6 c0       	rjmp	.+332    	; 0x8be <dtoa_prf+0x2ac>
  772:	21 e0       	ldi	r18, 0x01	; 1
  774:	30 e0       	ldi	r19, 0x00	; 0
  776:	91 11       	cpse	r25, r1
@@ -1287,20 +1287,20 @@ char I2C_Read_Nack()										/* I2C read nack function */
  802:	34 2f       	mov	r19, r20
  804:	30 71       	andi	r19, 0x10	; 16
  806:	44 ff       	sbrs	r20, 4
- 808:	03 c0       	rjmp	.+6      	; 0x810 <__DATA_REGION_LENGTH__+0x10>
+ 808:	03 c0       	rjmp	.+6      	; 0x810 <dtoa_prf+0x1fe>
  80a:	91 33       	cpi	r25, 0x31	; 49
- 80c:	09 f4       	brne	.+2      	; 0x810 <__DATA_REGION_LENGTH__+0x10>
+ 80c:	09 f4       	brne	.+2      	; 0x810 <dtoa_prf+0x1fe>
  80e:	01 50       	subi	r16, 0x01	; 1
  810:	10 16       	cp	r1, r16
- 812:	24 f4       	brge	.+8      	; 0x81c <__DATA_REGION_LENGTH__+0x1c>
+ 812:	24 f4       	brge	.+8      	; 0x81c <dtoa_prf+0x20a>
  814:	09 30       	cpi	r16, 0x09	; 9
- 816:	18 f0       	brcs	.+6      	; 0x81e <__DATA_REGION_LENGTH__+0x1e>
+ 816:	18 f0       	brcs	.+6      	; 0x81e <dtoa_prf+0x20c>
  818:	08 e0       	ldi	r16, 0x08	; 8
- 81a:	01 c0       	rjmp	.+2      	; 0x81e <__DATA_REGION_LENGTH__+0x1e>
+ 81a:	01 c0       	rjmp	.+2      	; 0x81e <dtoa_prf+0x20c>
  81c:	01 e0       	ldi	r16, 0x01	; 1
  81e:	ab 01       	movw	r20, r22
  820:	77 ff       	sbrs	r23, 7
- 822:	02 c0       	rjmp	.+4      	; 0x828 <__DATA_REGION_LENGTH__+0x28>
+ 822:	02 c0       	rjmp	.+4      	; 0x828 <dtoa_prf+0x216>
  824:	40 e0       	ldi	r20, 0x00	; 0
  826:	50 e0       	ldi	r21, 0x00	; 0
  828:	fb 01       	movw	r30, r22
@@ -1325,19 +1325,19 @@ char I2C_Read_Nack()										/* I2C read nack function */
  84e:	4f 3f       	cpi	r20, 0xFF	; 255
  850:	bf ef       	ldi	r27, 0xFF	; 255
  852:	5b 07       	cpc	r21, r27
- 854:	21 f4       	brne	.+8      	; 0x85e <__DATA_REGION_LENGTH__+0x5e>
+ 854:	21 f4       	brne	.+8      	; 0x85e <dtoa_prf+0x24c>
  856:	d6 01       	movw	r26, r12
  858:	ac 92       	st	X, r10
  85a:	11 96       	adiw	r26, 0x01	; 1
  85c:	6d 01       	movw	r12, r26
  85e:	64 17       	cp	r22, r20
  860:	75 07       	cpc	r23, r21
- 862:	2c f0       	brlt	.+10     	; 0x86e <__DATA_REGION_LENGTH__+0x6e>
+ 862:	2c f0       	brlt	.+10     	; 0x86e <dtoa_prf+0x25c>
  864:	84 16       	cp	r8, r20
  866:	95 06       	cpc	r9, r21
- 868:	14 f4       	brge	.+4      	; 0x86e <__DATA_REGION_LENGTH__+0x6e>
+ 868:	14 f4       	brge	.+4      	; 0x86e <dtoa_prf+0x25c>
  86a:	81 81       	ldd	r24, Z+1	; 0x01
- 86c:	01 c0       	rjmp	.+2      	; 0x870 <__DATA_REGION_LENGTH__+0x70>
+ 86c:	01 c0       	rjmp	.+2      	; 0x870 <dtoa_prf+0x25e>
  86e:	80 e3       	ldi	r24, 0x30	; 48
  870:	41 50       	subi	r20, 0x01	; 1
  872:	51 09       	sbc	r21, r1
@@ -1347,20 +1347,20 @@ char I2C_Read_Nack()										/* I2C read nack function */
  87a:	7d 01       	movw	r14, r26
  87c:	40 17       	cp	r20, r16
  87e:	51 07       	cpc	r21, r17
- 880:	24 f0       	brlt	.+8      	; 0x88a <__DATA_REGION_LENGTH__+0x8a>
+ 880:	24 f0       	brlt	.+8      	; 0x88a <dtoa_prf+0x278>
  882:	d6 01       	movw	r26, r12
  884:	8c 93       	st	X, r24
  886:	67 01       	movw	r12, r14
- 888:	e2 cf       	rjmp	.-60     	; 0x84e <__DATA_REGION_LENGTH__+0x4e>
+ 888:	e2 cf       	rjmp	.-60     	; 0x84e <dtoa_prf+0x23c>
  88a:	64 17       	cp	r22, r20
  88c:	75 07       	cpc	r23, r21
- 88e:	39 f4       	brne	.+14     	; 0x89e <__DATA_REGION_LENGTH__+0x9e>
+ 88e:	39 f4       	brne	.+14     	; 0x89e <dtoa_prf+0x28c>
  890:	96 33       	cpi	r25, 0x36	; 54
- 892:	20 f4       	brcc	.+8      	; 0x89c <__DATA_REGION_LENGTH__+0x9c>
+ 892:	20 f4       	brcc	.+8      	; 0x89c <dtoa_prf+0x28a>
  894:	95 33       	cpi	r25, 0x35	; 53
- 896:	19 f4       	brne	.+6      	; 0x89e <__DATA_REGION_LENGTH__+0x9e>
+ 896:	19 f4       	brne	.+6      	; 0x89e <dtoa_prf+0x28c>
  898:	31 11       	cpse	r19, r1
- 89a:	01 c0       	rjmp	.+2      	; 0x89e <__DATA_REGION_LENGTH__+0x9e>
+ 89a:	01 c0       	rjmp	.+2      	; 0x89e <dtoa_prf+0x28c>
  89c:	81 e3       	ldi	r24, 0x31	; 49
  89e:	f6 01       	movw	r30, r12
  8a0:	80 83       	st	Z, r24
@@ -1368,10 +1368,10 @@ char I2C_Read_Nack()										/* I2C read nack function */
  8a4:	82 2f       	mov	r24, r18
  8a6:	90 e2       	ldi	r25, 0x20	; 32
  8a8:	88 23       	and	r24, r24
- 8aa:	19 f0       	breq	.+6      	; 0x8b2 <__DATA_REGION_LENGTH__+0xb2>
+ 8aa:	19 f0       	breq	.+6      	; 0x8b2 <dtoa_prf+0x2a0>
  8ac:	91 93       	st	Z+, r25
  8ae:	81 50       	subi	r24, 0x01	; 1
- 8b0:	fb cf       	rjmp	.-10     	; 0x8a8 <__DATA_REGION_LENGTH__+0xa8>
+ 8b0:	fb cf       	rjmp	.-10     	; 0x8a8 <dtoa_prf+0x296>
  8b2:	f7 01       	movw	r30, r14
  8b4:	e2 0f       	add	r30, r18
  8b6:	f1 1d       	adc	r31, r1
@@ -1413,7 +1413,7 @@ char I2C_Read_Nack()										/* I2C read nack function */
  8fc:	3c 5f       	subi	r19, 0xFC	; 252
  8fe:	3d 93       	st	X+, r19
  900:	91 30       	cpi	r25, 0x01	; 1
- 902:	08 f0       	brcs	.+2      	; 0x906 <__stack+0x7>
+ 902:	08 f0       	brcs	.+2      	; 0x906 <__ftoa_engine+0x40>
  904:	80 68       	ori	r24, 0x80	; 128
  906:	91 1d       	adc	r25, r1
  908:	df 93       	push	r29
@@ -1441,7 +1441,7 @@ char I2C_Read_Nack()										/* I2C read nack function */
  934:	05 90       	lpm	r0, Z+
  936:	08 94       	sec
  938:	07 94       	ror	r0
- 93a:	28 f4       	brcc	.+10     	; 0x946 <__stack+0x47>
+ 93a:	28 f4       	brcc	.+10     	; 0x946 <__ftoa_engine+0x80>
  93c:	36 0f       	add	r19, r22
  93e:	e7 1e       	adc	r14, r23
  940:	f8 1e       	adc	r15, r24
@@ -1452,10 +1452,10 @@ char I2C_Read_Nack()										/* I2C read nack function */
  94a:	88 1f       	adc	r24, r24
  94c:	99 1f       	adc	r25, r25
  94e:	06 94       	lsr	r0
- 950:	a1 f7       	brne	.-24     	; 0x93a <__stack+0x3b>
+ 950:	a1 f7       	brne	.-24     	; 0x93a <__ftoa_engine+0x74>
  952:	05 90       	lpm	r0, Z+
  954:	07 94       	ror	r0
- 956:	28 f4       	brcc	.+10     	; 0x962 <__stack+0x63>
+ 956:	28 f4       	brcc	.+10     	; 0x962 <__ftoa_engine+0x9c>
  958:	e7 0e       	add	r14, r23
  95a:	f8 1e       	adc	r15, r24
  95c:	49 1f       	adc	r20, r25
@@ -1466,10 +1466,10 @@ char I2C_Read_Nack()										/* I2C read nack function */
  966:	99 1f       	adc	r25, r25
  968:	66 1f       	adc	r22, r22
  96a:	06 94       	lsr	r0
- 96c:	a1 f7       	brne	.-24     	; 0x956 <__stack+0x57>
+ 96c:	a1 f7       	brne	.-24     	; 0x956 <__ftoa_engine+0x90>
  96e:	05 90       	lpm	r0, Z+
  970:	07 94       	ror	r0
- 972:	28 f4       	brcc	.+10     	; 0x97e <__stack+0x7f>
+ 972:	28 f4       	brcc	.+10     	; 0x97e <__ftoa_engine+0xb8>
  974:	f8 0e       	add	r15, r24
  976:	49 1f       	adc	r20, r25
  978:	56 1f       	adc	r21, r22
@@ -1480,10 +1480,10 @@ char I2C_Read_Nack()										/* I2C read nack function */
  982:	66 1f       	adc	r22, r22
  984:	77 1f       	adc	r23, r23
  986:	06 94       	lsr	r0
- 988:	a1 f7       	brne	.-24     	; 0x972 <__stack+0x73>
+ 988:	a1 f7       	brne	.-24     	; 0x972 <__ftoa_engine+0xac>
  98a:	05 90       	lpm	r0, Z+
  98c:	07 94       	ror	r0
- 98e:	20 f4       	brcc	.+8      	; 0x998 <__stack+0x99>
+ 98e:	20 f4       	brcc	.+8      	; 0x998 <__ftoa_engine+0xd2>
  990:	49 0f       	add	r20, r25
  992:	56 1f       	adc	r21, r22
  994:	c7 1f       	adc	r28, r23
@@ -1493,11 +1493,11 @@ char I2C_Read_Nack()										/* I2C read nack function */
  99c:	77 1f       	adc	r23, r23
  99e:	88 1f       	adc	r24, r24
  9a0:	06 94       	lsr	r0
- 9a2:	a9 f7       	brne	.-22     	; 0x98e <__stack+0x8f>
+ 9a2:	a9 f7       	brne	.-22     	; 0x98e <__ftoa_engine+0xc8>
  9a4:	84 91       	lpm	r24, Z
  9a6:	10 95       	com	r17
  9a8:	17 70       	andi	r17, 0x07	; 7
- 9aa:	41 f0       	breq	.+16     	; 0x9bc <__stack+0xbd>
+ 9aa:	41 f0       	breq	.+16     	; 0x9bc <__ftoa_engine+0xf6>
  9ac:	d6 95       	lsr	r29
  9ae:	c7 95       	ror	r28
  9b0:	57 95       	ror	r21
@@ -1505,7 +1505,7 @@ char I2C_Read_Nack()										/* I2C read nack function */
  9b4:	f7 94       	ror	r15
  9b6:	e7 94       	ror	r14
  9b8:	1a 95       	dec	r17
- 9ba:	c1 f7       	brne	.-16     	; 0x9ac <__stack+0xad>
+ 9ba:	c1 f7       	brne	.-16     	; 0x9ac <__ftoa_engine+0xe6>
  9bc:	e8 e6       	ldi	r30, 0x68	; 104
  9be:	f0 e0       	ldi	r31, 0x00	; 0
  9c0:	68 94       	set
@@ -1523,39 +1523,39 @@ char I2C_Read_Nack()										/* I2C read nack function */
  9d8:	56 0b       	sbc	r21, r22
  9da:	c9 0b       	sbc	r28, r25
  9dc:	d0 09       	sbc	r29, r0
- 9de:	c0 f7       	brcc	.-16     	; 0x9d0 <__stack+0xd1>
+ 9de:	c0 f7       	brcc	.-16     	; 0x9d0 <__ftoa_engine+0x10a>
  9e0:	e1 0c       	add	r14, r1
  9e2:	f1 1e       	adc	r15, r17
  9e4:	43 1f       	adc	r20, r19
  9e6:	56 1f       	adc	r21, r22
  9e8:	c9 1f       	adc	r28, r25
  9ea:	d0 1d       	adc	r29, r0
- 9ec:	7e f4       	brtc	.+30     	; 0xa0c <__stack+0x10d>
+ 9ec:	7e f4       	brtc	.+30     	; 0xa0c <__ftoa_engine+0x146>
  9ee:	70 33       	cpi	r23, 0x30	; 48
- 9f0:	11 f4       	brne	.+4      	; 0x9f6 <__stack+0xf7>
+ 9f0:	11 f4       	brne	.+4      	; 0x9f6 <__ftoa_engine+0x130>
  9f2:	8a 95       	dec	r24
- 9f4:	e6 cf       	rjmp	.-52     	; 0x9c2 <__stack+0xc3>
+ 9f4:	e6 cf       	rjmp	.-52     	; 0x9c2 <__ftoa_engine+0xfc>
  9f6:	e8 94       	clt
  9f8:	01 50       	subi	r16, 0x01	; 1
- 9fa:	30 f0       	brcs	.+12     	; 0xa08 <__stack+0x109>
+ 9fa:	30 f0       	brcs	.+12     	; 0xa08 <__ftoa_engine+0x142>
  9fc:	08 0f       	add	r16, r24
- 9fe:	0a f4       	brpl	.+2      	; 0xa02 <__stack+0x103>
+ 9fe:	0a f4       	brpl	.+2      	; 0xa02 <__ftoa_engine+0x13c>
  a00:	00 27       	eor	r16, r16
  a02:	02 17       	cp	r16, r18
- a04:	08 f4       	brcc	.+2      	; 0xa08 <__stack+0x109>
+ a04:	08 f4       	brcc	.+2      	; 0xa08 <__ftoa_engine+0x142>
  a06:	20 2f       	mov	r18, r16
  a08:	23 95       	inc	r18
  a0a:	02 2f       	mov	r16, r18
  a0c:	7a 33       	cpi	r23, 0x3A	; 58
- a0e:	28 f0       	brcs	.+10     	; 0xa1a <__stack+0x11b>
+ a0e:	28 f0       	brcs	.+10     	; 0xa1a <__ftoa_engine+0x154>
  a10:	79 e3       	ldi	r23, 0x39	; 57
  a12:	7d 93       	st	X+, r23
  a14:	2a 95       	dec	r18
- a16:	e9 f7       	brne	.-6      	; 0xa12 <__stack+0x113>
- a18:	10 c0       	rjmp	.+32     	; 0xa3a <__stack+0x13b>
+ a16:	e9 f7       	brne	.-6      	; 0xa12 <__ftoa_engine+0x14c>
+ a18:	10 c0       	rjmp	.+32     	; 0xa3a <__ftoa_engine+0x174>
  a1a:	7d 93       	st	X+, r23
  a1c:	2a 95       	dec	r18
- a1e:	89 f6       	brne	.-94     	; 0x9c2 <__stack+0xc3>
+ a1e:	89 f6       	brne	.-94     	; 0x9c2 <__ftoa_engine+0xfc>
  a20:	06 94       	lsr	r0
  a22:	97 95       	ror	r25
  a24:	67 95       	ror	r22
@@ -1568,26 +1568,26 @@ char I2C_Read_Nack()										/* I2C read nack function */
  a32:	56 0b       	sbc	r21, r22
  a34:	c9 0b       	sbc	r28, r25
  a36:	d0 09       	sbc	r29, r0
- a38:	98 f0       	brcs	.+38     	; 0xa60 <__stack+0x161>
+ a38:	98 f0       	brcs	.+38     	; 0xa60 <__ftoa_engine+0x19a>
  a3a:	23 95       	inc	r18
  a3c:	7e 91       	ld	r23, -X
  a3e:	73 95       	inc	r23
  a40:	7a 33       	cpi	r23, 0x3A	; 58
- a42:	08 f0       	brcs	.+2      	; 0xa46 <__stack+0x147>
+ a42:	08 f0       	brcs	.+2      	; 0xa46 <__ftoa_engine+0x180>
  a44:	70 e3       	ldi	r23, 0x30	; 48
  a46:	7c 93       	st	X, r23
  a48:	20 13       	cpse	r18, r16
- a4a:	b8 f7       	brcc	.-18     	; 0xa3a <__stack+0x13b>
+ a4a:	b8 f7       	brcc	.-18     	; 0xa3a <__ftoa_engine+0x174>
  a4c:	7e 91       	ld	r23, -X
  a4e:	70 61       	ori	r23, 0x10	; 16
  a50:	7d 93       	st	X+, r23
- a52:	30 f0       	brcs	.+12     	; 0xa60 <__stack+0x161>
+ a52:	30 f0       	brcs	.+12     	; 0xa60 <__ftoa_engine+0x19a>
  a54:	83 95       	inc	r24
  a56:	71 e3       	ldi	r23, 0x31	; 49
  a58:	7d 93       	st	X+, r23
  a5a:	70 e3       	ldi	r23, 0x30	; 48
  a5c:	2a 95       	dec	r18
- a5e:	e1 f7       	brne	.-8      	; 0xa58 <__stack+0x159>
+ a5e:	e1 f7       	brne	.-8      	; 0xa58 <__ftoa_engine+0x192>
  a60:	11 24       	eor	r1, r1
  a62:	ef 90       	pop	r14
  a64:	ff 90       	pop	r15

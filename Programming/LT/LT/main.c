@@ -5,6 +5,7 @@
 
 #include <xc.h>
 #include <avr/io.h>
+//#include <util/setbaud.h>
 #include <util/delay.h>
 #include <stdio.h>							/* Include standard I/O header file */
 #include <string.h>
@@ -76,9 +77,9 @@ char SPI_MasterTransmit(char cData, uint8_t ss)
 
 //init UART
 void initUSART(void) {
-	UBRR0H = 0;              /* baud rate  */
-	UBRR0L = 0x0C;           /* 9600 */
-	UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
+	UBRR0H = UBRRH_VALUE;              /* baud rate  */
+	UBRR0L = UBRRL_VALUE;           /* 9600 */
+	//UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
 	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
 	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
 }
