@@ -8,7 +8,7 @@
 #include <AsyncTCP.h>
 
 // the number of the LED pin
-const int ledPin = 16;  // 16 corresponds to GPIO16
+const int ledPin = 34;  // 16 corresponds to GPIO16
 
 // setting PWM properties
 const int freq = 5000;
@@ -29,7 +29,7 @@ void setup(){
   ledcAttachPin(ledPin, ledChannel);
   // configure Serial for pins RX0 and TX0
   Serial.begin(115200);
-  Serial2.begin(9600, SERIAL_8N1, 16, 17);
+  Serial2.begin(9600, SERIAL_8N1, 12, 13);
 }
 
 void turnLightONOFF(){
@@ -52,21 +52,3 @@ void loop(){
 
   }
 }
-
-
-
-/*   CE QU'IL Y AVAIT DANS LE LOOP
-
-  if (Serial.available() > 0) {
-
-    // Si des données sont disponibles sur la liaison UART
-    Byte = Serial.read(); // Lire la donnée reçue
-    if (Byte == 0x01) {
-      // Si la donnée reçue est 0x01, allume la LED
-      digitalWrite(ledPin, HIGH);
-    } else {
-      // Sinon, éteint la LED
-      digitalWrite(ledPin, LOW);
-    }
-  }
-  */

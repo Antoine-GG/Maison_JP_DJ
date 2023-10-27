@@ -81,6 +81,7 @@ int main()
 	
 	while (1)
 	{
+		transmitByte('A');
 	// communication avec le Atmega328P Slave 1 Fenetres I2C -----------------------------------------------------------
 		I2C_Start_Wait(Slave_Write_Address1);// Start I2C communication with SLA+W 
 		_delay_ms(5);
@@ -176,6 +177,8 @@ int main()
 		//temperature=25;
 		dtostrf(temperature, 4, 0, aff);
 		printString(aff);
+		transmitByte('\n');
+		transmitByte('A');
 		transmitByte(0x0D);
 		transmitByte(0x0A);
 	//-----------------------------------------------------------------------------------------------------------

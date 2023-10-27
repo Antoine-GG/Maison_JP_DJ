@@ -28,8 +28,8 @@ int main(void)
 	DDRB |=(1<<PB2);//temoin fenetre 2
 	DDRB |=(1<<PB1);//temoin fenetre 1
 	
-	PORTD|=(1<<PD6);//Resistance de Rappel activé pour le Bouton Poussoir FENETRE 1
-	PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir FENETRE 2
+	//PORTD|=(1<<PD6);//Resistance de Rappel activé pour le Bouton Poussoir FENETRE 1
+	//PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir FENETRE 2
 	
 	
 	I2C_Slave_Init(Slave_Address);
@@ -81,6 +81,8 @@ int main(void)
 				}
 				break;
 			}
+			case 2: //
+			break;
 			default:
 				break;
 		}
