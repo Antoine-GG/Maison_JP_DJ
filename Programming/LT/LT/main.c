@@ -421,7 +421,7 @@ int main() {
 		SPI_MasterTransmit(status.light, SLAVE4);
 		//POLL U5, get the keyboard char
 		status.keyboardChar = SPI_MasterTransmit('Y', SLAVE5);
-		//uartTransmitByte(status.keyboardChar);
+		uartTransmitByte(status.keyboardChar);
 
 		}
 		//if(useII2C){
@@ -462,7 +462,6 @@ int main() {
 		//uart 
 		//firstByte = status.keyboardChar;
 		//manque la source ou ramener keyboard doit etre definit
-		uartTransmitByte('A');
 		uartTransmitByte('\n');
 		
 		_delay_ms(5); // Attendre avant de refaire la demande
