@@ -21,7 +21,7 @@ int main(void)
 	int8_t count = 0;
 	uint8_t valeur=0b00000000;
 	DDRB |=(1<<PB1);//PB1 en sortie  LED temoin de porte
-	PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir PORTE
+	//PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir PORTE
 	
 	I2C_Slave_Init(Slave_Address);
 	

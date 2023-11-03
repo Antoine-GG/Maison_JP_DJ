@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 3.2,
-          "height": 6.4,
-          "width": 6.4
+          "drill": 1.02,
+          "height": 1.53,
+          "width": 1.53
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -128,7 +128,7 @@
         "min_via_diameter": 0.5,
         "solder_mask_clearance": 0.0,
         "solder_mask_min_width": 0.0,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -446,7 +446,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "specctra_dsn": "",
+      "specctra_dsn": "Maison.dsn",
       "step": "",
       "vrml": ""
     },
@@ -502,6 +502,18 @@
     [
       "2452cf07-e0da-4420-9b24-ffb959ec4d8c",
       "Clavier"
+    ],
+    [
+      "09e44fa6-ed97-4187-92de-e789669f331f",
+      "U1"
+    ],
+    [
+      "29d87bbe-c5b1-4aad-883d-cace8cf4b0d9",
+      "U2"
+    ],
+    [
+      "edaf2edc-3e3d-4e26-8faf-f8c1ba0c357a",
+      "I2C_Section"
     ]
   ],
   "text_variables": {}

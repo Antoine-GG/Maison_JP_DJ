@@ -3,84 +3,84 @@ U2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000258  2**0
+  0 .data         00000000  00800100  00800100  00000252  2**0
                   ALLOC, LOAD, DATA
   1 .text         00000080  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      0000002f  00000000  00000000  00000258  2**0
+  2 .comment      0000002f  00000000  00000000  00000252  2**0
                   CONTENTS, READONLY
-  3 .stack.descriptors.hdr 0000000e  00000000  00000000  00000287  2**0
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  00000281  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 00000058  00000000  00000000  00000295  2**0
+  4 .debug_aranges 00000058  00000000  00000000  0000028f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000ccb  00000000  00000000  000002ed  2**0
+  5 .debug_info   00000c8a  00000000  00000000  000002e7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000070b  00000000  00000000  00000fb8  2**0
+  6 .debug_abbrev 0000070b  00000000  00000000  00000f71  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000042d  00000000  00000000  000016c3  2**0
+  7 .debug_line   00000427  00000000  00000000  0000167c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000078  00000000  00000000  00001af0  2**2
+  8 .debug_frame  00000078  00000000  00000000  00001aa4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000254  00000000  00000000  00001b68  2**0
+  9 .debug_str    00000254  00000000  00000000  00001b1c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000189  00000000  00000000  00001dbc  2**0
+ 10 .debug_loc    00000189  00000000  00000000  00001d70  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000038  00000000  00000000  00001f45  2**0
+ 11 .debug_ranges 00000038  00000000  00000000  00001ef9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .text         00000004  000001d6  000001d6  0000024a  2**1
+ 12 .text         00000004  000001d0  000001d0  00000244  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001f80  2**2
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001f34  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .text.I2C_Slave_Init 0000000c  000001ca  000001ca  0000023e  2**1
+ 14 .text.I2C_Slave_Init 0000000c  000001c4  000001c4  00000238  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 15 .text.I2C_Slave_Listen 0000003e  00000176  00000176  000001ea  2**1
+ 15 .text.I2C_Slave_Listen 0000003e  00000170  00000170  000001e4  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.I2C_Slave_Transmit 00000050  000000e0  000000e0  00000154  2**1
+ 16 .text.I2C_Slave_Transmit 00000050  000000da  000000da  0000014e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.I2C_Slave_Receive 00000046  00000130  00000130  000001a4  2**1
+ 17 .text.I2C_Slave_Receive 00000046  0000012a  0000012a  0000019e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.main    00000060  00000080  00000080  000000f4  2**1
+ 18 .text.main    0000005a  00000080  00000080  000000f4  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 19 .text.__dummy_fini 00000002  000001de  000001de  00000252  2**1
+ 19 .text.__dummy_fini 00000002  000001d8  000001d8  0000024c  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 20 .text.__dummy_funcs_on_exit 00000002  000001e0  000001e0  00000254  2**1
+ 20 .text.__dummy_funcs_on_exit 00000002  000001da  000001da  0000024e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 21 .text.__dummy_simulator_exit 00000002  000001e2  000001e2  00000256  2**1
+ 21 .text.__dummy_simulator_exit 00000002  000001dc  000001dc  00000250  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 22 .text.exit    00000016  000001b4  000001b4  00000228  2**1
+ 22 .text.exit    00000016  000001ae  000001ae  00000222  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 23 .text._Exit   00000004  000001da  000001da  0000024e  2**1
+ 23 .text._Exit   00000004  000001d4  000001d4  00000248  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
-   4:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-   8:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-   c:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  10:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  14:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  18:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  1c:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  20:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  24:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  28:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  2c:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  30:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  34:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  38:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  3c:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  40:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  44:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  48:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  4c:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  50:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  54:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  58:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  5c:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  60:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
-  64:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <__bad_interrupt>
+   4:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+   8:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+   c:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  10:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  14:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  18:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  1c:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  20:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  24:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  28:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  2c:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  30:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  34:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  38:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  3c:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  40:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  44:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  48:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  4c:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  50:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  54:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  58:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  5c:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  60:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
+  64:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__bad_interrupt>
 
 00000068 <__ctors_end>:
   68:	11 24       	eor	r1, r1
@@ -90,7 +90,7 @@ Disassembly of section .text:
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
   74:	0e 94 40 00 	call	0x80	; 0x80 <_etext>
-  78:	0c 94 da 00 	jmp	0x1b4	; 0x1b4 <exit>
+  78:	0c 94 d7 00 	jmp	0x1ae	; 0x1ae <exit>
 
 0000007c <_exit>:
   7c:	f8 94       	cli
@@ -100,123 +100,211 @@ Disassembly of section .text:
 
 Disassembly of section .text:
 
-000001d6 <__bad_interrupt>:
- 1d6:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+000001d0 <__bad_interrupt>:
+ 1d0:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
 
 Disassembly of section .text.I2C_Slave_Init:
 
-000001ca <I2C_Slave_Init>:
- 1ca:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <__TEXT_REGION_LENGTH__+0x7f80ba>
- 1ce:	84 ec       	ldi	r24, 0xC4	; 196
- 1d0:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
- 1d4:	08 95       	ret
+000001c4 <I2C_Slave_Init>:
+
+#include "I2C_Slave_H_File.h"
+
+void I2C_Slave_Init(uint8_t slave_address)
+{
+	TWAR = slave_address;						/* Assign address in TWI address register */
+ 1c4:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <__TEXT_REGION_LENGTH__+0x7f80ba>
+	TWCR = (1<<TWEN) | (1<<TWEA) | (1<<TWINT);	/* Enable TWI, Enable ack generation, clear TWI interrupt */
+ 1c8:	84 ec       	ldi	r24, 0xC4	; 196
+ 1ca:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1ce:	08 95       	ret
 
 Disassembly of section .text.I2C_Slave_Listen:
 
-00000176 <I2C_Slave_Listen>:
- 176:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
- 17a:	88 23       	and	r24, r24
- 17c:	e4 f7       	brge	.-8      	; 0x176 <I2C_Slave_Listen>
- 17e:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
- 182:	88 7f       	andi	r24, 0xF8	; 248
- 184:	80 36       	cpi	r24, 0x60	; 96
- 186:	61 f0       	breq	.+24     	; 0x1a0 <I2C_Slave_Listen+0x2a>
- 188:	88 36       	cpi	r24, 0x68	; 104
- 18a:	61 f0       	breq	.+24     	; 0x1a4 <I2C_Slave_Listen+0x2e>
- 18c:	88 3a       	cpi	r24, 0xA8	; 168
- 18e:	61 f0       	breq	.+24     	; 0x1a8 <I2C_Slave_Listen+0x32>
- 190:	80 3b       	cpi	r24, 0xB0	; 176
- 192:	61 f0       	breq	.+24     	; 0x1ac <I2C_Slave_Listen+0x36>
- 194:	80 37       	cpi	r24, 0x70	; 112
- 196:	61 f0       	breq	.+24     	; 0x1b0 <I2C_Slave_Listen+0x3a>
- 198:	88 37       	cpi	r24, 0x78	; 120
- 19a:	69 f7       	brne	.-38     	; 0x176 <I2C_Slave_Listen>
- 19c:	82 e0       	ldi	r24, 0x02	; 2
- 19e:	08 95       	ret
- 1a0:	80 e0       	ldi	r24, 0x00	; 0
- 1a2:	08 95       	ret
- 1a4:	80 e0       	ldi	r24, 0x00	; 0
- 1a6:	08 95       	ret
- 1a8:	81 e0       	ldi	r24, 0x01	; 1
- 1aa:	08 95       	ret
- 1ac:	81 e0       	ldi	r24, 0x01	; 1
- 1ae:	08 95       	ret
- 1b0:	82 e0       	ldi	r24, 0x02	; 2
- 1b2:	08 95       	ret
+00000170 <I2C_Slave_Listen>:
+int8_t I2C_Slave_Listen()
+{
+	while(1)
+	{
+		uint8_t status;							/* Declare variable */
+		while (!(TWCR & (1<<TWINT)));			/* Wait to be addressed */
+ 170:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 174:	88 23       	and	r24, r24
+ 176:	e4 f7       	brge	.-8      	; 0x170 <I2C_Slave_Listen>
+		status = TWSR & 0xF8;					/* Read TWI status register with masking lower three bits */
+ 178:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 17c:	88 7f       	andi	r24, 0xF8	; 248
+		if (status == 0x60 || status == 0x68)	/* Check weather own SLA+W received & ack returned (TWEA = 1) */
+ 17e:	80 36       	cpi	r24, 0x60	; 96
+ 180:	61 f0       	breq	.+24     	; 0x19a <I2C_Slave_Listen+0x2a>
+ 182:	88 36       	cpi	r24, 0x68	; 104
+ 184:	61 f0       	breq	.+24     	; 0x19e <I2C_Slave_Listen+0x2e>
+		return 0;								/* If yes then return 0 to indicate ack returned */
+		if (status == 0xA8 || status == 0xB0)	/* Check weather own SLA+R received & ack returned (TWEA = 1) */
+ 186:	88 3a       	cpi	r24, 0xA8	; 168
+ 188:	61 f0       	breq	.+24     	; 0x1a2 <I2C_Slave_Listen+0x32>
+ 18a:	80 3b       	cpi	r24, 0xB0	; 176
+ 18c:	61 f0       	breq	.+24     	; 0x1a6 <I2C_Slave_Listen+0x36>
+		return 1;								/* If yes then return 1 to indicate ack returned */
+		if (status == 0x70 || status == 0x78)	/* Check weather general call received & ack returned (TWEA = 1) */
+ 18e:	80 37       	cpi	r24, 0x70	; 112
+ 190:	61 f0       	breq	.+24     	; 0x1aa <I2C_Slave_Listen+0x3a>
+ 192:	88 37       	cpi	r24, 0x78	; 120
+ 194:	69 f7       	brne	.-38     	; 0x170 <I2C_Slave_Listen>
+		return 2;								/* If yes then return 2 to indicate ack returned */
+ 196:	82 e0       	ldi	r24, 0x02	; 2
+ 198:	08 95       	ret
+	{
+		uint8_t status;							/* Declare variable */
+		while (!(TWCR & (1<<TWINT)));			/* Wait to be addressed */
+		status = TWSR & 0xF8;					/* Read TWI status register with masking lower three bits */
+		if (status == 0x60 || status == 0x68)	/* Check weather own SLA+W received & ack returned (TWEA = 1) */
+		return 0;								/* If yes then return 0 to indicate ack returned */
+ 19a:	80 e0       	ldi	r24, 0x00	; 0
+ 19c:	08 95       	ret
+ 19e:	80 e0       	ldi	r24, 0x00	; 0
+ 1a0:	08 95       	ret
+		if (status == 0xA8 || status == 0xB0)	/* Check weather own SLA+R received & ack returned (TWEA = 1) */
+		return 1;								/* If yes then return 1 to indicate ack returned */
+ 1a2:	81 e0       	ldi	r24, 0x01	; 1
+ 1a4:	08 95       	ret
+ 1a6:	81 e0       	ldi	r24, 0x01	; 1
+ 1a8:	08 95       	ret
+		if (status == 0x70 || status == 0x78)	/* Check weather general call received & ack returned (TWEA = 1) */
+		return 2;								/* If yes then return 2 to indicate ack returned */
+ 1aa:	82 e0       	ldi	r24, 0x02	; 2
+		else
+		continue;								/* Else continue */
+	}
+}
+ 1ac:	08 95       	ret
 
 Disassembly of section .text.I2C_Slave_Transmit:
 
-000000e0 <I2C_Slave_Transmit>:
-  e0:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
-  e4:	84 ec       	ldi	r24, 0xC4	; 196
-  e6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
-  ea:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
-  ee:	88 23       	and	r24, r24
-  f0:	e4 f7       	brge	.-8      	; 0xea <I2C_Slave_Transmit+0xa>
-  f2:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
-  f6:	88 7f       	andi	r24, 0xF8	; 248
-  f8:	80 3a       	cpi	r24, 0xA0	; 160
-  fa:	39 f4       	brne	.+14     	; 0x10a <I2C_Slave_Transmit+0x2a>
-  fc:	ec eb       	ldi	r30, 0xBC	; 188
-  fe:	f0 e0       	ldi	r31, 0x00	; 0
- 100:	80 81       	ld	r24, Z
- 102:	80 68       	ori	r24, 0x80	; 128
- 104:	80 83       	st	Z, r24
- 106:	8f ef       	ldi	r24, 0xFF	; 255
- 108:	08 95       	ret
- 10a:	88 3b       	cpi	r24, 0xB8	; 184
- 10c:	69 f0       	breq	.+26     	; 0x128 <I2C_Slave_Transmit+0x48>
- 10e:	80 3c       	cpi	r24, 0xC0	; 192
- 110:	39 f4       	brne	.+14     	; 0x120 <I2C_Slave_Transmit+0x40>
- 112:	ec eb       	ldi	r30, 0xBC	; 188
- 114:	f0 e0       	ldi	r31, 0x00	; 0
- 116:	80 81       	ld	r24, Z
- 118:	80 68       	ori	r24, 0x80	; 128
- 11a:	80 83       	st	Z, r24
- 11c:	8e ef       	ldi	r24, 0xFE	; 254
- 11e:	08 95       	ret
- 120:	88 3c       	cpi	r24, 0xC8	; 200
- 122:	21 f4       	brne	.+8      	; 0x12c <I2C_Slave_Transmit+0x4c>
- 124:	8d ef       	ldi	r24, 0xFD	; 253
- 126:	08 95       	ret
- 128:	80 e0       	ldi	r24, 0x00	; 0
- 12a:	08 95       	ret
- 12c:	8c ef       	ldi	r24, 0xFC	; 252
- 12e:	08 95       	ret
+000000da <I2C_Slave_Transmit>:
+
+int8_t I2C_Slave_Transmit(char data)
+{
+	uint8_t status;
+	TWDR = data;								/* Write data to TWDR to be transmitted */
+  da:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+	TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);		/* Enable TWI and clear interrupt flag */
+  de:	84 ec       	ldi	r24, 0xC4	; 196
+  e0:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	while (!(TWCR & (1<<TWINT)));				/* Wait until TWI finish its current job (Write operation) */
+  e4:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  e8:	88 23       	and	r24, r24
+  ea:	e4 f7       	brge	.-8      	; 0xe4 <I2C_Slave_Transmit+0xa>
+	status = TWSR & 0xF8;						/* Read TWI status register with masking lower three bits */
+  ec:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+  f0:	88 7f       	andi	r24, 0xF8	; 248
+	if (status == 0xA0)							/* Check weather STOP/REPEATED START received */
+  f2:	80 3a       	cpi	r24, 0xA0	; 160
+  f4:	39 f4       	brne	.+14     	; 0x104 <I2C_Slave_Transmit+0x2a>
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -1 */
+  f6:	ec eb       	ldi	r30, 0xBC	; 188
+  f8:	f0 e0       	ldi	r31, 0x00	; 0
+  fa:	80 81       	ld	r24, Z
+  fc:	80 68       	ori	r24, 0x80	; 128
+  fe:	80 83       	st	Z, r24
+		return -1;
+ 100:	8f ef       	ldi	r24, 0xFF	; 255
+ 102:	08 95       	ret
+	}
+	if (status == 0xB8)							/* Check weather data transmitted & ack received */
+ 104:	88 3b       	cpi	r24, 0xB8	; 184
+ 106:	69 f0       	breq	.+26     	; 0x122 <I2C_Slave_Transmit+0x48>
+		return 0;									/* If yes then return 0 */
+	if (status == 0xC0)							/* Check weather data transmitted & nack received */
+ 108:	80 3c       	cpi	r24, 0xC0	; 192
+ 10a:	39 f4       	brne	.+14     	; 0x11a <I2C_Slave_Transmit+0x40>
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -2 */
+ 10c:	ec eb       	ldi	r30, 0xBC	; 188
+ 10e:	f0 e0       	ldi	r31, 0x00	; 0
+ 110:	80 81       	ld	r24, Z
+ 112:	80 68       	ori	r24, 0x80	; 128
+ 114:	80 83       	st	Z, r24
+		return -2;
+ 116:	8e ef       	ldi	r24, 0xFE	; 254
+ 118:	08 95       	ret
+	}
+	if (status == 0xC8)							/* If last data byte transmitted with ack received TWEA = 0 */
+ 11a:	88 3c       	cpi	r24, 0xC8	; 200
+ 11c:	21 f4       	brne	.+8      	; 0x126 <I2C_Slave_Transmit+0x4c>
+	return -3;									/* If yes then return -3 */
+ 11e:	8d ef       	ldi	r24, 0xFD	; 253
+ 120:	08 95       	ret
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -1 */
+		return -1;
+	}
+	if (status == 0xB8)							/* Check weather data transmitted & ack received */
+		return 0;									/* If yes then return 0 */
+ 122:	80 e0       	ldi	r24, 0x00	; 0
+ 124:	08 95       	ret
+		return -2;
+	}
+	if (status == 0xC8)							/* If last data byte transmitted with ack received TWEA = 0 */
+	return -3;									/* If yes then return -3 */
+	else										/* else return -4 */
+	return -4;
+ 126:	8c ef       	ldi	r24, 0xFC	; 252
+}
+ 128:	08 95       	ret
 
 Disassembly of section .text.I2C_Slave_Receive:
 
-00000130 <I2C_Slave_Receive>:
- 130:	84 ec       	ldi	r24, 0xC4	; 196
- 132:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
- 136:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
- 13a:	88 23       	and	r24, r24
- 13c:	e4 f7       	brge	.-8      	; 0x136 <I2C_Slave_Receive+0x6>
- 13e:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
- 142:	88 7f       	andi	r24, 0xF8	; 248
- 144:	80 38       	cpi	r24, 0x80	; 128
- 146:	11 f0       	breq	.+4      	; 0x14c <I2C_Slave_Receive+0x1c>
- 148:	80 39       	cpi	r24, 0x90	; 144
- 14a:	19 f4       	brne	.+6      	; 0x152 <I2C_Slave_Receive+0x22>
- 14c:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
- 150:	08 95       	ret
- 152:	88 38       	cpi	r24, 0x88	; 136
- 154:	11 f0       	breq	.+4      	; 0x15a <I2C_Slave_Receive+0x2a>
- 156:	88 39       	cpi	r24, 0x98	; 152
- 158:	19 f4       	brne	.+6      	; 0x160 <I2C_Slave_Receive+0x30>
- 15a:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
- 15e:	08 95       	ret
- 160:	80 3a       	cpi	r24, 0xA0	; 160
- 162:	39 f4       	brne	.+14     	; 0x172 <I2C_Slave_Receive+0x42>
- 164:	ec eb       	ldi	r30, 0xBC	; 188
- 166:	f0 e0       	ldi	r31, 0x00	; 0
- 168:	80 81       	ld	r24, Z
- 16a:	80 68       	ori	r24, 0x80	; 128
- 16c:	80 83       	st	Z, r24
- 16e:	8f ef       	ldi	r24, 0xFF	; 255
- 170:	08 95       	ret
- 172:	8e ef       	ldi	r24, 0xFE	; 254
- 174:	08 95       	ret
+0000012a <I2C_Slave_Receive>:
+
+char I2C_Slave_Receive()
+{
+	uint8_t status;								/* Declare variable */
+	TWCR=(1<<TWEN)|(1<<TWEA)|(1<<TWINT);		/* Enable TWI, generation of ack and clear interrupt flag */
+ 12a:	84 ec       	ldi	r24, 0xC4	; 196
+ 12c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	while (!(TWCR & (1<<TWINT)));				/* Wait until TWI finish its current job (read operation) */
+ 130:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 134:	88 23       	and	r24, r24
+ 136:	e4 f7       	brge	.-8      	; 0x130 <I2C_Slave_Receive+0x6>
+	status = TWSR & 0xF8;						/* Read TWI status register with masking lower three bits */
+ 138:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 13c:	88 7f       	andi	r24, 0xF8	; 248
+	if (status == 0x80 || status == 0x90)		/* Check weather data received & ack returned (TWEA = 1) */
+ 13e:	80 38       	cpi	r24, 0x80	; 128
+ 140:	11 f0       	breq	.+4      	; 0x146 <I2C_Slave_Receive+0x1c>
+ 142:	80 39       	cpi	r24, 0x90	; 144
+ 144:	19 f4       	brne	.+6      	; 0x14c <I2C_Slave_Receive+0x22>
+	return TWDR;								/* If yes then return received data */
+ 146:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 14a:	08 95       	ret
+	if (status == 0x88 || status == 0x98)		/* Check weather data received, nack returned and switched to not addressed slave mode */
+ 14c:	88 38       	cpi	r24, 0x88	; 136
+ 14e:	11 f0       	breq	.+4      	; 0x154 <I2C_Slave_Receive+0x2a>
+ 150:	88 39       	cpi	r24, 0x98	; 152
+ 152:	19 f4       	brne	.+6      	; 0x15a <I2C_Slave_Receive+0x30>
+	return TWDR;								/* If yes then return received data */
+ 154:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+ 158:	08 95       	ret
+	if (status == 0xA0)							/* Check weather STOP/REPEATED START received */
+ 15a:	80 3a       	cpi	r24, 0xA0	; 160
+ 15c:	39 f4       	brne	.+14     	; 0x16c <I2C_Slave_Receive+0x42>
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return 0 */
+ 15e:	ec eb       	ldi	r30, 0xBC	; 188
+ 160:	f0 e0       	ldi	r31, 0x00	; 0
+ 162:	80 81       	ld	r24, Z
+ 164:	80 68       	ori	r24, 0x80	; 128
+ 166:	80 83       	st	Z, r24
+		return -1;
+ 168:	8f ef       	ldi	r24, 0xFF	; 255
+ 16a:	08 95       	ret
+	}
+	else
+	return -2;									/* Else return 1 */
+ 16c:	8e ef       	ldi	r24, 0xFE	; 254
+}
+ 16e:	08 95       	ret
 
 Disassembly of section .text.main:
 
@@ -230,120 +318,117 @@ int main(void)
   80:	84 b1       	in	r24, 0x04	; 4
   82:	82 60       	ori	r24, 0x02	; 2
   84:	84 b9       	out	0x04, r24	; 4
-	PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir PORTE
-  86:	8b b1       	in	r24, 0x0b	; 11
-  88:	80 68       	ori	r24, 0x80	; 128
-  8a:	8b b9       	out	0x0b, r24	; 11
+	//PORTD|=(1<<PD7);//Resistance de Rappel activé pour le Bouton Poussoir PORTE
 	
 	I2C_Slave_Init(Slave_Address);
-  8c:	8a e5       	ldi	r24, 0x5A	; 90
-  8e:	0e 94 e5 00 	call	0x1ca	; 0x1ca <I2C_Slave_Init>
+  86:	8a e5       	ldi	r24, 0x5A	; 90
+  88:	0e 94 e2 00 	call	0x1c4	; 0x1c4 <I2C_Slave_Init>
 
 #define Slave_Address			0x5A
 
 int main(void)
 {
 	int drapeau=0;
-  92:	c0 e0       	ldi	r28, 0x00	; 0
-  94:	d0 e0       	ldi	r29, 0x00	; 0
+  8c:	c0 e0       	ldi	r28, 0x00	; 0
+  8e:	d0 e0       	ldi	r29, 0x00	; 0
 	I2C_Slave_Init(Slave_Address);
 	
 	while (1)
 	{
 		//Afficher l'etat de la porte sur la LED PB1
 		if (bit_is_clear(PIND,PD7))
-  96:	4f 99       	sbic	0x09, 7	; 9
-  98:	04 c0       	rjmp	.+8      	; 0xa2 <main+0x22>
+  90:	4f 99       	sbic	0x09, 7	; 9
+  92:	04 c0       	rjmp	.+8      	; 0x9c <main+0x1c>
 		{
 			PORTB |=(1<<PB1) ; //allumer le temoin de la porte
-  9a:	85 b1       	in	r24, 0x05	; 5
-  9c:	82 60       	ori	r24, 0x02	; 2
-  9e:	85 b9       	out	0x05, r24	; 5
-  a0:	03 c0       	rjmp	.+6      	; 0xa8 <main+0x28>
+  94:	85 b1       	in	r24, 0x05	; 5
+  96:	82 60       	ori	r24, 0x02	; 2
+  98:	85 b9       	out	0x05, r24	; 5
+  9a:	03 c0       	rjmp	.+6      	; 0xa2 <main+0x22>
 		} else
 		{
 			PORTB &=~(1<<PB1) ; //eteindre le temoin de la porte
-  a2:	85 b1       	in	r24, 0x05	; 5
-  a4:	8d 7f       	andi	r24, 0xFD	; 253
-  a6:	85 b9       	out	0x05, r24	; 5
+  9c:	85 b1       	in	r24, 0x05	; 5
+  9e:	8d 7f       	andi	r24, 0xFD	; 253
+  a0:	85 b9       	out	0x05, r24	; 5
 		}
 		//lire trame i2c
 		switch(I2C_Slave_Listen())				/* Check for any SLA+W or SLA+R */
-  a8:	0e 94 bb 00 	call	0x176	; 0x176 <I2C_Slave_Listen>
-  ac:	88 23       	and	r24, r24
-  ae:	19 f0       	breq	.+6      	; 0xb6 <main+0x36>
-  b0:	81 30       	cpi	r24, 0x01	; 1
-  b2:	51 f0       	breq	.+20     	; 0xc8 <main+0x48>
-  b4:	f0 cf       	rjmp	.-32     	; 0x96 <main+0x16>
+  a2:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Slave_Listen>
+  a6:	88 23       	and	r24, r24
+  a8:	19 f0       	breq	.+6      	; 0xb0 <main+0x30>
+  aa:	81 30       	cpi	r24, 0x01	; 1
+  ac:	51 f0       	breq	.+20     	; 0xc2 <main+0x42>
+  ae:	f0 cf       	rjmp	.-32     	; 0x90 <main+0x10>
 			case 0://receive
 			{
 				do
 				{
 					
 					count = I2C_Slave_Receive();/* Receive data byte*/
-  b6:	0e 94 98 00 	call	0x130	; 0x130 <I2C_Slave_Receive>
+  b0:	0e 94 95 00 	call	0x12a	; 0x12a <I2C_Slave_Receive>
 					if(count==0x35) drapeau=1;  // vérifier si c'est 0x35 (code) alors autoriser la transmission
-  ba:	85 33       	cpi	r24, 0x35	; 53
-  bc:	11 f4       	brne	.+4      	; 0xc2 <main+0x42>
-  be:	c1 e0       	ldi	r28, 0x01	; 1
-  c0:	d0 e0       	ldi	r29, 0x00	; 0
+  b4:	85 33       	cpi	r24, 0x35	; 53
+  b6:	11 f4       	brne	.+4      	; 0xbc <main+0x3c>
+  b8:	c1 e0       	ldi	r28, 0x01	; 1
+  ba:	d0 e0       	ldi	r29, 0x00	; 0
 					
 					} while (count != -1);			/* Receive until STOP/REPEATED START received */
-  c2:	8f 3f       	cpi	r24, 0xFF	; 255
-  c4:	c1 f7       	brne	.-16     	; 0xb6 <main+0x36>
-  c6:	e7 cf       	rjmp	.-50     	; 0x96 <main+0x16>
+  bc:	8f 3f       	cpi	r24, 0xFF	; 255
+  be:	c1 f7       	brne	.-16     	; 0xb0 <main+0x30>
+  c0:	e7 cf       	rjmp	.-50     	; 0x90 <main+0x10>
 				}
 				
 				case 1://transmit
 				{
 					int8_t Ack_status;
 					if(drapeau==1){ //si bon code envoi l'état de PD7
-  c8:	c1 30       	cpi	r28, 0x01	; 1
-  ca:	d1 05       	cpc	r29, r1
-  cc:	21 f7       	brne	.-56     	; 0x96 <main+0x16>
+  c2:	c1 30       	cpi	r28, 0x01	; 1
+  c4:	d1 05       	cpc	r29, r1
+  c6:	21 f7       	brne	.-56     	; 0x90 <main+0x10>
 						do
 						{   valeur=(PIND & 0b10000000);  //valeur de PD7
-  ce:	89 b1       	in	r24, 0x09	; 9
+  c8:	89 b1       	in	r24, 0x09	; 9
 							Ack_status = I2C_Slave_Transmit(valeur);	/* Send data byte */
-  d0:	80 78       	andi	r24, 0x80	; 128
-  d2:	0e 94 70 00 	call	0xe0	; 0xe0 <I2C_Slave_Transmit>
+  ca:	80 78       	andi	r24, 0x80	; 128
+  cc:	0e 94 6d 00 	call	0xda	; 0xda <I2C_Slave_Transmit>
 							
 							} while (Ack_status == 0);		/* Send until Acknowledgment is received */
-  d6:	88 23       	and	r24, r24
-  d8:	d1 f3       	breq	.-12     	; 0xce <main+0x4e>
+  d0:	88 23       	and	r24, r24
+  d2:	d1 f3       	breq	.-12     	; 0xc8 <main+0x48>
 							
 							drapeau=0;//reset pour lire une autre donnée
-  da:	c0 e0       	ldi	r28, 0x00	; 0
-  dc:	d0 e0       	ldi	r29, 0x00	; 0
-  de:	db cf       	rjmp	.-74     	; 0x96 <main+0x16>
+  d4:	c0 e0       	ldi	r28, 0x00	; 0
+  d6:	d0 e0       	ldi	r29, 0x00	; 0
+  d8:	db cf       	rjmp	.-74     	; 0x90 <main+0x10>
 
 Disassembly of section .text.__dummy_fini:
 
-000001de <_fini>:
- 1de:	08 95       	ret
+000001d8 <_fini>:
+ 1d8:	08 95       	ret
 
 Disassembly of section .text.__dummy_funcs_on_exit:
 
-000001e0 <__funcs_on_exit>:
- 1e0:	08 95       	ret
+000001da <__funcs_on_exit>:
+ 1da:	08 95       	ret
 
 Disassembly of section .text.__dummy_simulator_exit:
 
-000001e2 <__simulator_exit>:
- 1e2:	08 95       	ret
+000001dc <__simulator_exit>:
+ 1dc:	08 95       	ret
 
 Disassembly of section .text.exit:
 
-000001b4 <exit>:
- 1b4:	ec 01       	movw	r28, r24
- 1b6:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <__funcs_on_exit>
- 1ba:	0e 94 ef 00 	call	0x1de	; 0x1de <_fini>
+000001ae <exit>:
+ 1ae:	ec 01       	movw	r28, r24
+ 1b0:	0e 94 ed 00 	call	0x1da	; 0x1da <__funcs_on_exit>
+ 1b4:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <_fini>
+ 1b8:	ce 01       	movw	r24, r28
+ 1ba:	0e 94 ee 00 	call	0x1dc	; 0x1dc <__simulator_exit>
  1be:	ce 01       	movw	r24, r28
- 1c0:	0e 94 f1 00 	call	0x1e2	; 0x1e2 <__simulator_exit>
- 1c4:	ce 01       	movw	r24, r28
- 1c6:	0e 94 ed 00 	call	0x1da	; 0x1da <_Exit>
+ 1c0:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <_Exit>
 
 Disassembly of section .text._Exit:
 
-000001da <_Exit>:
- 1da:	0e 94 3e 00 	call	0x7c	; 0x7c <_exit>
+000001d4 <_Exit>:
+ 1d4:	0e 94 3e 00 	call	0x7c	; 0x7c <_exit>

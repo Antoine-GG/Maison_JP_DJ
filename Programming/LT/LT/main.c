@@ -77,9 +77,9 @@ char SPI_MasterTransmit(char cData, uint8_t ss)
 
 //init UART
 void initUSART(void) {
-	UBRR0H = UBRRH_VALUE;              /* baud rate  */
-	UBRR0L = UBRRL_VALUE;           /* 9600 */
-	//UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
+	UBRR0H = 0;              /* baud rate  */
+	UBRR0L = 51;           /* 9600 */
+	UCSR0A |= (1 << U2X0);      /* mode asynchrone double vitesse */
 	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
 	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
 }
@@ -344,13 +344,14 @@ int main() {
 	double Temperature;
 	int8_t tmp_msb,tmp_lsb;
 	uint8_t received;
+	initUSART();
 	if(useIdir2C){
 		I2C_Init();
 		init1621();		
 	}
 	if(useII2C)initIi2c();
 	if(useSPI) SPI_MasterInit();
-	initUSART();
+	
 	if(useI2C) I2C_Init();
 	if(useManualI2C) initManualI2c();
 	_delay_ms(500); // Attendre pour laisser les ATmega328P esclaves s'initialiser
@@ -414,13 +415,13 @@ int main() {
 		if(useSPI){
 		//spi calls
 		//Set U3 door lock status
-		//SPI_MasterTransmit(status.lock, SLAVE3);
+		SPI_MasterTransmit(status.lock, SLAVE3);
 		//Set U4 light status
 		//manque la source ou ramener light
 		SPI_MasterTransmit(status.light, SLAVE4);
 		//POLL U5, get the keyboard char
 		status.keyboardChar = SPI_MasterTransmit('Y', SLAVE5);
-		uartTransmitByte(status.keyboardChar);
+		//uartTransmitByte(status.keyboardChar);
 
 		}
 		//if(useII2C){
@@ -461,7 +462,8 @@ int main() {
 		//uart 
 		//firstByte = status.keyboardChar;
 		//manque la source ou ramener keyboard doit etre definit
-		uartTransmitByte(status.keyboardChar);
+		uartTransmitByte('A');
+		uartTransmitByte('\n');
 		
 		_delay_ms(5); // Attendre avant de refaire la demande
 	}

@@ -21,11 +21,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_frame  00000078  00000000  00000000  00001708  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000004a5  00000000  00000000  00001780  2**0
+  9 .debug_str    000003fa  00000000  00000000  00001780  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000016d  00000000  00000000  00001c25  2**0
+ 10 .debug_loc    0000016d  00000000  00000000  00001b7a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000050  00000000  00000000  00001d92  2**0
+ 11 .debug_ranges 00000050  00000000  00000000  00001ce7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -208,110 +208,209 @@ int main(void)
   e6:	e8 cf       	rjmp	.-48     	; 0xb8 <main+0x38>
 
 000000e8 <I2C_Slave_Init>:
+
+#include "I2C_Slave_H_File.h"
+
+void I2C_Slave_Init(uint8_t slave_address)
+{
+	TWAR = slave_address;						/* Assign address in TWI address register */
   e8:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <__TEXT_REGION_LENGTH__+0x7fc0ba>
+	TWCR = (1<<TWEN) | (1<<TWEA) | (1<<TWINT);	/* Enable TWI, Enable ack generation, clear TWI interrupt */
   ec:	84 ec       	ldi	r24, 0xC4	; 196
   ee:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
   f2:	08 95       	ret
 
 000000f4 <I2C_Slave_Listen>:
+int8_t I2C_Slave_Listen()
+{
+	while(1)
+	{
+		uint8_t status;							/* Declare variable */
+		while (!(TWCR & (1<<TWINT)));			/* Wait to be addressed */
   f4:	ec eb       	ldi	r30, 0xBC	; 188
   f6:	f0 e0       	ldi	r31, 0x00	; 0
+		status = TWSR & 0xF8;					/* Read TWI status register with masking lower three bits */
   f8:	a9 eb       	ldi	r26, 0xB9	; 185
   fa:	b0 e0       	ldi	r27, 0x00	; 0
+int8_t I2C_Slave_Listen()
+{
+	while(1)
+	{
+		uint8_t status;							/* Declare variable */
+		while (!(TWCR & (1<<TWINT)));			/* Wait to be addressed */
   fc:	80 81       	ld	r24, Z
   fe:	88 23       	and	r24, r24
  100:	ec f7       	brge	.-6      	; 0xfc <I2C_Slave_Listen+0x8>
+		status = TWSR & 0xF8;					/* Read TWI status register with masking lower three bits */
  102:	8c 91       	ld	r24, X
  104:	98 2f       	mov	r25, r24
  106:	98 7f       	andi	r25, 0xF8	; 248
+		if (status == 0x60 || status == 0x68)	/* Check weather own SLA+W received & ack returned (TWEA = 1) */
  108:	80 7f       	andi	r24, 0xF0	; 240
  10a:	80 36       	cpi	r24, 0x60	; 96
  10c:	41 f0       	breq	.+16     	; 0x11e <I2C_Slave_Listen+0x2a>
+		return 0;								/* If yes then return 0 to indicate ack returned */
+		if (status == 0xA8 || status == 0xB0)	/* Check weather own SLA+R received & ack returned (TWEA = 1) */
  10e:	98 3a       	cpi	r25, 0xA8	; 168
  110:	41 f0       	breq	.+16     	; 0x122 <I2C_Slave_Listen+0x2e>
  112:	90 3b       	cpi	r25, 0xB0	; 176
  114:	41 f0       	breq	.+16     	; 0x126 <I2C_Slave_Listen+0x32>
+		return 1;								/* If yes then return 1 to indicate ack returned */
+		if (status == 0x70 || status == 0x78)	/* Check weather general call received & ack returned (TWEA = 1) */
  116:	80 37       	cpi	r24, 0x70	; 112
  118:	89 f7       	brne	.-30     	; 0xfc <I2C_Slave_Listen+0x8>
+		return 2;								/* If yes then return 2 to indicate ack returned */
  11a:	82 e0       	ldi	r24, 0x02	; 2
  11c:	08 95       	ret
+	{
+		uint8_t status;							/* Declare variable */
+		while (!(TWCR & (1<<TWINT)));			/* Wait to be addressed */
+		status = TWSR & 0xF8;					/* Read TWI status register with masking lower three bits */
+		if (status == 0x60 || status == 0x68)	/* Check weather own SLA+W received & ack returned (TWEA = 1) */
+		return 0;								/* If yes then return 0 to indicate ack returned */
  11e:	80 e0       	ldi	r24, 0x00	; 0
  120:	08 95       	ret
+		if (status == 0xA8 || status == 0xB0)	/* Check weather own SLA+R received & ack returned (TWEA = 1) */
+		return 1;								/* If yes then return 1 to indicate ack returned */
  122:	81 e0       	ldi	r24, 0x01	; 1
  124:	08 95       	ret
  126:	81 e0       	ldi	r24, 0x01	; 1
+		if (status == 0x70 || status == 0x78)	/* Check weather general call received & ack returned (TWEA = 1) */
+		return 2;								/* If yes then return 2 to indicate ack returned */
+		else
+		continue;								/* Else continue */
+	}
+}
  128:	08 95       	ret
 
 0000012a <I2C_Slave_Transmit>:
+
+int8_t I2C_Slave_Transmit(char data)
+{
+	uint8_t status;
+	TWDR = data;								/* Write data to TWDR to be transmitted */
  12a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
+	TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);		/* Enable TWI and clear interrupt flag */
  12e:	84 ec       	ldi	r24, 0xC4	; 196
  130:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+	while (!(TWCR & (1<<TWINT)));				/* Wait until TWI finish its current job (Write operation) */
  134:	ec eb       	ldi	r30, 0xBC	; 188
  136:	f0 e0       	ldi	r31, 0x00	; 0
  138:	80 81       	ld	r24, Z
  13a:	88 23       	and	r24, r24
  13c:	ec f7       	brge	.-6      	; 0x138 <I2C_Slave_Transmit+0xe>
+	status = TWSR & 0xF8;						/* Read TWI status register with masking lower three bits */
  13e:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
  142:	88 7f       	andi	r24, 0xF8	; 248
+	if (status == 0xA0)							/* Check weather STOP/REPEATED START received */
  144:	80 3a       	cpi	r24, 0xA0	; 160
  146:	39 f4       	brne	.+14     	; 0x156 <I2C_Slave_Transmit+0x2c>
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -1 */
  148:	ec eb       	ldi	r30, 0xBC	; 188
  14a:	f0 e0       	ldi	r31, 0x00	; 0
  14c:	80 81       	ld	r24, Z
  14e:	80 68       	ori	r24, 0x80	; 128
  150:	80 83       	st	Z, r24
+		return -1;
  152:	8f ef       	ldi	r24, 0xFF	; 255
  154:	08 95       	ret
+	}
+	if (status == 0xB8)							/* Check weather data transmitted & ack received */
  156:	88 3b       	cpi	r24, 0xB8	; 184
  158:	69 f0       	breq	.+26     	; 0x174 <I2C_Slave_Transmit+0x4a>
+		return 0;									/* If yes then return 0 */
+	if (status == 0xC0)							/* Check weather data transmitted & nack received */
  15a:	80 3c       	cpi	r24, 0xC0	; 192
  15c:	39 f4       	brne	.+14     	; 0x16c <I2C_Slave_Transmit+0x42>
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -2 */
  15e:	ec eb       	ldi	r30, 0xBC	; 188
  160:	f0 e0       	ldi	r31, 0x00	; 0
  162:	80 81       	ld	r24, Z
  164:	80 68       	ori	r24, 0x80	; 128
  166:	80 83       	st	Z, r24
+		return -2;
  168:	8e ef       	ldi	r24, 0xFE	; 254
  16a:	08 95       	ret
+	}
+	if (status == 0xC8)							/* If last data byte transmitted with ack received TWEA = 0 */
  16c:	88 3c       	cpi	r24, 0xC8	; 200
  16e:	21 f0       	breq	.+8      	; 0x178 <I2C_Slave_Transmit+0x4e>
+	return -3;									/* If yes then return -3 */
+	else										/* else return -4 */
+	return -4;
  170:	8c ef       	ldi	r24, 0xFC	; 252
  172:	08 95       	ret
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -1 */
+		return -1;
+	}
+	if (status == 0xB8)							/* Check weather data transmitted & ack received */
+		return 0;									/* If yes then return 0 */
  174:	80 e0       	ldi	r24, 0x00	; 0
  176:	08 95       	ret
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return -2 */
+		return -2;
+	}
+	if (status == 0xC8)							/* If last data byte transmitted with ack received TWEA = 0 */
+	return -3;									/* If yes then return -3 */
  178:	8d ef       	ldi	r24, 0xFD	; 253
+	else										/* else return -4 */
+	return -4;
+}
  17a:	08 95       	ret
 
 0000017c <I2C_Slave_Receive>:
+
+char I2C_Slave_Receive()
+{
+	uint8_t status;								/* Declare variable */
+	TWCR=(1<<TWEN)|(1<<TWEA)|(1<<TWINT);		/* Enable TWI, generation of ack and clear interrupt flag */
  17c:	84 ec       	ldi	r24, 0xC4	; 196
  17e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7fc0bc>
+	while (!(TWCR & (1<<TWINT)));				/* Wait until TWI finish its current job (read operation) */
  182:	ec eb       	ldi	r30, 0xBC	; 188
  184:	f0 e0       	ldi	r31, 0x00	; 0
  186:	80 81       	ld	r24, Z
  188:	88 23       	and	r24, r24
  18a:	ec f7       	brge	.-6      	; 0x186 <I2C_Slave_Receive+0xa>
+	status = TWSR & 0xF8;						/* Read TWI status register with masking lower three bits */
  18c:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7fc0b9>
+	if (status == 0x80 || status == 0x90)		/* Check weather data received & ack returned (TWEA = 1) */
  190:	98 2f       	mov	r25, r24
  192:	98 7e       	andi	r25, 0xE8	; 232
  194:	90 38       	cpi	r25, 0x80	; 128
  196:	19 f4       	brne	.+6      	; 0x19e <I2C_Slave_Receive+0x22>
+	return TWDR;								/* If yes then return received data */
  198:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
  19c:	08 95       	ret
+	if (status == 0x88 || status == 0x98)		/* Check weather data received, nack returned and switched to not addressed slave mode */
  19e:	98 38       	cpi	r25, 0x88	; 136
  1a0:	19 f4       	brne	.+6      	; 0x1a8 <I2C_Slave_Receive+0x2c>
+	return TWDR;								/* If yes then return received data */
  1a2:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7fc0bb>
  1a6:	08 95       	ret
+	if (status == 0xA0)							/* Check weather STOP/REPEATED START received */
  1a8:	88 7f       	andi	r24, 0xF8	; 248
  1aa:	80 3a       	cpi	r24, 0xA0	; 160
  1ac:	39 f4       	brne	.+14     	; 0x1bc <I2C_Slave_Receive+0x40>
+	{
+		TWCR |= (1<<TWINT);						/* If yes then clear interrupt flag & return 0 */
  1ae:	ec eb       	ldi	r30, 0xBC	; 188
  1b0:	f0 e0       	ldi	r31, 0x00	; 0
  1b2:	80 81       	ld	r24, Z
  1b4:	80 68       	ori	r24, 0x80	; 128
  1b6:	80 83       	st	Z, r24
+		return -1;
  1b8:	8f ef       	ldi	r24, 0xFF	; 255
  1ba:	08 95       	ret
+	}
+	else
+	return -2;									/* Else return 1 */
  1bc:	8e ef       	ldi	r24, 0xFE	; 254
+}
  1be:	08 95       	ret
 
 000001c0 <_exit>:

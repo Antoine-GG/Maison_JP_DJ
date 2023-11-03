@@ -3,86 +3,86 @@ LT.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000232  2**0
+  0 .data         00000000  00800100  00800100  00000246  2**0
                   ALLOC, LOAD, DATA
   1 .text         000000c2  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000008  00800100  00800100  00000232  2**0
+  2 .bss          00000008  00800100  00800100  00000246  2**0
                   ALLOC
-  3 .comment      0000002f  00000000  00000000  00000232  2**0
+  3 .comment      0000002f  00000000  00000000  00000246  2**0
                   CONTENTS, READONLY
-  4 .stack.descriptors.hdr 0000000e  00000000  00000000  00000261  2**0
+  4 .stack.descriptors.hdr 0000000e  00000000  00000000  00000275  2**0
                   CONTENTS, READONLY
-  5 .debug_aranges 000000f0  00000000  00000000  0000026f  2**0
+  5 .debug_aranges 000000f0  00000000  00000000  00000283  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001dcc  00000000  00000000  0000035f  2**0
+  6 .debug_info   00001dd1  00000000  00000000  00000373  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008ec  00000000  00000000  0000212b  2**0
+  7 .debug_abbrev 000008ec  00000000  00000000  00002144  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000009b9  00000000  00000000  00002a17  2**0
+  8 .debug_line   000009c7  00000000  00000000  00002a30  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000020c  00000000  00000000  000033d0  2**2
+  9 .debug_frame  0000020c  00000000  00000000  000033f8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000286  00000000  00000000  000035dc  2**0
+ 10 .debug_str    00000286  00000000  00000000  00003604  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000f86  00000000  00000000  00003862  2**0
+ 11 .debug_loc    00000f86  00000000  00000000  0000388a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f8  00000000  00000000  000047e8  2**0
+ 12 .debug_ranges 000000f8  00000000  00000000  00004810  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .text         00000004  00000190  00000190  00000224  2**1
+ 13 .text         00000004  000001a4  000001a4  00000238  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000048e0  2**2
+ 14 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00004908  2**2
                   CONTENTS, READONLY, DEBUGGING
- 15 .text.SPI_MasterInit 0000000e  00000174  00000174  00000208  2**1
+ 15 .text.SPI_MasterInit 0000000e  00000188  00000188  0000021c  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.SPI_MasterTransmit 00000034  0000010a  0000010a  0000019e  2**1
+ 16 .text.SPI_MasterTransmit 00000034  00000114  00000114  000001a8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.initUSART 00000020  0000013e  0000013e  000001d2  2**1
+ 17 .text.initUSART 0000002a  00000148  00000148  000001dc  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.uartTransmitByte 0000000e  00000182  00000182  00000216  2**1
+ 18 .text.uartTransmitByte 0000000e  00000196  00000196  0000022a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 19 .text.main    00000048  000000c2  000000c2  00000156  2**1
+ 19 .text.main    00000052  000000c2  000000c2  00000156  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 20 .text.__dummy_fini 00000002  00000198  00000198  0000022c  2**1
+ 20 .text.__dummy_fini 00000002  000001ac  000001ac  00000240  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 21 .text.__dummy_funcs_on_exit 00000002  0000019a  0000019a  0000022e  2**1
+ 21 .text.__dummy_funcs_on_exit 00000002  000001ae  000001ae  00000242  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 22 .text.__dummy_simulator_exit 00000002  0000019c  0000019c  00000230  2**1
+ 22 .text.__dummy_simulator_exit 00000002  000001b0  000001b0  00000244  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 23 .text.exit    00000016  0000015e  0000015e  000001f2  2**1
+ 23 .text.exit    00000016  00000172  00000172  00000206  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 24 .text._Exit   00000004  00000194  00000194  00000228  2**1
+ 24 .text._Exit   00000004  000001a8  000001a8  0000023c  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 37 00 	jmp	0x6e	; 0x6e <__ctors_end>
-   4:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-   8:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-   c:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  10:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  14:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  18:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  1c:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  20:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  24:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  28:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  2c:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  30:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  34:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  38:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  3c:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  40:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  44:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  48:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  4c:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  50:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  54:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  58:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  5c:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  60:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
-  64:	0c 94 c8 00 	jmp	0x190	; 0x190 <__bad_interrupt>
+   4:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+   8:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+   c:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  10:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  14:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  18:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  1c:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  20:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  24:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  28:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  2c:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  30:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  34:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  38:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  3c:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  40:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  44:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  48:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  4c:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  50:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  54:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  58:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  5c:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  60:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
+  64:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <__bad_interrupt>
 
 00000068 <.dinit>:
   68:	01 00       	.word	0x0001	; ????
@@ -131,7 +131,7 @@ Disassembly of section .text:
   b2:	f4 07       	cpc	r31, r20
   b4:	31 f7       	brne	.-52     	; 0x82 <__do_copy_data+0x8>
   b6:	0e 94 61 00 	call	0xc2	; 0xc2 <_etext>
-  ba:	0c 94 af 00 	jmp	0x15e	; 0x15e <exit>
+  ba:	0c 94 b9 00 	jmp	0x172	; 0x172 <exit>
 
 000000be <_exit>:
   be:	f8 94       	cli
@@ -141,105 +141,110 @@ Disassembly of section .text:
 
 Disassembly of section .text:
 
-00000190 <__bad_interrupt>:
- 190:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+000001a4 <__bad_interrupt>:
+ 1a4:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
 
 Disassembly of section .text.SPI_MasterInit:
 
-00000174 <SPI_MasterInit>:
+00000188 <SPI_MasterInit>:
 
 //SPI
 void SPI_MasterInit(void)
 {
 	/* Set MOSI and SCK output SS,  */
 	DDRB = (1<<PB3)|(1<<PB5)|(1<<PB2);
- 174:	8c e2       	ldi	r24, 0x2C	; 44
- 176:	84 b9       	out	0x04, r24	; 4
+ 188:	8c e2       	ldi	r24, 0x2C	; 44
+ 18a:	84 b9       	out	0x04, r24	; 4
 	// set Port C pins for 3 ss	
 	DDRD = (1<<SLAVE3)|(1<<SLAVE4)|(1<<SLAVE5);
- 178:	8c e1       	ldi	r24, 0x1C	; 28
- 17a:	8a b9       	out	0x0a, r24	; 10
+ 18c:	8c e1       	ldi	r24, 0x1C	; 28
+ 18e:	8a b9       	out	0x0a, r24	; 10
 	/* Enable SPI, Master, set clock rate fck/16 */
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
- 17c:	81 e5       	ldi	r24, 0x51	; 81
- 17e:	8c bd       	out	0x2c, r24	; 44
- 180:	08 95       	ret
+ 190:	81 e5       	ldi	r24, 0x51	; 81
+ 192:	8c bd       	out	0x2c, r24	; 44
+ 194:	08 95       	ret
 
 Disassembly of section .text.SPI_MasterTransmit:
 
-0000010a <SPI_MasterTransmit>:
+00000114 <SPI_MasterTransmit>:
 }
 
 void i2cSend(uint8_t data) {
 	TWDR = data;
 	TWCR = (_BV(TWINT) | _BV(TWEN));                  /* init and enable */
 	i2cWaitForComplete();
- 10a:	9b b1       	in	r25, 0x0b	; 11
- 10c:	9c 61       	ori	r25, 0x1C	; 28
- 10e:	9b b9       	out	0x0b, r25	; 11
- 110:	9b b1       	in	r25, 0x0b	; 11
- 112:	21 e0       	ldi	r18, 0x01	; 1
- 114:	30 e0       	ldi	r19, 0x00	; 0
- 116:	02 c0       	rjmp	.+4      	; 0x11c <SPI_MasterTransmit+0x12>
- 118:	22 0f       	add	r18, r18
- 11a:	33 1f       	adc	r19, r19
- 11c:	6a 95       	dec	r22
- 11e:	e2 f7       	brpl	.-8      	; 0x118 <SPI_MasterTransmit+0xe>
- 120:	20 95       	com	r18
- 122:	29 23       	and	r18, r25
- 124:	2b b9       	out	0x0b, r18	; 11
- 126:	ef ec       	ldi	r30, 0xCF	; 207
- 128:	f7 e0       	ldi	r31, 0x07	; 7
- 12a:	31 97       	sbiw	r30, 0x01	; 1
- 12c:	f1 f7       	brne	.-4      	; 0x12a <SPI_MasterTransmit+0x20>
- 12e:	00 c0       	rjmp	.+0      	; 0x130 <SPI_MasterTransmit+0x26>
- 130:	00 00       	nop
- 132:	8e bd       	out	0x2e, r24	; 46
- 134:	0d b4       	in	r0, 0x2d	; 45
- 136:	07 fe       	sbrs	r0, 7
- 138:	fd cf       	rjmp	.-6      	; 0x134 <SPI_MasterTransmit+0x2a>
- 13a:	8e b5       	in	r24, 0x2e	; 46
- 13c:	08 95       	ret
+ 114:	9b b1       	in	r25, 0x0b	; 11
+ 116:	9c 61       	ori	r25, 0x1C	; 28
+ 118:	9b b9       	out	0x0b, r25	; 11
+ 11a:	9b b1       	in	r25, 0x0b	; 11
+ 11c:	21 e0       	ldi	r18, 0x01	; 1
+ 11e:	30 e0       	ldi	r19, 0x00	; 0
+ 120:	02 c0       	rjmp	.+4      	; 0x126 <SPI_MasterTransmit+0x12>
+ 122:	22 0f       	add	r18, r18
+ 124:	33 1f       	adc	r19, r19
+ 126:	6a 95       	dec	r22
+ 128:	e2 f7       	brpl	.-8      	; 0x122 <SPI_MasterTransmit+0xe>
+ 12a:	20 95       	com	r18
+ 12c:	29 23       	and	r18, r25
+ 12e:	2b b9       	out	0x0b, r18	; 11
+ 130:	ef ec       	ldi	r30, 0xCF	; 207
+ 132:	f7 e0       	ldi	r31, 0x07	; 7
+ 134:	31 97       	sbiw	r30, 0x01	; 1
+ 136:	f1 f7       	brne	.-4      	; 0x134 <SPI_MasterTransmit+0x20>
+ 138:	00 c0       	rjmp	.+0      	; 0x13a <SPI_MasterTransmit+0x26>
+ 13a:	00 00       	nop
+ 13c:	8e bd       	out	0x2e, r24	; 46
+ 13e:	0d b4       	in	r0, 0x2d	; 45
+ 140:	07 fe       	sbrs	r0, 7
+ 142:	fd cf       	rjmp	.-6      	; 0x13e <SPI_MasterTransmit+0x2a>
+ 144:	8e b5       	in	r24, 0x2e	; 46
+ 146:	08 95       	ret
 
 Disassembly of section .text.initUSART:
 
-0000013e <initUSART>:
- 13e:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
- 142:	8c e0       	ldi	r24, 0x0C	; 12
- 144:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
- 148:	e1 ec       	ldi	r30, 0xC1	; 193
- 14a:	f0 e0       	ldi	r31, 0x00	; 0
- 14c:	80 81       	ld	r24, Z
- 14e:	88 61       	ori	r24, 0x18	; 24
- 150:	80 83       	st	Z, r24
- 152:	e2 ec       	ldi	r30, 0xC2	; 194
+00000148 <initUSART>:
+ 148:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7fc0c5>
+ 14c:	83 e3       	ldi	r24, 0x33	; 51
+ 14e:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7fc0c4>
+ 152:	e0 ec       	ldi	r30, 0xC0	; 192
  154:	f0 e0       	ldi	r31, 0x00	; 0
  156:	80 81       	ld	r24, Z
- 158:	86 60       	ori	r24, 0x06	; 6
+ 158:	82 60       	ori	r24, 0x02	; 2
  15a:	80 83       	st	Z, r24
- 15c:	08 95       	ret
+ 15c:	e1 ec       	ldi	r30, 0xC1	; 193
+ 15e:	f0 e0       	ldi	r31, 0x00	; 0
+ 160:	80 81       	ld	r24, Z
+ 162:	88 61       	ori	r24, 0x18	; 24
+ 164:	80 83       	st	Z, r24
+ 166:	e2 ec       	ldi	r30, 0xC2	; 194
+ 168:	f0 e0       	ldi	r31, 0x00	; 0
+ 16a:	80 81       	ld	r24, Z
+ 16c:	86 60       	ori	r24, 0x06	; 6
+ 16e:	80 83       	st	Z, r24
+ 170:	08 95       	ret
 
 Disassembly of section .text.uartTransmitByte:
 
-00000182 <uartTransmitByte>:
+00000196 <uartTransmitByte>:
 	UCSR0B |= (1 << TXEN0) | (1 << RXEN0);    /* Activer emission et reception  USART */
 	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit, valeur au reset*/
 }
 //transmettre un caractere
 void uartTransmitByte(uint8_t data) {
 	while ( !( UCSR0A & (1<<UDRE0)) ); /* Attendre que le buffer de transmission soit vide */
- 182:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7fc0c0>
- 186:	95 ff       	sbrs	r25, 5
- 188:	fc cf       	rjmp	.-8      	; 0x182 <uartTransmitByte>
+ 196:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7fc0c0>
+ 19a:	95 ff       	sbrs	r25, 5
+ 19c:	fc cf       	rjmp	.-8      	; 0x196 <uartTransmitByte>
 	UDR0 = data;                      /* envoyer la donn�e */
- 18a:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7fc0c6>
- 18e:	08 95       	ret
+ 19e:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7fc0c6>
+ 1a2:	08 95       	ret
 
 Disassembly of section .text.main:
 
 000000c2 <main>:
-  c2:	0e 94 ba 00 	call	0x174	; 0x174 <SPI_MasterInit>
-  c6:	0e 94 9f 00 	call	0x13e	; 0x13e <initUSART>
+  c2:	0e 94 a4 00 	call	0x148	; 0x148 <initUSART>
+  c6:	0e 94 c4 00 	call	0x188	; 0x188 <SPI_MasterInit>
   ca:	2f ef       	ldi	r18, 0xFF	; 255
   cc:	84 e3       	ldi	r24, 0x34	; 52
   ce:	9c e0       	ldi	r25, 0x0C	; 12
@@ -251,51 +256,55 @@ Disassembly of section .text.main:
   da:	00 00       	nop
   dc:	c2 e0       	ldi	r28, 0x02	; 2
   de:	d1 e0       	ldi	r29, 0x01	; 1
-  e0:	63 e0       	ldi	r22, 0x03	; 3
-  e2:	8c 81       	ldd	r24, Y+4	; 0x04
-  e4:	0e 94 85 00 	call	0x10a	; 0x10a <SPI_MasterTransmit>
-  e8:	64 e0       	ldi	r22, 0x04	; 4
-  ea:	89 e5       	ldi	r24, 0x59	; 89
-  ec:	0e 94 85 00 	call	0x10a	; 0x10a <SPI_MasterTransmit>
-  f0:	8d 83       	std	Y+5, r24	; 0x05
-  f2:	0e 94 c1 00 	call	0x182	; 0x182 <uartTransmitByte>
-  f6:	8d 81       	ldd	r24, Y+5	; 0x05
-  f8:	0e 94 c1 00 	call	0x182	; 0x182 <uartTransmitByte>
-  fc:	8f e0       	ldi	r24, 0x0F	; 15
-  fe:	97 e2       	ldi	r25, 0x27	; 39
- 100:	01 97       	sbiw	r24, 0x01	; 1
- 102:	f1 f7       	brne	.-4      	; 0x100 <main+0x3e>
- 104:	00 c0       	rjmp	.+0      	; 0x106 <main+0x44>
- 106:	00 00       	nop
- 108:	e9 cf       	rjmp	.-46     	; 0xdc <main+0x1a>
+  e0:	62 e0       	ldi	r22, 0x02	; 2
+  e2:	8b 81       	ldd	r24, Y+3	; 0x03
+  e4:	0e 94 8a 00 	call	0x114	; 0x114 <SPI_MasterTransmit>
+  e8:	63 e0       	ldi	r22, 0x03	; 3
+  ea:	8c 81       	ldd	r24, Y+4	; 0x04
+  ec:	0e 94 8a 00 	call	0x114	; 0x114 <SPI_MasterTransmit>
+  f0:	64 e0       	ldi	r22, 0x04	; 4
+  f2:	89 e5       	ldi	r24, 0x59	; 89
+  f4:	0e 94 8a 00 	call	0x114	; 0x114 <SPI_MasterTransmit>
+  f8:	8d 83       	std	Y+5, r24	; 0x05
+  fa:	81 e4       	ldi	r24, 0x41	; 65
+  fc:	0e 94 cb 00 	call	0x196	; 0x196 <uartTransmitByte>
+ 100:	8a e0       	ldi	r24, 0x0A	; 10
+ 102:	0e 94 cb 00 	call	0x196	; 0x196 <uartTransmitByte>
+ 106:	8f e0       	ldi	r24, 0x0F	; 15
+ 108:	97 e2       	ldi	r25, 0x27	; 39
+ 10a:	01 97       	sbiw	r24, 0x01	; 1
+ 10c:	f1 f7       	brne	.-4      	; 0x10a <main+0x48>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <main+0x4e>
+ 110:	00 00       	nop
+ 112:	e4 cf       	rjmp	.-56     	; 0xdc <main+0x1a>
 
 Disassembly of section .text.__dummy_fini:
 
-00000198 <_fini>:
- 198:	08 95       	ret
+000001ac <_fini>:
+ 1ac:	08 95       	ret
 
 Disassembly of section .text.__dummy_funcs_on_exit:
 
-0000019a <__funcs_on_exit>:
- 19a:	08 95       	ret
+000001ae <__funcs_on_exit>:
+ 1ae:	08 95       	ret
 
 Disassembly of section .text.__dummy_simulator_exit:
 
-0000019c <__simulator_exit>:
- 19c:	08 95       	ret
+000001b0 <__simulator_exit>:
+ 1b0:	08 95       	ret
 
 Disassembly of section .text.exit:
 
-0000015e <exit>:
- 15e:	ec 01       	movw	r28, r24
- 160:	0e 94 cd 00 	call	0x19a	; 0x19a <__funcs_on_exit>
- 164:	0e 94 cc 00 	call	0x198	; 0x198 <_fini>
- 168:	ce 01       	movw	r24, r28
- 16a:	0e 94 ce 00 	call	0x19c	; 0x19c <__simulator_exit>
- 16e:	ce 01       	movw	r24, r28
- 170:	0e 94 ca 00 	call	0x194	; 0x194 <_Exit>
+00000172 <exit>:
+ 172:	ec 01       	movw	r28, r24
+ 174:	0e 94 d7 00 	call	0x1ae	; 0x1ae <__funcs_on_exit>
+ 178:	0e 94 d6 00 	call	0x1ac	; 0x1ac <_fini>
+ 17c:	ce 01       	movw	r24, r28
+ 17e:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <__simulator_exit>
+ 182:	ce 01       	movw	r24, r28
+ 184:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <_Exit>
 
 Disassembly of section .text._Exit:
 
-00000194 <_Exit>:
- 194:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
+000001a8 <_Exit>:
+ 1a8:	0e 94 5f 00 	call	0xbe	; 0xbe <_exit>
