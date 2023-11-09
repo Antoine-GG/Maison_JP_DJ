@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>E:\CMC\Maison_JP_DJ\kicad\MaisonEtape1.kicad_sch</source>
-    <date>11/3/2023 5:31:52 AM</date>
+    <date>11/5/2023 3:55:06 AM</date>
     <tool>Eeschema 7.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -178,7 +178,7 @@
     </comp>
     <comp ref="Jmaster1">
       <value>AVR-ISP-6</value>
-      <footprint>JPLibrary:SPI_prog</footprint>
+      <footprint>JP_Library:SPI_prog</footprint>
       <datasheet> ~</datasheet>
       <libsource lib="" part="AVR-ISP-6_1" description="Atmel 6-pin ISP connector"/>
       <property name="Sheetname" value=""/>
@@ -301,7 +301,7 @@
     </comp>
     <comp ref="J3">
       <value>AVR-ISP-6</value>
-      <footprint>JPLibrary:SPI_prog</footprint>
+      <footprint>JP_Library:SPI_prog</footprint>
       <datasheet> ~</datasheet>
       <libsource lib="" part="AVR-ISP-6_1" description="Atmel 6-pin ISP connector"/>
       <property name="Sheetname" value="SPI section"/>
@@ -313,7 +313,7 @@
     </comp>
     <comp ref="J4">
       <value>AVR-ISP-6</value>
-      <footprint>JPLibrary:SPI_prog</footprint>
+      <footprint>JP_Library:SPI_prog</footprint>
       <datasheet> ~</datasheet>
       <libsource lib="" part="AVR-ISP-6_1" description="Atmel 6-pin ISP connector"/>
       <property name="Sheetname" value="SPI section"/>
@@ -325,7 +325,7 @@
     </comp>
     <comp ref="J5">
       <value>AVR-ISP-6</value>
-      <footprint>JPLibrary:SPI_prog</footprint>
+      <footprint>JP_Library:SPI_prog</footprint>
       <datasheet> ~</datasheet>
       <libsource lib="" part="AVR-ISP-6_1" description="Atmel 6-pin ISP connector"/>
       <property name="Sheetname" value="SPI section"/>
@@ -947,7 +947,7 @@ ESP32-WROOM-32UE series Transceiver; 802.11 b/g/n (Wi-Fi, WiFi, WLAN), Bluetooth
     </comp>
     <comp ref="J1">
       <value>AVR-ISP-6</value>
-      <footprint>JPLibrary:SPI_prog</footprint>
+      <footprint>JP_Library:SPI_prog</footprint>
       <datasheet> ~</datasheet>
       <libsource lib="Connector" part="AVR-ISP-6" description="Atmel 6-pin ISP connector"/>
       <property name="Sheetname" value="U1"/>
@@ -1156,7 +1156,7 @@ ESP32-WROOM-32UE series Transceiver; 802.11 b/g/n (Wi-Fi, WiFi, WLAN), Bluetooth
     </comp>
     <comp ref="J2">
       <value>AVR-ISP-6</value>
-      <footprint>JPLibrary:SPI_prog</footprint>
+      <footprint>JP_Library:SPI_prog</footprint>
       <datasheet> ~</datasheet>
       <libsource lib="Connector" part="AVR-ISP-6" description="Atmel 6-pin ISP connector"/>
       <property name="Sheetname" value="U2"/>
@@ -1253,7 +1253,7 @@ ESP32-WROOM-32UE series Transceiver; 802.11 b/g/n (Wi-Fi, WiFi, WLAN), Bluetooth
       <sheetpath names="/U2/" tstamps="/29d87bbe-c5b1-4aad-883d-cace8cf4b0d9/"/>
       <tstamps>3988d958-9fb1-4150-aedb-10a1cfd3044e</tstamps>
     </comp>
-    <comp ref="J_U1">
+    <comp ref="J_U6">
       <value>Conn_01x04_Socket</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
       <libsource lib="Connector" part="Conn_01x04_Socket" description="Generic connector, single row, 01x04, script generated"/>
@@ -2942,22 +2942,22 @@ ESP32-WROOM-32UE series Transceiver; 802.11 b/g/n (Wi-Fi, WiFi, WLAN), Bluetooth
       <node ref="U7" pin="16" pinfunction="Vdd" pintype="power_in"/>
     </net>
     <net code="240" name="U6_GND">
-      <node ref="J_U1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J_U6" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="U8" pin="4" pinfunction="GND" pintype="power_in"/>
       <node ref="U8" pin="5" pinfunction="A2" pintype="input"/>
       <node ref="U8" pin="6" pinfunction="A1" pintype="input"/>
       <node ref="U8" pin="7" pinfunction="A0" pintype="input"/>
     </net>
     <net code="241" name="U6_VCC">
-      <node ref="J_U1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J_U6" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U8" pin="8" pinfunction="V_{DD}" pintype="power_in"/>
     </net>
     <net code="242" name="U6_i2c_SCL">
-      <node ref="J_U1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J_U6" pin="3" pinfunction="Pin_3" pintype="passive"/>
       <node ref="U8" pin="2" pinfunction="SCL" pintype="input"/>
     </net>
     <net code="243" name="U6_i2c_SDA">
-      <node ref="J_U1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J_U6" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="U8" pin="1" pinfunction="SDA" pintype="bidirectional"/>
     </net>
     <net code="258" name="unconnected-(LT1-AREF-Pad20)">
